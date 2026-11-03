@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Type lab: enam kombinasi huruf sebagai hero</title>
+<meta name="description" content="Enam kombinasi huruf untuk kampanye.ai, masing-masing dirender sebagai hero sungguhan. Gulir untuk membandingkan.">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;background:#1A1A1A}
+html{scroll-snap-type:y proximity}
+.sec{position:relative;height:100svh;display:flex;flex-direction:column;scroll-snap-align:start}
+.sec iframe{display:block;width:100%;flex:1;min-height:0;border:0;background:#F2F2F2}
+/* the label strip sticks to the top while its hero is on screen; the hero gets the rest of the viewport */
+.tag{position:sticky;top:0;z-index:5;height:30px;flex:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 16px;background:#1A1A1A;color:#F2F2F2;
+  font:500 12.5px/16px 'Switzer',system-ui,sans-serif;letter-spacing:.005em;white-space:nowrap;overflow:hidden}
+.tag span{overflow:hidden;text-overflow:ellipsis}
+.tag b{font-weight:600;color:#FF3B30}
+.tag a{color:#F2F2F2;opacity:.7;text-decoration:underline;text-underline-offset:3px}
+.tag a:hover{opacity:1}
+@media (max-width:600px){.tag{font-size:11px;padding:0 10px}.tag a{display:none}}
+</style>
+</head>
+<body>
+<h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)">Type lab kampanye.ai: enam kombinasi huruf</h1>
+<main>
+  <section class="sec" aria-label="Kombinasi 1">
+    <div class="tag"><span><b>Kombinasi 1:</b> Switzer &amp; Newsreader Italic + Switzer + Switzer</span><a href="hero-1.html">buka sendiri</a></div>
+    <iframe src="hero-1.html" title="Kombinasi 1: Switzer dengan Newsreader Italic"></iframe>
+  </section>
+  <section class="sec" aria-label="Kombinasi 2">
+    <div class="tag"><span><b>Kombinasi 2:</b> Gambarino + Hanken Grotesk + Azeret Mono</span><a href="hero-2.html">buka sendiri</a></div>
+    <iframe src="hero-2.html" title="Kombinasi 2: Gambarino, Hanken Grotesk, Azeret Mono" loading="lazy"></iframe>
+  </section>
+  <section class="sec" aria-label="Kombinasi 3">
+    <div class="tag"><span><b>Kombinasi 3:</b> Big Shoulders Display &amp; Zodiak Italic + Zodiak + Big Shoulders</span><a href="hero-3.html">buka sendiri</a></div>
+    <iframe src="hero-3.html" title="Kombinasi 3: Big Shoulders Display dengan Zodiak Italic" loading="lazy"></iframe>
+  </section>
+  <section class="sec" aria-label="Kombinasi 4">
+    <div class="tag"><span><b>Kombinasi 4:</b> Bodoni Moda + Mona Sans + Mona Sans Expanded</span><a href="hero-4.html">buka sendiri</a></div>
+    <iframe src="hero-4.html" title="Kombinasi 4: Bodoni Moda dengan Mona Sans" loading="lazy"></iframe>
+  </section>
+  <section class="sec" aria-label="Kombinasi 5">
+    <div class="tag"><span><b>Kombinasi 5:</b> Archivo Expanded + Source Serif 4 + Archivo Condensed</span><a href="hero-5.html">buka sendiri</a></div>
+    <iframe src="hero-5.html" title="Kombinasi 5: Archivo Expanded dengan Source Serif 4" loading="lazy"></iframe>
+  </section>
+  <section class="sec" aria-label="Kombinasi 6">
+    <div class="tag"><span><b>Kombinasi 6:</b> Courier Prime + Instrument Sans + Instrument Sans Condensed</span><a href="hero-6.html">buka sendiri</a></div>
+    <iframe src="hero-6.html" title="Kombinasi 6: Courier Prime dengan Instrument Sans" loading="lazy"></iframe>
+  </section>
+</main>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id" class="intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Kombinasi 1: Switzer dengan Newsreader Italic</title>
+<meta name="description" content="Type lab kampanye.ai, kombinasi 1: neo-grotesk Switzer dengan kata miring Newsreader Italic di dalam judul.">
+<link rel="preload" href="assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/newsreader-200_800-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/lab.css">
+<style>
+/* KOMBINASI 1. Switzer (neo-grotesk, the workhorse) carries every role; Newsreader Italic (opsz 72) is set
+   only on the two verbs that carry the idea. Paper ground, one red rule. Grid 12 col, margin 32, gutter 24, unit 8. */
+:root{
+  --ground:#F2F2F2; --ink:#1A1A1A; --muted:#5E5E5C; --line:rgba(26,26,26,.16); --red:#FF3B30;
+  --m:32px; --g:24px; --cols:12; --u:8px;
+  --sans:'Switzer',system-ui,sans-serif; --ital:'Newsreader',Georgia,serif;
+}
+body{background:var(--ground);color:var(--ink);font:400 16px/24px var(--sans);letter-spacing:-.003em}
+.page{display:grid;grid-template-rows:auto 1fr auto;min-height:100svh;padding:0 var(--m)}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+
+/* header: 24px tall row on an 8px rhythm, hairline below */
+header{align-items:center;height:72px;border-bottom:1px solid var(--line)}
+.logo{grid-column:1/4;display:block;width:max-content}
+.logo img{height:22px;width:auto}
+nav{grid-column:6/11}
+nav ul{display:flex;gap:28px;font:500 14px/16px var(--sans);letter-spacing:-.006em}
+.hcta{grid-column:11/13;justify-self:end;font:500 14px/16px var(--sans);--cta-line:var(--red);--cta-rule:2px}
+.menu{display:none}
+
+/* stage: one dominant element, the sentence */
+.stage{align-content:end;padding-block:48px clamp(72px,13vh,128px)}
+h1{grid-column:1/13;font-weight:500;font-size:clamp(52px,10.15vw,176px);line-height:.965;letter-spacing:-.047em;
+   margin-left:-.055em; /* optical: the I's side bearing, so the stem sits on the margin */
+   font-feature-settings:'kern','ss01';text-wrap:balance}
+h1 .mask{padding-bottom:.1em;margin-bottom:-.1em}
+h1 em{font-family:var(--ital);font-style:italic;font-weight:340;font-size:1.05em;letter-spacing:-.018em;
+   font-variation-settings:'opsz' 72;padding-right:.02em}
+h1 .clip{display:inline-block;width:2.55em;height:.7em;vertical-align:baseline;margin:0 .2em 0 .24em;position:relative;overflow:hidden;background:#2b2f27}
+h1 .clip video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 100%}
+.l1,.l2{display:block}
+
+/* foot: four groups hung on column lines 1, 6, 8, 10 */
+footer{border-top:1px solid var(--line);padding:24px 0 32px;row-gap:24px}
+.sub{grid-column:1/5;font:400 19px/28px var(--sans);letter-spacing:-.012em;max-width:26em}
+.meta{font:400 13px/16px var(--sans);letter-spacing:0;color:var(--muted)}
+.meta dt{color:var(--ink);font-weight:500;margin-bottom:4px;text-wrap:balance}
+.meta dd{margin:0}
+.m1{grid-column:6/8}.m2{grid-column:8/10}
+.acts{grid-column:10/13;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:4px;font:500 16px/24px var(--sans);letter-spacing:-.01em}
+.acts .cta.red{--cta-line:var(--red);--cta-rule:2px}
+.acts .sound{margin-top:12px;font:500 13px/16px var(--sans);color:var(--muted)}
+
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  header{height:60px}
+  .logo{grid-column:1/3}.logo img{height:19px}
+  nav,.hcta{display:none}
+  .menu{display:block;grid-column:3/5;justify-self:end;font:500 15px/24px var(--sans);min-height:44px}
+  html.menu-open nav{display:block;position:fixed;inset:60px 0 0;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open nav ul{flex-direction:column;gap:8px;font:500 40px/48px var(--sans);letter-spacing:-.04em}
+  .stage{align-content:center;padding-block:24px 32px}
+  h1{grid-column:1/5;font-size:16vw;line-height:.97;letter-spacing:-.045em}
+  h1 .clip{width:2.7em}
+  h1 .l1 em,h1 .l2 em{display:inline}
+  footer{padding:20px 0 24px;row-gap:20px}
+  .sub{grid-column:1/5;font-size:18px;line-height:26px}
+  .m1{grid-column:1/3}.m2{grid-column:3/5}
+  .acts{grid-column:1/5;justify-self:stretch;flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px}
+  .acts .sound{margin-top:0;flex-basis:100%;padding-top:8px;border-top:1px solid var(--line)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <header class="grid">
+    <a class="logo" href="#" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-light.svg" alt="kampanye AI" width="139" height="22"></a>
+    <nav aria-label="Utama"><ul>
+      <li><a class="nl" href="#">Karya</a></li><li><a class="nl" href="#">Layanan</a></li><li><a class="nl" href="#">Untuk agensi</a></li><li><a class="nl" href="#">Tentang</a></li><li><a class="nl" href="#">Kontak</a></li>
+    </ul></nav>
+    <a class="cta hcta" href="#"><span>Kirim brief-mu</span></a>
+    <button class="menu" data-menu aria-expanded="false"><span data-label>Menu</span></button>
+  </header>
+
+  <main id="isi" class="stage grid">
+    <h1>
+      <span class="mask"><span class="l1" data-i="line" data-d=".05">Ini tidak <em>disyuting.</em></span></span>
+      <span class="mask"><span class="l2" data-i="line" data-d=".15">Ini<span class="clip" data-i="wipe" data-d=".35" data-from="inset(0 100% 0 0)"><video id="loop" src="assets/img/anyam-loop.mp4" poster="assets/img/anyam.jpg" autoplay muted loop playsinline aria-label="Cuplikan: perempuan menganyam rotan di hutan, digarap AI"></video></span><em>disutradarai.</em></span></span>
+    </h1>
+  </main>
+
+  <footer class="grid">
+    <p class="sub" data-i="rise" data-d=".5">Kualitas setara TVC untuk brand, agensi, dan instansi pemerintah, tanpa jadwal syuting <span class="nw">berbulan-bulan</span>.</p>
+    <dl class="meta m1" data-i="rise" data-d=".58"><dt>Cuplikan</dt><dd>Kampanye layanan publik, Polda Kalimantan Timur. Film, 16:9.</dd></dl>
+    <dl class="meta m2" data-i="rise" data-d=".64"><dt>Diarahkan manusia, digarap AI</dt><dd>Aset hero baru menyusul.</dd></dl>
+    <div class="acts" data-i="rise" data-d=".7">
+      <a class="cta" href="#"><span>Lihat karya</span></a>
+      <a class="cta red" href="#"><span>Kirim brief-mu</span></a>
+      <button class="sound" data-sound="#loop" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-label>Nyalakan suara</span></button>
+    </div>
+  </footer>
+</div>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id" class="intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Kombinasi 5: Archivo Expanded dengan Source Serif 4</title>
+<meta name="description" content="Type lab kampanye.ai, kombinasi 5: grotesk lebar Archivo Expanded untuk judul, serif baca Source Serif 4 untuk teks, merah hanya pada tanda potong.">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/archivo-100_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/source-serif-4-200_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/lab.css">
+<style>
+/* KOMBINASI 5. Print proof. Archivo at width 125 sets the claim like a press headline; Archivo at width 62 sets the slug line;
+   Source Serif 4 (opsz on auto) reads like a well-made book. The column grid is printed on the paper as hairlines,
+   and red appears only where a printer would use it: the crop marks around the frame and the brief link. */
+:root{
+  --ground:#F2F2F2; --ink:#1A1A1A; --muted:#5D5D5B; --line:rgba(26,26,26,.075); --rule:rgba(26,26,26,.18); --red:#FF3B30;
+  --m:32px; --g:24px; --cols:12;
+  --wide:'Archivo',system-ui,sans-serif; --serif:'Source Serif 4',Georgia,serif;
+}
+body{background:var(--ground);color:var(--ink);font:400 18px/28px var(--serif);font-optical-sizing:auto}
+.page{position:relative;min-height:100svh;padding:0 var(--m);display:grid;grid-template-rows:auto auto 1fr}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+/* the printed column grid: one hairline at the left edge of every column, plus the right margin */
+.page::before{content:"";position:absolute;inset:0 var(--m);pointer-events:none;z-index:0;
+  background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc((100% + var(--g)) / 12)),linear-gradient(90deg,transparent calc(100% - 1px),var(--line) 0)}
+.page>*{position:relative;z-index:1}
+.slug{font:600 11.5px/16px var(--wide);font-stretch:62%;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.slug b{color:var(--ink);font-weight:700}
+
+header{height:72px;align-items:center;border-bottom:1px solid var(--rule)}
+.logo{grid-column:1/4}.logo img{height:22px;width:auto}
+nav{grid-column:5/11}
+nav ul{display:flex;gap:28px;font:500 14px/16px var(--wide);font-stretch:100%;letter-spacing:-.005em}
+.hcta{grid-column:11/13;justify-self:end;font:600 14px/16px var(--wide);--cta-line:var(--red);--cta-rule:2px}
+.menu{display:none}
+
+h1{padding-top:clamp(28px,6vh,64px);font:760 clamp(48px,7.25vw,124px)/.92 var(--wide);font-stretch:125%;letter-spacing:-.052em;
+   margin-left:-.06em; /* S and T side bearings */ text-wrap:balance}
+h1 .ln2{display:block;white-space:nowrap;padding-left:calc((100% + var(--g)) / 12 * 4)} /* the second line starts on column 5, where the frame starts */
+
+.body{align-items:start;padding-top:clamp(36px,6.4vh,64px);padding-bottom:32px}
+.text{grid-column:1/5;display:flex;flex-direction:column;gap:20px;max-width:23em;padding-right:8px}
+.text p{font:400 18px/28px var(--serif);letter-spacing:-.003em}
+.text p i{font-style:italic}
+.acts{display:flex;gap:28px;margin-top:4px;font:600 14px/24px var(--wide);font-stretch:100%}
+.acts .red{--cta-line:var(--red);--cta-rule:2px}
+
+.frame{grid-column:5/13;position:relative;margin:10px 10px 0 10px}
+.frame .win{position:relative;aspect-ratio:2.39/1;overflow:hidden;background:#20251d}
+.frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 16%}
+/* crop marks: the only red on the page besides the brief link */
+.frame .cm{position:absolute;width:22px;height:22px;pointer-events:none}
+.frame .cm::before,.frame .cm::after{content:"";position:absolute;background:var(--red)}
+.frame .cm::before{width:14px;height:1px}.frame .cm::after{width:1px;height:14px}
+.frame .tl{left:-10px;top:-10px}.frame .tl::before{left:-8px;top:10px}.frame .tl::after{left:10px;top:-8px}
+.frame .tr{right:-10px;top:-10px}.frame .tr::before{right:-8px;top:10px}.frame .tr::after{right:10px;top:-8px}
+.frame .bl{left:-10px;bottom:-10px}.frame .bl::before{left:-8px;bottom:10px}.frame .bl::after{left:10px;bottom:-8px}
+.frame .br{right:-10px;bottom:-10px}.frame .br::before{right:-8px;bottom:10px}.frame .br::after{right:10px;bottom:-8px}
+.frame figcaption{display:flex;justify-content:space-between;gap:24px;margin-top:16px}
+.frame .sound{font:600 11.5px/16px var(--wide);font-stretch:62%;letter-spacing:.07em;text-transform:uppercase;color:var(--ink)}
+
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .page::before{background:repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px calc((100% + var(--g)) / 4)),linear-gradient(90deg,transparent calc(100% - 1px),var(--line) 0)}
+  header{height:60px}.logo{grid-column:1/3}.logo img{height:19px}
+  nav,.hcta{display:none}
+  .menu{display:block;grid-column:3/5;justify-self:end;font:600 14px/24px var(--wide);min-height:44px}
+  html.menu-open nav{display:block;position:fixed;inset:60px 0 0;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open nav ul{flex-direction:column;gap:8px;font:760 34px/44px var(--wide);font-stretch:125%;letter-spacing:-.04em}
+  h1{font-size:15.2vw;line-height:.92;padding-top:28px}
+  h1 .ln2{padding-left:calc((100% + var(--g)) / 4);white-space:normal}
+  .body{padding-top:24px;row-gap:28px}
+  .frame{grid-column:1/5;grid-row:1;margin:10px}
+  .frame .win{aspect-ratio:16/10}
+  .frame video{object-position:50% 30%}
+  .frame figcaption{flex-direction:column;gap:6px}
+  .text{grid-column:1/5;grid-row:2;max-width:none}
+  .text p{font-size:16px;line-height:24px}
+  .text p+p{display:none}
+  .acts{justify-content:space-between}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <header class="grid">
+    <a class="logo" href="#" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-light.svg" alt="kampanye AI" width="139" height="22"></a>
+    <nav aria-label="Utama"><ul>
+      <li><a class="nl" href="#">Karya</a></li><li><a class="nl" href="#">Layanan</a></li><li><a class="nl" href="#">Untuk agensi</a></li><li><a class="nl" href="#">Tentang</a></li><li><a class="nl" href="#">Kontak</a></li>
+    </ul></nav>
+    <a class="cta hcta" href="#"><span>Kirim brief-mu</span></a>
+    <button class="menu" data-menu aria-expanded="false"><span data-label>Menu</span></button>
+  </header>
+
+  <h1 id="isi"><span style="display:block"><span class="mask"><span data-i="line" data-d=".05" style="display:block">Setara TVC.</span></span><span class="mask"><span class="ln2" data-i="line" data-d=".15">Tanpa syuting.</span></span></span></h1>
+
+  <main class="body grid">
+    <div class="text">
+      <p data-i="rise" data-d=".55">Iklan produk, kampanye layanan publik, drama, dan karakter 3D yang terasa seperti hasil syuting besar. Bedanya, tidak ada adegan yang direkam kamera.</p>
+      <p data-i="rise" data-d=".62"><i>Diarahkan manusia, digarap AI,</i> untuk brand, agensi, dan instansi yang tidak bisa menunggu musim syuting.</p>
+      <div class="acts" data-i="rise" data-d=".7"><a class="cta" href="#"><span>Lihat karya</span></a><a class="cta red" href="#"><span>Kirim brief-mu</span></a></div>
+    </div>
+    <figure class="frame" data-i="rise" data-d=".25">
+      <div class="win" data-i="wipe" data-d=".3" data-from="inset(0 100% 0 0)"><video id="loop" src="assets/img/anyam-loop.mp4" poster="assets/img/anyam.jpg" autoplay muted loop playsinline aria-label="Perempuan menganyam rotan di hutan. Cuplikan digarap AI."></video></div>
+      <span class="cm tl" aria-hidden="true"></span><span class="cm tr" aria-hidden="true"></span><span class="cm bl" aria-hidden="true"></span><span class="cm br" aria-hidden="true"></span>
+      <figcaption class="slug"><span><b>Penganyam rotan</b> &nbsp; Kampanye layanan publik, Polda Kalimantan Timur &nbsp; 2,39:1</span><span>Aset hero baru menyusul</span><button class="sound" data-sound="#loop" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-label>Nyalakan suara</span></button></figcaption>
+    </figure>
+  </main>
+</div>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

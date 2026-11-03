@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id" class="intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Kombinasi 2: Gambarino, Hanken Grotesk, Azeret Mono</title>
+<meta name="description" content="Type lab kampanye.ai, kombinasi 2: serif display Gambarino, teks Hanken Grotesk, label Azeret Mono, di dinding galeri.">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/gambarino-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/lab.css">
+<style>
+/* KOMBINASI 2. Gallery wall. Gambarino (single-weight display serif with flair) speaks the claim;
+   Hanken Grotesk does the reading and the UI; Azeret Mono only writes the wall label, like a museum card.
+   Three alignments carry the page: headline cap-top = print top; CTA baseline = print bottom = label bottom. */
+:root{
+  --ground:#F3F3F0; --ink:#1A1A1A; --muted:#5F5F5B; --line:rgba(26,26,26,.15); --red:#FF3B30;
+  --m:40px; --g:24px; --cols:12;
+  --serif:'Gambarino',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'Azeret Mono',ui-monospace,monospace;
+}
+body{background:var(--ground);color:var(--ink);font:400 16px/24px var(--sans)}
+.page{min-height:100svh;padding:0 var(--m);display:grid;grid-template-rows:auto 1fr auto}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+
+header{height:88px;align-items:center}
+.logo{grid-column:1/4}.logo img{height:22px;width:auto}
+nav{grid-column:7/13;justify-self:end}
+nav ul{display:flex;gap:32px;font:500 14px/16px var(--sans);letter-spacing:-.005em}
+.menu{display:none}
+
+.wall{align-items:start;align-content:center;padding-top:clamp(24px,5.5vh,56px)}
+.left{grid-column:1/6;grid-row:1;display:flex;flex-direction:column;justify-content:space-between;align-self:stretch}
+h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5.6vw,92px);line-height:1.02;letter-spacing:-.022em;
+   margin-top:-.17em; /* cap-top of K sits on the top edge of the print */
+   margin-left:-.045em; /* optical: K's side bearing */
+   text-wrap:balance;font-feature-settings:'kern','liga','dlig'}
+.read{max-width:23.5em}
+.read p{font:400 18px/28px var(--sans);color:var(--ink);letter-spacing:-.006em}
+.acts{display:flex;gap:36px;margin-top:24px;font:500 16px/24px var(--sans);letter-spacing:-.01em}
+.acts .red{--cta-line:var(--red);--cta-rule:2px}
+.acts .cta{padding-bottom:4px;margin-bottom:-4px} /* text baseline lands on the print bottom */
+
+.print{grid-column:7/11;grid-row:1;position:relative;aspect-ratio:4/5;background:#20251d;overflow:hidden;
+   box-shadow:0 1px 0 rgba(0,0,0,.04),0 24px 48px -32px rgba(20,20,10,.35)}
+.print video,.print img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 40%}
+.card{grid-column:11/13;grid-row:1;align-self:end;font:400 11.5px/16px var(--mono);letter-spacing:-.01em;color:var(--muted)}
+.card .t{font:500 14px/20px var(--sans);color:var(--ink);letter-spacing:-.005em;margin-bottom:8px}
+.card p+p{margin-top:12px}
+.card .dot{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+.card .dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)} /* the gallery's red sticker */
+.card .sound{margin-top:16px;font:500 11.5px/16px var(--mono);color:var(--ink)}
+
+footer{margin-top:clamp(32px,6vh,72px);border-top:1px solid var(--line);padding:16px 0 28px;font:400 11.5px/16px var(--mono);color:var(--muted);letter-spacing:-.01em}
+footer p:nth-child(1){grid-column:1/4}footer p:nth-child(2){grid-column:4/7}footer p:nth-child(3){grid-column:7/11}footer p:nth-child(4){grid-column:11/13}
+footer b{font-weight:500;color:var(--ink)}
+
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  header{height:60px}.logo{grid-column:1/3}.logo img{height:19px}
+  nav{display:none}
+  .menu{display:block;grid-column:3/5;justify-self:end;font:500 15px/24px var(--sans);min-height:44px}
+  html.menu-open nav{display:block;position:fixed;inset:60px 0 0;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open nav ul{flex-direction:column;gap:8px;font:400 44px/52px var(--serif)}
+  .wall{padding-top:16px;row-gap:0}
+  .left{display:contents}
+  h1{grid-column:1/5;grid-row:1;font-size:11.6vw;line-height:1.02;margin-top:0}
+  .print{grid-column:2/5;grid-row:2;margin-top:28px}
+  .card{grid-column:1/2;grid-row:2;align-self:end;font-size:10.5px;line-height:14px;writing-mode:vertical-rl;transform:rotate(180deg);justify-self:start;max-height:300px}
+  .card .t,.card p:not(.dot),.card .sound{display:none}
+  .read{grid-column:1/5;grid-row:3;margin-top:24px}
+  .read p{font-size:16px;line-height:24px}
+  .acts{justify-content:space-between;margin-top:16px}
+  footer{margin-top:28px;row-gap:4px}
+  footer p:nth-child(n){grid-column:1/5}
+  footer p:nth-child(2),footer p:nth-child(3){display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <header class="grid">
+    <a class="logo" href="#" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-light.svg" alt="kampanye AI" width="139" height="22"></a>
+    <nav aria-label="Utama"><ul>
+      <li><a class="nl" href="#">Karya</a></li><li><a class="nl" href="#">Layanan</a></li><li><a class="nl" href="#">Untuk agensi</a></li><li><a class="nl" href="#">Tentang</a></li><li><a class="nl" href="#">Kontak</a></li>
+    </ul></nav>
+    <button class="menu" data-menu aria-expanded="false"><span data-label>Menu</span></button>
+  </header>
+
+  <main id="isi" class="wall grid">
+    <div class="left">
+      <h1 data-i="lines" data-d=".1">Kualitas setara TVC, tanpa jadwal syuting <span class="nw">berbulan-bulan.</span></h1>
+      <div class="read" data-i="rise" data-d=".6">
+        <p>Kami studio kreatif AI dari Indonesia. Iklan, kampanye, dan drama dengan rasa sinema, digarap tanpa kru di lapangan.</p>
+        <div class="acts"><a class="cta" href="#"><span>Lihat karya</span></a><a class="cta red" href="#"><span>Kirim brief-mu</span></a></div>
+      </div>
+    </div>
+    <figure class="print" data-i="wipe" data-d="0" data-from="inset(100% 0 0 0)">
+      <video id="loop" src="assets/img/anyam-loop.mp4" poster="assets/img/anyam.jpg" autoplay muted loop playsinline aria-label="Perempuan menganyam rotan di hutan. Cuplikan digarap AI."></video>
+    </figure>
+    <aside class="card" data-i="rise" data-d=".8" aria-label="Keterangan karya">
+      <p class="t">Penganyam rotan</p>
+      <p>Kampanye layanan publik<br>Polda Kalimantan Timur</p>
+      <p>Film, 16:9, berwarna<br>Diarahkan manusia,<br>digarap AI.</p>
+      <p>Tidak ada kamera di lokasi.</p>
+      <p class="dot">Dipesan klien</p>
+      <button class="sound" data-sound="#loop" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-label>Nyalakan suara</span></button>
+    </aside>
+  </main>
+
+  <footer class="grid" data-i="fade" data-d=".9">
+    <p><b>kampanye.ai</b>, studio kreatif AI</p>
+    <p>Iklan TVC, kampanye, drama AI</p>
+    <p>Karakter 3D, foto produk, untuk agensi</p>
+    <p>Aset hero baru menyusul</p>
+  </footer>
+</div>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

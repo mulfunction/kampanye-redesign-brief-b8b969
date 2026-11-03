@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id" class="intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Kombinasi 3: Big Shoulders Display dengan Zodiak Italic</title>
+<meta name="description" content="Type lab kampanye.ai, kombinasi 3: dua suara display, huruf kapital kondensasi Big Shoulders Display dan serif miring Zodiak Italic.">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/big-shoulders-display-100_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/zodiak-300-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/lab.css">
+<style>
+/* KOMBINASI 3. Film-poster billing. Two display voices that never touch the same job:
+   Big Shoulders Display 800 caps states the claim at poster scale; Zodiak Light Italic answers it like a spoken line.
+   Zodiak roman reads the small copy, Big Shoulders tracked caps write the credits. The image band breaks the margins on purpose. */
+:root{
+  --ground:#F2F2F2; --ink:#1A1A1A; --muted:#5C5C5A; --line:rgba(26,26,26,.16); --red:#FF3B30;
+  --m:32px; --g:24px; --cols:12;
+  --caps:'Big Shoulders Display',Impact,sans-serif; --serif:'Zodiak',Georgia,serif;
+}
+body{background:var(--ground);color:var(--ink);font:400 18px/28px var(--serif)}
+.page{min-height:100svh;padding:0 var(--m);display:flex;flex-direction:column}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+
+header{height:64px;align-items:center}
+.logo{grid-column:1/4}.logo img{height:22px;width:auto}
+nav{grid-column:5/13;justify-self:end}
+nav ul{display:flex;gap:30px;font:600 14px/16px var(--caps);letter-spacing:.09em;text-transform:uppercase}
+.menu{display:none}
+
+main{flex:1;display:flex;flex-direction:column;justify-content:center;padding-block:4px 8px}
+h1{font-weight:400;margin:0}
+.caps{display:block;font:800 23.2vw/.78 var(--caps);letter-spacing:-.012em;text-transform:uppercase;white-space:nowrap;
+      margin-left:-.035em; /* optical: S overshoot */ padding-top:.04em}
+.band{display:block;position:relative;height:clamp(190px,26vh,260px);margin:clamp(10px,1.6vh,18px) calc(-1 * var(--m)) 0;overflow:hidden;background:#232820}
+.band video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 9%}
+.band .tc{position:absolute;left:var(--m);bottom:12px;font:600 13px/16px var(--caps);letter-spacing:.1em;text-transform:uppercase;color:#F2F2F2;opacity:.9}
+.band .tc.r{left:auto;right:var(--m)}
+.answer{display:block;font:300 italic clamp(34px,5.2vw,84px)/1 var(--serif);letter-spacing:-.028em;text-align:right;margin-top:clamp(10px,1.8vh,20px);
+      margin-right:-.24em; /* the full stop hangs into the margin, so the last letter aligns */ text-wrap:balance}
+
+.foot{align-items:end;padding:clamp(16px,3vh,32px) 0 28px;row-gap:16px}
+.lede{grid-column:1/5;font:400 18px/28px var(--serif);letter-spacing:-.008em;max-width:25em}
+.lede em{font-style:italic}
+.credits{grid-column:6/10;font:600 13.5px/18px var(--caps);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.credits b{color:var(--ink);font-weight:700}
+.credits p+p{margin-top:6px}
+.acts{grid-column:10/13;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:2px;font:400 18px/26px var(--serif)}
+.acts .red{--cta-line:var(--red);--cta-rule:2px}
+.acts .sound{margin-top:8px;font:600 13.5px/18px var(--caps);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  header{height:60px}.logo{grid-column:1/3}.logo img{height:19px}
+  nav{display:none}
+  .menu{display:block;grid-column:3/5;justify-self:end;font:600 15px/24px var(--caps);letter-spacing:.09em;text-transform:uppercase;min-height:44px}
+  html.menu-open nav{display:block;position:fixed;inset:60px 0 0;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open nav ul{flex-direction:column;gap:4px;font:800 56px/60px var(--caps);letter-spacing:0}
+  main{justify-content:flex-start;padding-top:20px}
+  .caps{font-size:37.5vw;line-height:.8;white-space:normal}
+  .band{height:200px;margin-top:12px}
+  .band video{object-position:50% 6%}
+  .answer{font-size:9vw;line-height:1.02;margin-top:14px;text-align:left;margin-right:0}
+  .foot{padding:24px 0 24px;row-gap:16px}
+  .lede{grid-column:1/5;font-size:16px;line-height:24px}
+  .credits{display:none}
+  .acts{grid-column:1/5;justify-self:stretch;flex-direction:row;flex-wrap:wrap;justify-content:space-between;align-items:baseline}
+  .acts .sound{flex-basis:100%;margin-top:4px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <header class="grid">
+    <a class="logo" href="#" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-light.svg" alt="kampanye AI" width="139" height="22"></a>
+    <nav aria-label="Utama"><ul>
+      <li><a class="nl" href="#">Karya</a></li><li><a class="nl" href="#">Layanan</a></li><li><a class="nl" href="#">Untuk agensi</a></li><li><a class="nl" href="#">Tentang</a></li><li><a class="nl" href="#">Kontak</a></li>
+    </ul></nav>
+    <button class="menu" data-menu aria-expanded="false"><span data-label>Menu</span></button>
+  </header>
+
+  <main id="isi">
+    <h1>
+      <span class="mask"><span class="caps" data-i="line" data-d=".05">Setara TVC,</span></span>
+      <span class="band" data-i="wipe" data-d=".25" data-from="inset(50% 0 50% 0)" aria-hidden="true">
+        <video id="loop" src="assets/img/anyam-loop.mp4" poster="assets/img/anyam.jpg" autoplay muted loop playsinline></video>
+        <span class="tc">Penganyam rotan</span><span class="tc r">Aset hero baru menyusul</span>
+      </span>
+      <span class="answer" data-i="lines" data-d=".55">tanpa jadwal syuting <span class="nw">berbulan-bulan.</span></span>
+    </h1>
+  </main>
+
+  <div class="foot grid">
+    <p class="lede" data-i="rise" data-d=".8">Wajah ini tidak pernah berdiri di depan kamera. Kami mengarahkannya, AI menggarapnya, sampai layak tayang di televisi.</p>
+    <div class="credits" data-i="rise" data-d=".86">
+      <p><b>Cuplikan</b> Kampanye layanan publik, Polda Kalimantan Timur</p>
+      <p><b>Format</b> Film kampanye, 16:9</p>
+      <p><b>Proses</b> Diarahkan manusia, digarap AI</p>
+    </div>
+    <div class="acts" data-i="rise" data-d=".92">
+      <a class="cta" href="#"><span>Lihat karya</span></a>
+      <a class="cta red" href="#"><span>Kirim brief-mu</span></a>
+      <button class="sound" data-sound="#loop" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-label>Nyalakan suara</span></button>
+    </div>
+  </div>
+</div>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

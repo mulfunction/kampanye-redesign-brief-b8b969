@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="id" class="intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Kombinasi 4: Bodoni Moda dengan Mona Sans Expanded</title>
+<meta name="description" content="Type lab kampanye.ai, kombinasi 4: Didone Bodoni Moda pada ukuran optik besar dengan label Mona Sans lebar, di latar gelap.">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/bodoni-moda-400_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/bodoni-moda-400_900-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/lab.css">
+<style>
+/* KOMBINASI 4. Fashion-film credits on black. Bodoni Moda at opsz 96 asks the question the visitor is already asking;
+   its hairlines survive because the ground is near-black, never red. Mona Sans at width 125 writes the credits in tracked caps,
+   Mona Sans at width 100 reads the copy. The still sits between the two halves of the question. */
+:root{
+  --ground:#0B0B0A; --ink:#ECEBE6; --muted:#9A9993; --line:rgba(236,235,230,.16); --red:#FF3B30; --focus:#FF3B30;
+  --m:32px; --g:24px; --cols:12;
+  --didone:'Bodoni Moda',Didot,serif; --sans:'Mona Sans',system-ui,sans-serif;
+}
+body{background:var(--ground);color:var(--ink);font:400 16px/24px var(--sans);font-stretch:100%}
+.page{position:relative;min-height:100svh;padding:0 var(--m);display:grid;grid-template-rows:auto 1fr;overflow:hidden}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+.cred{font:500 10.5px/16px var(--sans);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cred b{font-weight:600;color:var(--ink)}
+
+header{height:76px;align-items:center;position:relative;z-index:3}
+.logo{grid-column:1/4}.logo img{height:22px;width:auto}
+nav{grid-column:6/13;justify-self:end}
+nav ul{display:flex;gap:30px;font:500 13px/16px var(--sans);font-stretch:112%;letter-spacing:.01em}
+.menu{display:none}
+
+.stage{position:relative;grid-template-rows:auto 1fr auto;padding-bottom:32px}
+h1{display:contents;font-weight:400}
+.w1,.w2{font-family:var(--didone);font-weight:400;font-size:clamp(60px,11.4vw,190px);line-height:.9;letter-spacing:-.03em;
+  font-variation-settings:'opsz' 96;position:relative;z-index:2;white-space:nowrap}
+.w1{grid-column:1/9;grid-row:1;margin-left:-.05em;margin-top:clamp(8px,3vh,28px)}
+.w2{grid-column:5/13;grid-row:3;justify-self:end;font-style:italic;letter-spacing:-.035em;margin-right:.07em}
+.w2 .q{color:var(--red)}
+.still{grid-column:6/10;grid-row:1/4;align-self:center;position:relative;aspect-ratio:3/4;max-height:calc(100svh - 150px);justify-self:center;width:100%;overflow:hidden;background:#1d2119;z-index:1}
+.still video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:saturate(.9) contrast(1.04)}
+.still::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,10,.35),transparent 30%,transparent 62%,rgba(11,11,10,.55))}
+.cap{grid-column:10/13;grid-row:2;align-self:start;padding-top:28px;border-top:1px solid var(--line);margin-top:24px}
+
+.lede{grid-column:10/13;grid-row:1;align-self:end;font:400 15px/24px var(--sans);font-stretch:100%;color:var(--muted);max-width:22em;padding-bottom:8px}
+.lede strong{color:var(--ink);font-weight:500}
+.side{grid-column:1/5;grid-row:3;align-self:end;display:flex;flex-direction:column;gap:20px;padding-bottom:10px;z-index:2}
+.acts{display:flex;gap:32px;font:500 15px/24px var(--sans);font-stretch:112%}
+.acts .red{--cta-line:var(--red);--cta-rule:2px}
+.sound{color:var(--ink)}
+
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  header{height:60px}.logo{grid-column:1/3}.logo img{height:19px}
+  nav{display:none}
+  .menu{display:block;grid-column:3/5;justify-self:end;font:500 14px/24px var(--sans);font-stretch:112%;min-height:44px}
+  html.menu-open nav{display:block;position:fixed;inset:60px 0 0;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open nav ul{flex-direction:column;gap:4px;font:400 48px/56px var(--didone)}
+  .stage{grid-template-rows:auto auto auto auto;padding-bottom:24px}
+  .w1{grid-column:1/5;grid-row:1;font-size:18.6vw;margin-top:8px}
+  .still{grid-column:1/5;grid-row:2;width:78%;justify-self:end;margin-top:-.32em;aspect-ratio:4/5;max-height:none;font-size:18.6vw}
+  .w2{grid-column:1/5;grid-row:3;font-size:18.6vw;justify-self:end;margin-top:-.62em;margin-right:-.06em}
+  .lede{grid-column:1/5;grid-row:4;margin-top:20px;padding:0;font-size:15px;line-height:24px}
+  .side{grid-column:1/5;grid-row:5;margin-top:16px;gap:14px}
+  .side .cred.cr,.cap{display:none}
+  .acts{justify-content:space-between}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <header class="grid">
+    <a class="logo" href="#" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-dark.svg" alt="kampanye AI" width="139" height="22"></a>
+    <nav aria-label="Utama"><ul>
+      <li><a class="nl" href="#">Karya</a></li><li><a class="nl" href="#">Layanan</a></li><li><a class="nl" href="#">Untuk agensi</a></li><li><a class="nl" href="#">Tentang</a></li><li><a class="nl" href="#">Kontak</a></li>
+    </ul></nav>
+    <button class="menu" data-menu aria-expanded="false"><span data-label>Menu</span></button>
+  </header>
+
+  <main id="isi" class="stage grid">
+    <h1>
+      <span class="mask w1"><span data-i="line" data-d=".1" style="display:block">Bagaimana</span></span>
+      <span class="mask w2"><span data-i="line" data-d=".3" style="display:block">ini dibuat<span class="q">?</span></span></span>
+    </h1>
+    <figure class="still" data-i="wipe" data-d="0" data-from="inset(0 0 100% 0)">
+      <video id="loop" src="assets/img/anyam-loop.mp4" poster="assets/img/anyam.jpg" autoplay muted loop playsinline aria-label="Perempuan menganyam rotan di hutan. Cuplikan digarap AI."></video>
+    </figure>
+    <p class="lede" data-i="rise" data-d=".6"><strong>Tanpa kru di tengah hutan, tanpa jadwal syuting <span class="nw">berbulan-bulan</span>.</strong> Setiap adegan diarahkan sutradara dan digarap AI sampai setara TVC.</p>
+    <p class="cap cred" data-i="rise" data-d=".68"><b>Penganyam rotan</b><br>Kampanye layanan publik<br>Polda Kalimantan Timur<br>Aset hero baru menyusul</p>
+    <div class="side" data-i="rise" data-d=".75">
+      <p class="cred cr"><b>Diarahkan</b> manusia<br><b>Digarap</b> AI<br><b>Untuk</b> brand, agensi, instansi</p>
+      <div class="acts"><a class="cta" href="#"><span>Lihat karya</span></a><a class="cta red" href="#"><span>Kirim brief-mu</span></a></div>
+      <button class="sound cred" data-sound="#loop" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-label>Nyalakan suara</span></button>
+    </div>
+  </main>
+</div>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

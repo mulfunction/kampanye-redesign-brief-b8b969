@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="id" class="intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Kombinasi 6: Courier Prime dengan Instrument Sans</title>
+<meta name="description" content="Type lab kampanye.ai, kombinasi 6: huruf naskah film Courier Prime sebagai display, Instrument Sans untuk teks dan antarmuka.">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/courier-prime-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-400_700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/lab.css">
+<style>
+/* KOMBINASI 6. Naskah ke layar. Courier Prime is the screenplay face (Courier is the format standard of the film industry):
+   the page on the left is a real scene, written the way a director writes it, and its action line is the headline.
+   Instrument Sans (proportional grotesk, narrow cut for slugs) is the studio speaking. "POTONG KE:" hands over to the picture.
+   The two families are the two halves of the process: words by people, images by AI. Red only marks the revised line. */
+:root{
+  --ground:#F2F2F0; --ink:#1A1A1A; --muted:#5E5E5A; --line:rgba(26,26,26,.15); --red:#FF3B30;
+  --m:32px; --g:24px; --cols:12;
+  --script:'Courier Prime','Courier New',monospace; --sans:'Instrument Sans',system-ui,sans-serif;
+}
+body{background:var(--ground);color:var(--ink);font:400 16px/24px var(--sans)}
+.page{min-height:100svh;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g);padding-left:var(--m)}
+.left{grid-column:1/8;display:grid;grid-template-rows:auto 1fr auto;min-height:100svh;padding-right:8px}
+.slug{font:600 11.5px/16px var(--sans);font-stretch:78%;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.slug b{color:var(--ink);font-weight:600}
+
+header{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo img{height:22px;width:auto}
+nav ul{display:flex;gap:26px;font:500 14px/16px var(--sans);letter-spacing:-.003em}
+.menu{display:none}
+
+/* the screenplay page: Courier at 15px for the format, the action line scaled to display */
+.script{align-self:center;padding:24px 0 24px}
+.scene{font:700 15px/24px var(--script);text-transform:uppercase;letter-spacing:0}
+.action{font:400 15px/24px var(--script);margin-top:24px;max-width:38ch;color:#2a2a2a}
+h1{position:relative;font:400 clamp(40px,6vw,100px)/1.04 var(--script);letter-spacing:-.045em;margin:28px 0 0 -.04em;text-wrap:balance}
+.hw{position:relative}.rev{position:absolute;right:0;top:30px;font:700 clamp(22px,2.6vw,40px)/1 var(--script);color:var(--red);letter-spacing:0} /* revision asterisk, screenplay convention */
+.cut{font:700 15px/24px var(--script);text-transform:uppercase;text-align:right;margin-top:28px}
+
+.foot{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));column-gap:var(--g);align-items:end;padding:20px 0 30px;border-top:1px solid var(--line)}
+.foot .lede{grid-column:1/5;font:400 18px/28px var(--sans);letter-spacing:-.008em;max-width:27em}
+.foot .acts{grid-column:5/8;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:2px;font:600 16px/24px var(--sans)}
+.foot .red{--cta-line:var(--red);--cta-rule:2px}
+
+/* the picture: full height, bleeding off three edges */
+.pic{grid-column:8/13;position:relative;margin-right:0;min-height:100svh;overflow:hidden;background:#1f241c;grid-row:1}
+.page{padding-right:0}
+.pic video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.28),transparent 18%,transparent 70%,rgba(0,0,0,.5))}
+.pic .top,.pic .bot{position:absolute;left:24px;right:var(--m);z-index:2;display:flex;justify-content:space-between;align-items:center;color:#F2F2F0}
+.pic .top{top:26px}.pic .bot{bottom:28px;align-items:flex-end}
+.pic .slug{color:rgba(242,242,240,.82)}.pic .slug b{color:#F2F2F0}
+.pic .hcta{font:600 14px/16px var(--sans);color:#F2F2F0}
+.pic .sound{color:#F2F2F0}
+
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4}
+  .page{display:flex;flex-direction:column;padding:0}
+  .left{display:contents}
+  header{order:1;padding:0 var(--m)}.script{order:2;padding-inline:var(--m)!important}.pic{order:3}.foot{order:4}
+  header{height:60px}.logo img{height:19px}
+  nav{display:none}
+  .menu{display:block;font:600 15px/24px var(--sans);min-height:44px}
+  html.menu-open nav{display:block;position:fixed;inset:60px 0 0;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open nav ul{flex-direction:column;gap:6px;font:400 40px/48px var(--script);letter-spacing:-.04em}
+  .script{padding:20px 0 0}
+  .scene{font-size:13px;line-height:20px}
+  .action{font-size:13px;line-height:20px;margin-top:16px}
+  h1{font-size:11.6vw;line-height:1.04;margin-top:18px}
+  .rev{top:18px;right:0;font-size:22px}
+  .cut{margin-top:16px;font-size:13px}
+  .pic{min-height:0;height:270px;margin-top:12px}
+  .pic .top{display:none}
+  .pic .bot{left:var(--m);bottom:14px}
+  .foot{display:block;border:0;padding:20px var(--m) 28px}
+  .foot .lede{font-size:16px;line-height:24px}
+  .foot .acts{flex-direction:row;justify-content:space-between;justify-self:stretch;margin-top:16px}
+  .hcta{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+<div class="page">
+  <div class="left">
+    <header>
+      <a class="logo" href="#" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-light.svg" alt="kampanye AI" width="139" height="22"></a>
+      <nav aria-label="Utama"><ul>
+        <li><a class="nl" href="#">Karya</a></li><li><a class="nl" href="#">Layanan</a></li><li><a class="nl" href="#">Untuk agensi</a></li><li><a class="nl" href="#">Tentang</a></li><li><a class="nl" href="#">Kontak</a></li>
+      </ul></nav>
+      <button class="menu" data-menu aria-expanded="false"><span data-label>Menu</span></button>
+    </header>
+
+    <main id="isi" class="script">
+      <p class="scene" data-i="rise" data-d=".05">EXT. Hutan rotan, Kalimantan Timur. Pagi.</p>
+      <p class="action" data-i="rise" data-d=".15">Cahaya jatuh di jemari seorang perempuan yang menganyam rotan. Ia tidak menoleh. Tidak ada yang perlu ia tunggu.</p>
+      <div class="hw"><h1 data-i="lines" data-d=".3">Tidak ada kamera di lokasi.</h1><span class="rev" aria-hidden="true" data-i="fade" data-d="1">*</span></div>
+      <p class="cut" data-i="rise" data-d=".7">Potong ke:</p>
+    </main>
+
+    <div class="foot" data-i="rise" data-d=".8">
+      <p class="lede">Kualitas setara TVC, tanpa jadwal syuting <span class="nw">berbulan-bulan</span>. Kamu menulis brief, kami mengarahkan, AI menggarap setiap adegan.</p>
+      <div class="acts"><a class="cta" href="#"><span>Lihat karya</span></a><a class="cta red" href="#"><span>Kirim brief-mu</span></a></div>
+    </div>
+  </div>
+
+  <figure class="pic" data-i="wipe" data-d="0" data-from="inset(0 0 0 100%)">
+    <video id="loop" src="assets/img/anyam-loop.mp4" poster="assets/img/anyam.jpg" autoplay muted loop playsinline aria-label="Adegan yang sama, sudah jadi: perempuan menganyam rotan. Digarap AI."></video>
+    <div class="top"><span class="slug"><b>Diarahkan manusia, digarap AI</b></span><a class="cta hcta" href="#"><span>Kirim brief-mu</span></a></div>
+    <figcaption class="bot"><span class="slug"><b>Penganyam rotan</b><br>Kampanye layanan publik, Polda Kalimantan Timur<br>Aset hero baru menyusul</span><button class="sound slug" data-sound="#loop" aria-pressed="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span><span data-label>Nyalakan suara</span></button></figcaption>
+  </figure>
+</div>
+<script src="assets/js/gsap.min.js"></script>
+<script src="assets/js/SplitText.min.js"></script>
+<script src="assets/lab.js"></script>
+</body>
+</html>

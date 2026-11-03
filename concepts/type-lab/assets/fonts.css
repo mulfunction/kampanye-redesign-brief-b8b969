@@ -1,0 +1,28 @@
+/* Type lab: self-hosted, free-licence faces (Google OFL, Fontshare FFL). Latin subset covers Bahasa Indonesia (see coverage.txt). */
+/* Fontshare */
+@font-face{font-family:'Switzer';src:url('fonts/switzer-300-normal.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('fonts/switzer-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('fonts/switzer-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Switzer';src:url('fonts/switzer-600-normal.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Gambarino';src:url('fonts/gambarino-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Zodiak';src:url('fonts/zodiak-300-normal.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Zodiak';src:url('fonts/zodiak-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Zodiak';src:url('fonts/zodiak-300-italic.woff2') format('woff2');font-weight:300;font-style:italic;font-display:swap}
+@font-face{font-family:'Zodiak';src:url('fonts/zodiak-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:'Azeret Mono';src:url('fonts/azeret-mono-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Azeret Mono';src:url('fonts/azeret-mono-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+/* Google (variable) */
+@font-face{font-family:'Newsreader';src:url('fonts/newsreader-200_800-normal.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:'Newsreader';src:url('fonts/newsreader-200_800-italic.woff2') format('woff2');font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url('fonts/bodoni-moda-400_900-normal.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url('fonts/bodoni-moda-400_900-italic.woff2') format('woff2');font-weight:400 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('fonts/source-serif-4-200_900-normal.woff2') format('woff2');font-weight:200 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Source Serif 4';src:url('fonts/source-serif-4-200_900-italic.woff2') format('woff2');font-weight:200 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Archivo';src:url('fonts/archivo-100_900-normal.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;font-style:normal;font-display:swap}
+@font-face{font-family:'Big Shoulders Display';src:url('fonts/big-shoulders-display-100_900-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Hanken Grotesk';src:url('fonts/hanken-grotesk-100_900-normal.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Instrument Sans';src:url('fonts/instrument-sans-400_700-normal.woff2') format('woff2');font-weight:400 700;font-stretch:75% 100%;font-style:normal;font-display:swap}
+@font-face{font-family:'Mona Sans';src:url('fonts/mona-sans-200_900-normal.woff2') format('woff2');font-weight:200 900;font-stretch:75% 125%;font-style:normal;font-display:swap}
+@font-face{font-family:'Courier Prime';src:url('fonts/courier-prime-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Courier Prime';src:url('fonts/courier-prime-700-normal.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Courier Prime';src:url('fonts/courier-prime-400-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}

@@ -1,0 +1,54 @@
+/* Shared lab utilities: reset, skip link, focus, link treatments, grid overlay (press G), intro guard. Each hero sets its own tokens. */
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{font-synthesis:none;-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal}
+body{min-height:100svh;overflow-x:clip}
+img,video{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+h1,h2,h3,p,dl,dd,ul,ol,figure{margin:0;padding:0}
+ul{list-style:none}
+:where(h1,h2,.balance){text-wrap:balance}
+p{text-wrap:pretty}
+::selection{background:var(--red,#FF3B30);color:var(--ink,#1A1A1A)}
+:focus-visible{outline:2px solid var(--focus,var(--red,#FF3B30));outline-offset:3px}
+
+.skip{position:absolute;left:var(--m,24px);top:-60px;z-index:50;padding:8px 12px;background:var(--ink,#1A1A1A);color:var(--ground,#F2F2F2);font:500 14px/1 system-ui,sans-serif;text-decoration:none}
+.skip:focus{top:12px}
+.vh{position:absolute!important;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* Nav: underline draws in from the left (one treatment for every nav link) */
+.nl{position:relative;text-decoration:none;padding-block:4px}
+.nl::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s cubic-bezier(.19,1,.22,1)}
+.nl:hover::after,.nl[aria-current]::after{transform:scaleX(1);transform-origin:left}
+
+/* Primary CTA (text only): the rule leaves to the right, returns from the left; the label nudges */
+.cta{position:relative;display:inline-flex;align-items:baseline;gap:.5em;text-decoration:none;padding-block:6px;white-space:nowrap}
+.cta>span{display:inline-block;transition:transform .5s cubic-bezier(.19,1,.22,1)}
+.cta::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--cta-rule,1px);background:var(--cta-line,currentColor);transform-origin:left}
+.cta:hover::after{animation:cta-rule .7s cubic-bezier(.19,1,.22,1)}
+.cta:hover>span{transform:translateX(.25em)}
+.cta:active>span{transform:translateX(.1em)}
+@keyframes cta-rule{0%{transform:scaleX(1);transform-origin:right}45%{transform:scaleX(0);transform-origin:right}46%{transform:scaleX(0);transform-origin:left}100%{transform:scaleX(1);transform-origin:left}}
+
+/* Sound toggle: a small level meter that only moves when sound is on */
+.sound{display:inline-flex;align-items:center;gap:.6em;white-space:nowrap}
+.sound .bars{display:inline-flex;gap:2px;align-items:flex-end;height:.8em}
+.sound .bars i{display:block;width:2px;height:30%;background:currentColor;transition:height .3s}
+.sound[aria-pressed="true"] .bars i{animation:lvl .9s ease-in-out infinite alternate}
+.sound[aria-pressed="true"] .bars i:nth-child(2){animation-delay:-.3s}.sound[aria-pressed="true"] .bars i:nth-child(3){animation-delay:-.6s}
+.sound:hover .bars i{height:70%}
+@keyframes lvl{from{height:25%}to{height:100%}}
+
+/* Grid overlay, toggled with the G key: proves the column logic */
+html.show-grid body::after{content:"";position:fixed;inset:0 var(--m) 0 var(--m);z-index:100;pointer-events:none;
+  background:repeating-linear-gradient(90deg,rgba(255,59,48,.10) 0 calc((100% - (var(--cols) - 1) * var(--g)) / var(--cols)),transparent 0 calc((100% - (var(--cols) - 1) * var(--g)) / var(--cols) + var(--g)))}
+
+/* Intro guard: hidden only until lab.js takes over; CSS fallback reveals after 2.4 s if JS never runs */
+html.intro [data-i]{opacity:0;animation:intro-safe 0s 2.4s forwards}
+@keyframes intro-safe{to{opacity:1}}
+.mask{display:block;overflow:clip;overflow-clip-margin:.12em;padding-bottom:.06em;margin-bottom:-.06em}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+.sound .bars i:nth-child(1){height:40%}.sound .bars i:nth-child(2){height:85%}.sound .bars i:nth-child(3){height:60%}
+.nw{white-space:nowrap}

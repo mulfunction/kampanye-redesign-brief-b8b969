@@ -1,0 +1,30 @@
+archivo-100_900-normal.woff2 missing: none ['wght(100.0, 900.0)', 'wdth(62.0, 125.0)']
+azeret-mono-400-normal.woff2 missing: none 
+azeret-mono-500-normal.woff2 missing: none 
+big-shoulders-display-100_900-normal.woff2 missing: none ['wght(100.0, 900.0)']
+bodoni-moda-400_900-italic.woff2 missing: none ['wght(400.0, 900.0)', 'opsz(6.0, 96.0)']
+bodoni-moda-400_900-normal.woff2 missing: none ['wght(400.0, 900.0)', 'opsz(6.0, 96.0)']
+courier-prime-400-italic.woff2 missing: none 
+courier-prime-400-normal.woff2 missing: none 
+courier-prime-700-italic.woff2 missing: none 
+courier-prime-700-normal.woff2 missing: none 
+gambarino-400-normal.woff2 missing: none 
+hanken-grotesk-100_900-normal.woff2 missing: none ['wght(100.0, 900.0)']
+instrument-sans-400_700-normal.woff2 missing: none ['wdth(75.0, 100.0)', 'wght(400.0, 700.0)']
+mona-sans-200_900-normal.woff2 missing: none ['wdth(75.0, 125.0)', 'wght(200.0, 900.0)']
+newsreader-200_800-italic.woff2 missing: none ['wght(200.0, 800.0)', 'opsz(6.0, 72.0)']
+newsreader-200_800-normal.woff2 missing: none ['wght(200.0, 800.0)', 'opsz(6.0, 72.0)']
+source-serif-4-200_900-italic.woff2 missing: none ['wght(200.0, 900.0)', 'opsz(8.0, 60.0)']
+source-serif-4-200_900-normal.woff2 missing: none ['wght(200.0, 900.0)', 'opsz(8.0, 60.0)']
+switzer-300-italic.woff2 missing: none 
+switzer-300-normal.woff2 missing: none 
+switzer-400-italic.woff2 missing: none 
+switzer-400-normal.woff2 missing: none 
+switzer-500-italic.woff2 missing: none 
+switzer-500-normal.woff2 missing: none 
+switzer-600-italic.woff2 missing: none 
+switzer-600-normal.woff2 missing: none 
+zodiak-300-italic.woff2 missing: none 
+zodiak-300-normal.woff2 missing: none 
+zodiak-400-italic.woff2 missing: none 
+zodiak-400-normal.woff2 missing: none 
