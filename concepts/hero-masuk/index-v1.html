@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>kampanye.ai, studio kreatif AI dari Indonesia</title>
+<meta name="description" content="Iklan kelas TVC, kampanye lembaga dan brand, serta serial orisinal Jaka Tingkir Saga. Studio kreatif AI dari Indonesia.">
+<meta name="theme-color" content="#0f0e0c">
+<link rel="icon" href="data:,">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/bodoni-display.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/mona-text.woff2" crossorigin>
+<script>
+/* first-frame flags: js, once per session (seen), and the picture gate (wait) that holds the dawn until the poster is decoded */
+(function (h) {
+  h.classList.add('js');
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try { if (sessionStorage.getItem('masuk-seen')) h.classList.add('seen'); else sessionStorage.setItem('masuk-seen', '1'); } catch (e) {}
+  if (!rm && !h.classList.contains('seen')) { h.classList.add('wait'); setTimeout(function () { h.classList.remove('wait'); }, 2600); }
+})(document.documentElement);
+</script>
+<style>
+/* Hallmark · v2.0.0 · theme: custom (cinematic-austere, brand pinned: kampanye.ai logo pack + red #FF3B30, Bodoni Moda + Mona Sans by owner pick) · genre: atmospheric · shape: Theatre (one held film still you walk into) · job: hire (brief by WhatsApp) · hero: stage · nav: logo left, five links right, menu sheet on phones · footer: brief line, contact lines, logo · posture: restrained · signature: Masuk ke dalam gambar, a depth-layered Jaka Tingkir still lit by a dawn pass, then a scroll dolly through its layers into Karya */
+/* Hallmark · pre-emit critique: P4 H5 E4 S5 R4 V4 · weakest: E, stand-in plates are cut from a 1080x1920 episode frame, so fills behind the trunk smear if you look for them; motion range kept inside the filled margins */
+/* Hallmark · waive 44 · the hero is a held runway (sticky stage, scroll-driven); its first screen still shows headline, sentence and both actions at 1280x800 */
+/* Hallmark · waive 77 · prototype scope: hero, Karya and the start of Layanan only, by brief */
+@font-face { font-family: "Bodoni Moda"; src: url(assets/fonts/bodoni-display.woff2) format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Bodoni Moda"; src: url(assets/fonts/bodoni-italic.woff2) format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Mona Sans"; src: url(assets/fonts/mona-text.woff2) format("woff2"); font-weight: 400 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Bodoni Fallback"; src: local("Didot"), local("Bodoni 72"), local("Times New Roman"); size-adjust: 96%; ascent-override: 92%; }
+@font-face { font-family: "Mona Fallback"; src: local("Arial"), local("Helvetica"); size-adjust: 102%; }
+
+:root {
+  --ground: #0f0e0c;
+  --ground-2: #1b1916;
+  --ink: #efebe4;
+  --ink-2: #c4bdb2;
+  --red: #ff3b30;
+  --on-red: #0f0e0c;
+  --light: rgb(255 214 160 / 0.42);
+  --light-0: rgb(255 214 160 / 0);
+  --scrim: rgb(15 14 12 / 0.9);
+  --scrim-mid: rgb(15 14 12 / 0.55);
+  --scrim-0: rgb(15 14 12 / 0);
+  --mist: rgb(236 236 236 / 1);
+
+  --f-display: "Bodoni Moda", "Bodoni Fallback", serif;
+  --f-text: "Mona Sans", "Mona Fallback", system-ui, sans-serif;
+
+  /* one easing family: expo out for arrivals and settles, its in-out twin for travel; scroll is linear by rule */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-expo-io: cubic-bezier(0.87, 0, 0.13, 1);
+  --ease-colour: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+
+  --k: 0.58;                       /* arrival time scale: phone 0.58 (about 1.4 s), desktop 1 (2.4 s) */
+  --margin: clamp(20px, 4.4vw, 64px);
+  --gap: clamp(16px, 2vw, 32px);
+  --vp: 54% 47%;                   /* the vanishing point of the path, in scene coordinates */
+}
+@media (min-width: 64em) and (min-aspect-ratio: 5/4) { :root { --k: 1; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
+html { background: var(--ground); color-scheme: dark; scrollbar-color: var(--ink-2) var(--ground); }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: var(--f-text); font-weight: 450; font-size: 17px; line-height: 1.5; font-synthesis: none; -webkit-font-smoothing: antialiased; caret-color: var(--red); }
+::selection { background: var(--red); color: var(--on-red); }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip { position: absolute; left: var(--margin); top: 8px; z-index: 30; padding: 10px 14px; background: var(--ink); color: var(--ground); transform: translateY(-160%); }
+.skip:focus-visible { transform: none; }
+
+/* ---------- header ---------- */
+.top { position: absolute; inset: 0 0 auto 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; gap: var(--gap); padding: 18px var(--margin); max-width: 1680px; margin-inline: auto; }
+.logo { display: block; flex: none; padding-block: 10px; }
+.logo img { width: 148px; height: auto; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 26px; margin: 0; padding: 0; list-style: none; font-size: 15px; }
+.nav a { display: inline-block; padding-block: 12px; text-decoration: none; text-underline-offset: 0.3em; text-decoration-thickness: 1px; }
+.nav a:active { opacity: 0.7; }
+.menu-btn { display: none; }
+@media (hover: hover) and (pointer: fine) { .nav a:hover { text-decoration: underline; } }
+@media (max-width: 47.99em) {
+  .js .nav-wrap { display: none; }
+  .js .menu-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px 0 16px; border: 0; background: none; color: var(--ink); font: inherit; font-size: 16px; cursor: pointer; }
+  .menu-btn:active { opacity: 0.7; }
+  .logo img { width: 132px; }
+  .nav { font-size: 14px; gap: 0 18px; }
+}
+.sheet { position: fixed; inset: 0; z-index: 40; display: grid; align-content: center; gap: 8px; padding: var(--margin); background: var(--ground); opacity: 0; visibility: hidden; transition: opacity 200ms var(--ease-expo), visibility 0s linear 200ms; }
+.sheet.is-open { opacity: 1; visibility: visible; transition: opacity 240ms var(--ease-expo); }
+.sheet ul { list-style: none; margin: 0; padding: 0; }
+.sheet a { display: block; padding-block: 6px; font-family: var(--f-display); font-size: 40px; line-height: 1.15; text-decoration: none; }
+.sheet .close { position: absolute; top: 18px; right: var(--margin); min-height: 44px; padding: 0 2px 0 16px; border: 0; background: none; color: var(--ink); font: inherit; font-size: 16px; cursor: pointer; }
+
+/* ---------- hero: the held film still ---------- */
+.masuk { position: relative; }
+.stage { position: relative; height: 100svh; min-height: 560px; overflow: clip; background: var(--ground); }
+.scene { position: absolute; inset: 0; }
+.cam { position: absolute; left: 50%; top: 50%; width: max(100%, calc(100svh * 9 / 16)); aspect-ratio: 9 / 16; translate: -50% -50%; overflow: clip; transform-origin: var(--vp); background: var(--ground-2); }
+.ly { position: absolute; inset: 0; transform-origin: var(--vp); }
+.ly img, .ly picture { width: 100%; height: 100%; }
+.ly img { object-fit: cover; }
+.ly img:not([src]) { visibility: hidden; }
+.js .ly[data-n] { opacity: 0; transition: opacity 320ms var(--ease-colour); }
+.js.layered .ly[data-n], .js.swap .ly[data-n] { opacity: 1; }
+.js.layered .ly0, .js.swap .ly0 { opacity: 0; transition: opacity 0s linear 320ms; }
+.ly.mist { mix-blend-mode: normal; }
+.js.layered .ly.mist, .js.swap .ly.mist { opacity: 0.28; }
+.rake { position: absolute; inset: -10% -60%; background: linear-gradient(104deg, var(--light-0) 36%, var(--light) 50%, var(--light-0) 64%); opacity: 0; pointer-events: none; }
+.veil { position: absolute; inset: 0; background: var(--ground); opacity: 0; pointer-events: none; }
+.scrim { position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(to bottom, var(--scrim-mid) 0, var(--scrim-0) 130px),
+    linear-gradient(to top, var(--scrim) 0, var(--scrim) 22%, var(--scrim-mid) 40%, var(--scrim-0) 58%); }
+
+.copy { position: absolute; inset: auto 0 0 0; z-index: 3; padding: 0 var(--margin) max(28px, env(safe-area-inset-bottom)); }
+.h1 { margin: 0; font-family: var(--f-display); font-weight: 400; font-size: clamp(2.6rem, 13.4vw, 4.4rem); line-height: 0.98; letter-spacing: -0.025em; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.ln { display: block; overflow: clip; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.ln > span { display: block; }
+.lede { max-width: 30ch; margin: 18px 0 0; font-size: 17px; color: var(--ink); text-wrap: pretty; }
+.acts { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; margin-top: 22px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; background: var(--red); color: var(--on-red); font-size: 16px; text-decoration: none; transition: transform var(--t-press) var(--ease-expo); }
+.btn:active { transform: scale(0.97); }
+.txt { display: inline-flex; align-items: center; min-height: 48px; font-size: 16px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em; text-decoration-color: var(--ink-2); transition: text-decoration-color var(--t-hover) var(--ease-colour); }
+.txt:active { opacity: 0.7; }
+@media (hover: hover) and (pointer: fine) { .txt:hover { text-decoration-color: var(--ink); } .btn:hover { background: var(--ink); } }
+.credit { margin: 18px 0 0; font-size: 14px; color: var(--ink-2); }
+.credit cite { font-family: var(--f-display); font-style: italic; font-size: 15px; color: var(--ink); }
+
+/* desktop: the still stands as a full-height window on the right; the headline crosses into it */
+@media (min-width: 64em) and (min-aspect-ratio: 5/4) {
+  .masuk { --win: 61vw; }
+  .cam { left: calc(100vw - var(--win)); top: calc(50svh - var(--win) * 16 / 9 * 0.47); width: var(--win); translate: none; }
+  .scrim { background:
+      linear-gradient(to bottom, var(--scrim-mid) 0, var(--scrim-0) 140px),
+      linear-gradient(to right, var(--scrim-0) 39vw, var(--scrim-mid) 39vw, var(--scrim-0) 58vw),
+      linear-gradient(to top, var(--scrim-mid) 0, var(--scrim-0) 30%); }
+  .copy { inset: auto auto 0 0; width: 100%; max-width: 1680px; padding-bottom: clamp(36px, 7svh, 72px); }
+  .h1 { font-size: clamp(4.6rem, 8.6vw, 9rem); line-height: 0.94; max-width: 9.6ch; }
+  .lede { font-size: 18px; max-width: 26ch; margin-top: 26px; }
+  .credit { position: absolute; right: var(--margin); bottom: clamp(36px, 7svh, 72px); margin: 0; }
+}
+@media (min-width: 120em) { .copy { left: calc((100vw - 1680px) / 2); } }
+
+/* ---------- arrival (CSS, off the main thread; once per session; JS only holds it until the poster decodes) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html:not(.seen) .cam { animation: a-cam calc(2400ms * var(--k)) var(--ease-expo) both; }
+  html:not(.seen) .ly0 img { animation: a-dawn calc(2000ms * var(--k)) var(--ease-expo) both; }
+  html:not(.seen) .rake { animation: a-rake calc(1900ms * var(--k)) var(--ease-expo-io) calc(160ms * var(--k)) both; }
+  html:not(.seen) .ln > span { animation: a-line calc(1000ms * var(--k)) var(--ease-expo) both; animation-delay: calc(var(--d) * var(--k)); }
+  html:not(.seen) .lede { animation: a-rise calc(800ms * var(--k)) var(--ease-expo) calc(700ms * var(--k)) both; }
+  html:not(.seen) .acts { animation: a-rise calc(800ms * var(--k)) var(--ease-expo) calc(820ms * var(--k)) both; }
+  html:not(.seen) .credit, html:not(.seen) .top { animation: a-fade calc(900ms * var(--k)) var(--ease-expo) calc(1000ms * var(--k)) both; }
+  /* layered arrival: each plane catches the light in turn, far to near, while it settles */
+  html.layered:not(.seen) .ly[data-n] img { animation: a-ly calc(var(--dur) * var(--k)) var(--ease-expo) calc(var(--dl) * var(--k)) both; }
+  html.layered:not(.seen) .ly.mist img { animation: a-fade calc(1800ms * var(--k)) var(--ease-expo) calc(300ms * var(--k)) both; }
+  html.wait .cam, html.wait .ly0 img, html.wait .rake { animation-play-state: paused; }
+}
+.ly1 { --dl: 0ms; --dur: 1500ms; --ty: 0%; --s0: 1; --b0: 0.16; }
+.ly2 { --dl: 120ms; --dur: 1650ms; --ty: 1.2%; --s0: 1.01; --b0: 0.14; }
+.ly3 { --dl: 380ms; --dur: 1850ms; --ty: 2.8%; --s0: 1.05; --b0: 0.1; }
+.ly4 { --dl: 380ms; --dur: 1850ms; --ty: 2.8%; --s0: 1.05; --b0: 0.12; }
+.ly5 { --dl: 520ms; --dur: 1880ms; --ty: 4.5%; --s0: 1.12; --b0: 0.1; }
+.ln:nth-child(1) > span { --d: 140ms; }
+.ln:nth-child(2) > span { --d: 250ms; }
+@keyframes a-cam { from { transform: scale(1.09); } to { transform: none; } }
+@keyframes a-dawn { from { filter: brightness(0.16) saturate(0.7); } to { filter: brightness(1) saturate(1); } }
+@keyframes a-ly { from { transform: translateY(var(--ty)) scale(var(--s0)); filter: brightness(var(--b0)) saturate(0.7); } to { transform: none; filter: brightness(1) saturate(1); } }
+@keyframes a-rake { 0% { transform: translateX(-38%); opacity: 0; } 30% { opacity: 1; } 75% { opacity: 0.7; } 100% { transform: translateX(38%); opacity: 0; } }
+@keyframes a-line { from { transform: translateY(108%); } to { transform: none; } }
+@keyframes a-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes a-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .copy, .top { animation: a-fade 200ms var(--ease-colour) both; }
+}
+
+/* ---------- the glide: a sticky stage scrubbed by native scroll (no scroll-jacking) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .masuk { height: 240svh; view-timeline: --masuk block; }
+  .stage { position: sticky; top: 0; }
+  .ly0, .ly1, .ly2, .ly3, .ly4, .ly5, .ly.mist, .copy, .scrim, .veil, .scene { animation-timing-function: linear; animation-fill-mode: both; }
+  .ly0 { animation-name: g-ly0; } .ly1 { animation-name: g-l1; } .ly2 { animation-name: g-l2; } .ly3 { animation-name: g-l3; }
+  .ly4 { animation-name: g-l4; } .ly5 { animation-name: g-l5; } .ly.mist { animation-name: g-mist; }
+  .copy { animation-name: g-copy; } .scrim { animation-name: g-scrim; } .veil { animation-name: g-veil; }
+  /* scroll-timeline browsers: compositor-driven, zero JS */
+  @supports (animation-timeline: view()) {
+    .ly0, .ly1, .ly2, .ly3, .ly4, .ly5, .ly.mist, .copy, .scrim, .veil, .scene { animation-duration: auto; animation-timeline: --masuk; animation-range: contain 0% contain 100%; }
+  }
+  /* everyone else: same keyframes, paused, seeked by --p from masuk.js (rAF only while the stage is on screen) */
+  @supports not (animation-timeline: view()) {
+    .ly0, .ly1, .ly2, .ly3, .ly4, .ly5, .ly.mist, .copy, .scrim, .veil, .scene { animation-duration: 1s; animation-play-state: paused; animation-delay: calc(var(--p, 0) * -0.999s); }
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (min-width: 64em) and (min-aspect-ratio: 5/4) {
+  .masuk { height: 300svh; }
+  .scene { animation-name: g-scene; transform-origin: 72vw 50%; }
+  .veil { animation-name: g-veil-d; }
+}
+@keyframes g-ly0 { to { transform: scale(1.4); } }
+@keyframes g-l1 { to { transform: scale(1.12); } }
+@keyframes g-l2 { to { transform: scale(1.3); } }
+@keyframes g-l3 { to { transform: scale(1.9); } }
+@keyframes g-l4 { to { transform: scale(1.95); } }
+@keyframes g-l5 { 0% { transform: none; opacity: 1; } 50% { opacity: 1; } 70% { transform: scale(2.9); opacity: 0; } 100% { transform: scale(3.2); opacity: 0; } }
+@keyframes g-mist { 0% { transform: none; opacity: 0.28; } 42% { transform: scale(1.7); opacity: 0.7; } 72% { transform: scale(2.6); opacity: 0; } 100% { transform: scale(2.8); opacity: 0; } }
+@keyframes g-copy { 0% { opacity: 1; transform: none; } 20% { opacity: 0; transform: translateY(-6svh); } 100% { opacity: 0; transform: translateY(-6svh); } }
+@keyframes g-scrim { 0% { opacity: 1; } 24% { opacity: 0.35; } 100% { opacity: 0.35; } }
+@keyframes g-veil { 0%, 48% { opacity: 0; } 92%, 100% { opacity: 0.8; } }
+@keyframes g-veil-d { 0%, 58% { opacity: 0; } 94%, 100% { opacity: 0.8; } }
+@keyframes g-scene { 0% { transform: none; } 58%, 100% { transform: translateX(-18vw) scale(1.64); } }
+
+/* ---------- Karya terpilih: the scene opens into it ---------- */
+.wrap { max-width: 1680px; margin-inline: auto; padding-inline: var(--margin); }
+.karya { position: relative; z-index: 4; }
+@media (prefers-reduced-motion: no-preference) { .karya { margin-top: -70svh; } }
+.karya__head { padding-top: 22svh; padding-bottom: clamp(40px, 7vw, 96px); }
+.h2 { margin: 0; font-family: var(--f-display); font-weight: 400; font-size: clamp(2.6rem, 7vw, 6.4rem); line-height: 0.98; letter-spacing: -0.022em; text-wrap: balance; overflow-wrap: break-word; min-width: 0; }
+.karya__head p { margin: 16px 0 0; max-width: 34ch; color: var(--ink); }
+.karya__body { background: linear-gradient(to bottom, var(--scrim-0) 0, var(--ground) 40svh); }
+.list { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: clamp(48px, 7vw, 120px); margin: 0; padding: 0 0 clamp(64px, 10vw, 160px); list-style: none; }
+.kj { grid-column: 1 / -1; min-width: 0; }
+.kj a { display: block; text-decoration: none; }
+.kj a:active .kj__img { transform: scale(0.99); }
+.kj figure { margin: 0; }
+.kj__img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: var(--ground-2); transition: transform var(--t-press) var(--ease-expo); }
+.kj--lead .kj__img { aspect-ratio: 2.39 / 1; }
+.kj--tall .kj__img { aspect-ratio: 4 / 5; }
+.kj figcaption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; margin-top: 14px; }
+.kj cite { font-family: var(--f-display); font-style: italic; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.15; }
+.kj__s { font-size: 14px; color: var(--ink-2); }
+@media (hover: hover) and (pointer: fine) { .kj a:hover cite { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.18em; } }
+@media (min-width: 48em) {
+  .kj:nth-child(2) { grid-column: 1 / span 7; }
+  .kj:nth-child(3) { grid-column: 9 / span 4; align-self: end; }
+  .kj:nth-child(4) { grid-column: 2 / span 4; }
+  .kj:nth-child(5) { grid-column: 7 / span 6; align-self: center; }
+}
+@media (max-width: 47.99em) {
+  .kj:nth-child(odd):not(.kj--lead) { margin-left: 14vw; }
+  .kj--lead .kj__img { aspect-ratio: 4 / 5; }
+}
+.more { padding-bottom: clamp(64px, 9vw, 140px); }
+
+/* ---------- what follows ---------- */
+.layanan { padding-block: clamp(72px, 10vw, 160px); background: var(--ground-2); }
+.layanan__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap); row-gap: 32px; }
+.layanan .h2 { grid-column: 1 / -1; }
+.svc { grid-column: 1 / -1; margin: 0; padding: 0; list-style: none; font-family: var(--f-display); font-size: clamp(26px, 3vw, 40px); line-height: 1.25; }
+.agensi { grid-column: 1 / -1; max-width: 36ch; margin: 0; }
+@media (min-width: 48em) {
+  .layanan .h2 { grid-column: 1 / span 6; }
+  .svc { grid-column: 7 / span 6; }
+  .agensi { grid-column: 7 / span 5; }
+}
+.foot { padding-block: clamp(64px, 9vw, 140px) 40px; }
+.foot__grid { display: grid; gap: 28px; }
+.foot__line { margin: 0; font-family: var(--f-display); font-size: clamp(2.2rem, 5vw, 4.4rem); line-height: 1; letter-spacing: -0.02em; }
+.foot__links { display: flex; flex-wrap: wrap; gap: 4px 28px; margin: 0; padding: 0; list-style: none; }
+.foot__logo img { width: 148px; height: auto; margin-top: 24px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#karya">Langsung ke karya</a>
+
+<header class="top">
+  <a class="logo" href="./" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-color-on-dark.svg" width="148" height="23" alt=""></a>
+  <nav class="nav-wrap" aria-label="Utama">
+    <ul class="nav">
+      <li><a href="#karya">Karya</a></li>
+      <li><a href="#layanan">Layanan</a></li>
+      <li><a href="#agensi">Untuk agensi</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet">Menu</button>
+</header>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <button class="close" type="button">Tutup</button>
+  <ul>
+    <li><a href="#karya">Karya</a></li>
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#agensi">Untuk agensi</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+</div>
+
+<main>
+<section class="masuk" aria-labelledby="judul">
+  <div class="stage">
+    <div class="scene">
+      <div class="cam">
+        <div class="ly ly0">
+          <picture>
+            <source media="(min-width: 64em) and (min-aspect-ratio: 5/4)" type="image/avif" srcset="assets/img/poster-d.avif">
+            <source media="(min-width: 64em) and (min-aspect-ratio: 5/4)" srcset="assets/img/poster-d.jpg">
+            <source type="image/avif" srcset="assets/img/poster-m.avif">
+            <img src="assets/img/poster-m.jpg" width="720" height="1280" fetchpriority="high" decoding="async"
+                 alt="Seorang penunggang kuda menyusuri jalan setapak di hutan, menuju lembah dan sungai di bawah cahaya pagi. Adegan dari Jaka Tingkir Saga.">
+          </picture>
+        </div>
+        <div class="ly ly1" data-n="L1"><img alt="" width="810" height="1440"></div>
+        <div class="ly ly2" data-n="L2"><img alt="" width="810" height="1440"></div>
+        <div class="ly ly4" data-n="L4"><img alt="" width="810" height="1440"></div>
+        <div class="ly ly3" data-n="L3"><img alt="" width="810" height="1440"></div>
+        <div class="ly mist" data-n="mist"><img alt="" width="270" height="480"></div>
+        <div class="ly ly5" data-n="L5"><img alt="" width="810" height="1440"></div>
+        <div class="rake" aria-hidden="true"></div>
+      </div>
+    </div>
+    <div class="veil" aria-hidden="true"></div>
+    <div class="scrim" aria-hidden="true"></div>
+    <div class="copy">
+      <h1 class="h1" id="judul"><span class="ln"><span>Kerajaan ini</span></span> <span class="ln"><span>kami buat.</span></span></h1>
+      <p class="lede">Kampanyemu berikutnya, setara TVC tanpa syuting berbulan-bulan.</p>
+      <div class="acts">
+        <a class="btn" href="https://wa.me/62881036891660?text=Halo%20Kampanye%20AI!%20Saya%20mau%20tanya%20soal%20layanan." rel="noopener">Kirim brief-mu</a>
+        <a class="txt" href="#karya">Lihat karya</a>
+      </div>
+      <p class="credit">Dari <cite>Jaka Tingkir Saga</cite>, serial orisinal kami.</p>
+    </div>
+  </div>
+</section>
+<script>
+/* picture gate: start the dawn once the poster is decoded; on a desktop, wait up to 700 ms (phone 300 ms) for the
+   depth layers so the planes settle one by one; otherwise run the dawn on the poster and swap the layers in at rest. */
+(function () {
+  var h = document.documentElement;
+  var D = matchMedia('(min-width: 64em) and (min-aspect-ratio: 5/4)').matches;
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var poster = document.querySelector('.ly0 img');
+  var lys = [].slice.call(document.querySelectorAll('.ly[data-n] img'));
+  var started = false;
+  if (RM) { h.classList.remove('wait'); return; }   /* reduced motion: the poster is the picture, no layers needed */
+  function start(layered) { if (started) return; started = true; if (layered) h.classList.add('layered'); h.classList.remove('wait'); }
+  function decoded(img) { return (img.decode ? img.decode() : Promise.resolve()).catch(function () {}); }
+  function posterReady() {
+    if (poster.complete && poster.naturalWidth) return decoded(poster);
+    return new Promise(function (r) { poster.addEventListener('load', r, { once: true }); poster.addEventListener('error', r, { once: true }); }).then(function () { return decoded(poster); });
+  }
+  function swapAtRest() {
+    var a = poster.getAnimations ? poster.getAnimations() : [];
+    Promise.all(a.map(function (x) { return x.finished.catch(function () {}); })).then(function () { h.classList.add('swap'); });
+  }
+  posterReady().then(function () {
+    var avif = /\.avif(\?|$)/.test(poster.currentSrc || '');
+    var set = D ? '-d' : '-m';
+    Promise.all(lys.map(function (img) {
+      var n = img.parentNode.getAttribute('data-n');
+      img.src = 'assets/img/' + n + (n === 'mist' ? '.webp' : set + (avif ? '.avif' : '.webp'));
+      return decoded(img);
+    })).then(function () { if (!started) start(true); else swapAtRest(); });
+    var gate = h.classList.contains('seen') ? 0 : (D ? 700 : 300);
+    setTimeout(function () { start(false); }, gate);
+  });
+})();
+</script>
+
+<section class="karya" id="karya" aria-labelledby="karya-judul">
+  <div class="wrap karya__head">
+    <h2 class="h2" id="karya-judul">Karya terpilih</h2>
+    <p>Film, iklan, dan kampanye yang sudah tayang.</p>
+  </div>
+  <div class="karya__body">
+    <div class="wrap">
+      <ul class="list">
+        <li class="kj kj--lead"><a href="#karya"><figure>
+          <picture><source type="image/avif" srcset="assets/img/k-jaka-tingkir-640.avif 640w, assets/img/k-jaka-tingkir-1280.avif 1280w" sizes="(min-width: 48em) 92vw, 100vw">
+          <img class="kj__img" src="assets/img/k-jaka-tingkir-1280.jpg" srcset="assets/img/k-jaka-tingkir-640.jpg 640w, assets/img/k-jaka-tingkir-1280.jpg 1280w" sizes="(min-width: 48em) 92vw, 100vw" width="1280" height="720" loading="lazy" decoding="async" alt="Tiga ksatria berkuda putih berbaris di depan pasukan, dari Jaka Tingkir Saga"></picture>
+          <figcaption><cite>Jaka Tingkir Saga</cite><span class="kj__s">Serial orisinal</span></figcaption></figure></a></li>
+        <li class="kj"><a href="#karya"><figure>
+          <picture><source type="image/avif" srcset="assets/img/k-beranda-ibu-kota-640.avif 640w, assets/img/k-beranda-ibu-kota-1280.avif 1280w" sizes="(min-width: 48em) 56vw, 86vw">
+          <img class="kj__img" src="assets/img/k-beranda-ibu-kota-1280.jpg" srcset="assets/img/k-beranda-ibu-kota-640.jpg 640w, assets/img/k-beranda-ibu-kota-1280.jpg 1280w" sizes="(min-width: 48em) 56vw, 86vw" width="1280" height="720" loading="lazy" decoding="async" alt="Perahu kecil melintasi sungai berkabut saat fajar"></picture>
+          <figcaption><cite>Beranda Ibu Kota</cite><span class="kj__s">Lembaga pemerintah</span></figcaption></figure></a></li>
+        <li class="kj kj--tall"><a href="#karya"><figure>
+          <picture><source type="image/avif" srcset="assets/img/k-jalur-laut-640.avif 640w, assets/img/k-jalur-laut-1280.avif 1280w" sizes="(min-width: 48em) 32vw, 86vw">
+          <img class="kj__img" src="assets/img/k-jalur-laut-640.jpg" srcset="assets/img/k-jalur-laut-640.jpg 640w, assets/img/k-jalur-laut-1280.jpg 1280w" sizes="(min-width: 48em) 32vw, 86vw" width="1280" height="720" loading="lazy" decoding="async" alt="Leher botol kaca dalam cahaya biru dan merah muda"></picture>
+          <figcaption><cite>Jalur Laut</cite><span class="kj__s">Lembaga pemerintah</span></figcaption></figure></a></li>
+        <li class="kj kj--tall"><a href="#karya"><figure>
+          <picture><source type="image/avif" srcset="assets/img/k-satu-kesalahan-640.avif 640w, assets/img/k-satu-kesalahan-1280.avif 1280w" sizes="(min-width: 48em) 32vw, 86vw">
+          <img class="kj__img" src="assets/img/k-satu-kesalahan-640.jpg" srcset="assets/img/k-satu-kesalahan-640.jpg 640w, assets/img/k-satu-kesalahan-1280.jpg 1280w" sizes="(min-width: 48em) 32vw, 86vw" width="1280" height="720" loading="lazy" decoding="async" alt="Seorang pemuda duduk di kamar gelap, asap mengepul dari tangannya"></picture>
+          <figcaption><cite>Satu Kesalahan Saja</cite><span class="kj__s">Lembaga pemerintah</span></figcaption></figure></a></li>
+        <li class="kj"><a href="#karya"><figure>
+          <picture><source type="image/avif" srcset="assets/img/k-manji-640.avif 640w, assets/img/k-manji-1280.avif 1280w" sizes="(min-width: 48em) 48vw, 86vw">
+          <img class="kj__img" src="assets/img/k-manji-1280.jpg" srcset="assets/img/k-manji-640.jpg 640w, assets/img/k-manji-1280.jpg 1280w" sizes="(min-width: 48em) 48vw, 86vw" width="1280" height="720" loading="lazy" decoding="async" alt="Penyanyi duduk di panggung hutan yang gelap, diterangi dari atas"></picture>
+          <figcaption><cite>Manji</cite><span class="kj__s">Musisi</span></figcaption></figure></a></li>
+      </ul>
+      <p class="more"><a class="txt" href="#karya">Semua karya</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="layanan" id="layanan" aria-labelledby="layanan-judul">
+  <div class="wrap layanan__grid">
+    <h2 class="h2" id="layanan-judul">Yang kami garap</h2>
+    <ul class="svc">
+      <li>Iklan TV dan digital</li>
+      <li>Kampanye lembaga dan brand</li>
+      <li>Serial dan film orisinal</li>
+      <li>Karakter 3D dan foto AI</li>
+    </ul>
+    <p class="agensi" id="agensi">Untuk agensi dan rumah produksi, kami bekerja di belakang nama kalian. <a class="txt" href="#agensi">Untuk agensi</a></p>
+  </div>
+</section>
+</main>
+
+<footer class="foot" id="kontak">
+  <div class="wrap foot__grid">
+    <p class="foot__line" id="tentang">Punya cerita untuk digarap?</p>
+    <ul class="foot__links">
+      <li><a class="txt" href="https://wa.me/62881036891660?text=Halo%20Kampanye%20AI!%20Saya%20mau%20tanya%20soal%20layanan." rel="noopener">Kirim brief-mu</a></li>
+      <li><a class="txt" href="mailto:halo@kampanye.ai">halo@kampanye.ai</a></li>
+      <li><a class="txt" href="https://instagram.com/kampanye.ai" rel="noopener">Instagram</a></li>
+    </ul>
+    <a class="foot__logo" href="./" aria-label="kampanye.ai, beranda"><img src="assets/img/kampanyeAI-horizontal-white.svg" width="148" height="23" alt="" loading="lazy"></a>
+  </div>
+</footer>
+<script src="assets/js/masuk.js" defer></script>
+</body>
+</html>

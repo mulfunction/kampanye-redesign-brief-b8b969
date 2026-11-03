@@ -14,6 +14,19 @@
     sheet.addEventListener('click', function (e) { if (e.target.closest('a')) shut(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !sheet.hidden) shut(); });
   }
+  // poster wall: the tiles carry data-src so nothing of Karya downloads during the hero; fetch them once the
+  // section is within about one screen (the hero runway is long, so this starts during the glide, not at load)
+  var wall = document.querySelector('.wall');
+  if (wall) {
+    var fill = function () {
+      [].forEach.call(wall.querySelectorAll('[data-srcset]'), function (el) { el.srcset = el.getAttribute('data-srcset'); el.removeAttribute('data-srcset'); });
+      [].forEach.call(wall.querySelectorAll('img[data-src]'), function (el) { el.src = el.getAttribute('data-src'); el.removeAttribute('data-src'); });
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); fill(); } }, { rootMargin: '0px 0px 100% 0px' });
+      io.observe(wall);
+    } else fill();
+  }
   // scroll fallback: seek the paused CSS animations through --p
   if (window.CSS && CSS.supports('animation-timeline: view()')) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
