@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>kampanye.ai | Studio film dan kampanye AI dari Indonesia</title>
+<meta name="description" content="kampanye.ai membuat film iklan, kampanye, dan serial dengan kualitas setara TVC, tanpa jadwal syuting berbulan-bulan. Untuk brand, agensi, dan instansi.">
+<meta name="theme-color" content="#0B0B0A">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<script>
+/* Before first paint: flags + which arrival. ?intro=a (aperture slats) | ?intro=b (wordmark bloom). Default: a. */
+(function(){var h=document.documentElement,q=new URLSearchParams(location.search),v=q.get('intro');
+v=(v==='b'||v==='a')?v:'a';h.dataset.intro=v;h.classList.add('js');
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches||q.has('still');
+if(!rm)h.classList.add('motion');
+h.classList.toggle('touch',matchMedia('(hover: none), (pointer: coarse)').matches);
+window.__t0=performance.now();})();
+</script>
+<link rel="preload" href="assets/fonts/bodoni-moda-400_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/bodoni-moda-400_900-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/mona-sans-200_900-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/hero-poster.avif" type="image/avif" media="(min-width: 768px), (orientation: landscape)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/hero-poster-p.avif" type="image/avif" media="(max-width: 767px) and (orientation: portrait)" fetchpriority="high">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="assets/arrival.css">
+</head>
+<body>
+<a class="skip" href="#isi">Langsung ke isi</a>
+
+<header class="top" data-top>
+  <div class="top__in" data-depth="nav">
+    <a class="logo" href="./" aria-label="kampanye.ai, beranda" data-logo>
+      <img src="assets/img/kampanyeAI-horizontal-color-on-dark.svg" alt="kampanye AI" width="139" height="22">
+    </a>
+    <nav class="nav" aria-label="Utama" id="menu">
+      <ul>
+        <li><a class="nl" href="#karya" data-magnetic="0.3"><span>Karya</span></a></li>
+        <li><a class="nl" href="#" data-magnetic="0.3"><span>Layanan</span></a></li>
+        <li><a class="nl" href="#" data-magnetic="0.3"><span>Untuk agensi</span></a></li>
+        <li><a class="nl" href="#" data-magnetic="0.3"><span>Tentang</span></a></li>
+        <li><a class="nl" href="#kontak" data-magnetic="0.3"><span>Kontak</span></a></li>
+      </ul>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu><span>Menu</span></button>
+  </div>
+</header>
+
+<!-- variant b: the wordmark that holds on black, then flies into the header -->
+<div class="mark" aria-hidden="true" data-mark><img src="assets/img/kampanyeAI-horizontal-color-on-dark.svg" alt="" width="139" height="22"></div>
+
+<main id="isi" tabindex="-1">
+  <section class="hero" data-hero aria-label="Pembuka">
+    <div class="film" data-film data-cursor="Putar">
+      <div class="film__clip" data-film-clip>
+        <div class="film__depth" data-depth="film">
+          <div class="film__intro" data-film-intro>
+            <picture>
+              <source type="image/avif" media="(max-width: 767px) and (orientation: portrait)" srcset="assets/img/hero-poster-p.avif">
+              <source media="(max-width: 767px) and (orientation: portrait)" srcset="assets/img/hero-poster-p.jpg">
+              <source type="image/avif" srcset="assets/img/hero-poster.avif">
+              <img class="film__poster" src="assets/img/hero-poster.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+            </picture>
+            <video class="film__video" data-video muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"></video>
+            <script>/* start the loop at parse time (720p portrait crop on phones), so it never waits for the motion JS */
+            (function(v){var p=matchMedia('(max-width: 767px) and (orientation: portrait)').matches,w=v.canPlayType('video/webm; codecs="vp9"')?'webm':'mp4';
+            v.src='assets/video/'+(p?'hero-720p':'hero-1080')+'.'+w;if(document.documentElement.classList.contains('motion')){v.preload='auto';var r=v.play();r&&r.catch(function(){});}
+            })(document.currentScript.previousElementSibling);</script>
+          </div>
+        </div>
+        <div class="scrim" aria-hidden="true"></div>
+        <div class="dim" aria-hidden="true"></div>
+        <div class="slats" aria-hidden="true" data-slats><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+
+    <div class="hero__ui">
+      <div class="credit" data-depth="credit">
+        <p class="cap" data-intro-item><span class="cap__k">Sedang diputar</span></p>
+        <p class="cap cap--now" aria-live="off" data-intro-item><span class="roll" data-now><span data-now-a>Musisi</span></span><span class="roll roll--b" data-now2><span data-now-b>Video musik</span></span></p>
+        <div class="play-w" data-intro-item><button class="play" type="button" data-play data-magnetic="0.25" aria-haspopup="dialog"><span class="play__dot" aria-hidden="true"></span><span class="play__t">Putar film</span></button></div>
+      </div>
+
+      <div class="head" data-depth="head">
+        <h1 class="h1" data-h1>
+          <span class="mask"><span class="ln ln--1">Otak manusia,</span></span>
+          <span class="mask"><span class="ln ln--2"><em>kecepatan AI.</em></span></span>
+        </h1>
+      </div>
+
+      <div class="side" data-depth="side">
+        <p class="lede" data-lede>Kualitas setara TVC, tanpa jadwal syuting <span class="nw">berbulan-bulan</span>. Film iklan, kampanye, dan serial untuk brand, agensi, dan instansi.</p>
+        <div class="acts" data-intro-item>
+          <a class="cta" href="#karya" data-magnetic="0.4"><span class="cta__t">Lihat karya</span><span class="cta__r" aria-hidden="true"></span></a>
+          <a class="cta cta--red" href="#kontak" data-magnetic="0.4"><span class="cta__t">Kirim brief-mu</span><span class="cta__r" aria-hidden="true"></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="karya" id="karya" aria-labelledby="karya-h">
+    <div class="karya__head">
+      <h2 id="karya-h" class="h2" data-split-lines>Karya <em>terpilih</em></h2>
+      <p class="karya__note">Dari serial orisinal sampai kampanye layanan publik, setiap film diarahkan dan dirampungkan di studio kami.</p>
+    </div>
+    <ul class="cards">
+      <li class="card" style="--speed:0.10"><a href="#" data-cursor="Lihat">
+        <figure class="card__f"><img data-src="assets/img/karya-jaka.jpg" alt="Seorang putri bermahkota menatap laut dari teras candi" width="720" height="900" decoding="async" data-par><noscript><img src="assets/img/karya-jaka.jpg" alt="Seorang putri bermahkota menatap laut dari teras candi" width="720" height="900" loading="lazy" decoding="async" data-par></noscript></figure>
+        <span class="card__t">Jaka Tingkir Saga</span><span class="card__m">Serial orisinal</span></a></li>
+      <li class="card" style="--speed:-0.06"><a href="#" data-cursor="Lihat">
+        <figure class="card__f"><img data-src="assets/img/karya-manji.jpg" alt="Penyanyi berbaju hitam duduk di depan daun pakis yang menyala" width="720" height="900" decoding="async" data-par><noscript><img src="assets/img/karya-manji.jpg" alt="Penyanyi berbaju hitam duduk di depan daun pakis yang menyala" width="720" height="900" loading="lazy" decoding="async" data-par></noscript></figure>
+        <span class="card__t">Musisi</span><span class="card__m">Video musik</span></a></li>
+      <li class="card" style="--speed:0.16"><a href="#" data-cursor="Lihat">
+        <figure class="card__f"><img data-src="assets/img/karya-polda.jpg" alt="Kampung rumah panggung di tepi sungai berkabut saat senja" width="720" height="900" decoding="async" data-par><noscript><img src="assets/img/karya-polda.jpg" alt="Kampung rumah panggung di tepi sungai berkabut saat senja" width="720" height="900" loading="lazy" decoding="async" data-par></noscript></figure>
+        <span class="card__t">Lembaga pemerintah</span><span class="card__m">Film kampanye</span></a></li>
+      <li class="card" style="--speed:0.02"><a href="#" data-cursor="Lihat">
+        <figure class="card__f"><img data-src="assets/img/karya-komersil.jpg" alt="Wajah model berambut pirang tersibak angin di studio" width="720" height="900" decoding="async" data-par><noscript><img src="assets/img/karya-komersil.jpg" alt="Wajah model berambut pirang tersibak angin di studio" width="720" height="900" loading="lazy" decoding="async" data-par></noscript></figure>
+        <span class="card__t">Brand fashion</span><span class="card__m">Film komersial</span></a></li>
+    </ul>
+  </section>
+
+  <section class="close" id="kontak" aria-labelledby="kontak-h">
+    <h2 id="kontak-h" class="h3">Untuk agensi: nama kalian di depan, <em>studio kami di belakang.</em></h2>
+    <div class="close__acts">
+      <a class="cta cta--red" href="mailto:halo@kampanye.ai" data-magnetic="0.4"><span class="cta__t">Kirim brief-mu</span><span class="cta__r" aria-hidden="true"></span></a>
+      <a class="mail" href="mailto:halo@kampanye.ai">halo@kampanye.ai</a>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <img src="assets/img/kampanyeAI-horizontal-white.svg" alt="kampanye AI" width="114" height="18" loading="lazy">
+  <p class="cap">Studio kreatif AI dari Indonesia</p>
+</footer>
+
+<!-- theatre: the full reel. No sound bed exists yet, so no sound control. -->
+<div class="theatre" role="dialog" aria-modal="true" aria-label="Reel kampanye.ai" hidden data-theatre>
+  <div class="theatre__bg"></div>
+  <div class="theatre__stage" data-stage>
+    <canvas class="theatre__snap" data-snap aria-hidden="true"></canvas>
+    <video class="theatre__video" data-reel muted playsinline preload="none" src="assets/video/reel-1080.mp4" aria-label="Cuplikan karya kampanye.ai: hutan berkabut, tangan menyentuh daun, kampung rumah panggung, potret di panggung merah"></video>
+  </div>
+  <div class="theatre__bar"><i data-progress></i></div>
+  <button class="theatre__close" type="button" data-close data-magnetic="0.3"><span>Tutup</span></button>
+</div>
+
+<div class="cursor" aria-hidden="true" data-cursor-el><span class="cursor__ring"></span><span class="cursor__label" data-cursor-label>Putar</span></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js"></script>
+<script src="assets/arrival.js"></script>
+</body>
+</html>
