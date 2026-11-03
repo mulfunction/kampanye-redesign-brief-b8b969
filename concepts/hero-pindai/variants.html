@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>kampanye.ai | Pindai, varian</title>
+<meta name="description" content="Varian hero Pindai untuk dibandingkan: dua pilihan adegan Jaka Tingkir Saga dan dua gaya garis pindai.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/kampanyeAI-icon-red.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/pindai.css">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js"}}</script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<style>
+  .vwrap{padding:0 var(--m) 64px}
+  .vhead{padding:28px 0 32px;align-items:end;border-bottom:1px solid var(--line);margin-bottom:32px}
+  .vhead h1{display:block;grid-column:1/8;font:400 clamp(44px,5vw,80px)/.95 var(--didone);font-variation-settings:'opsz' 96;letter-spacing:-.03em}
+  .vhead h1 i{font-style:italic}
+  .vhead p{grid-column:8/13;color:var(--muted);font-size:15px;line-height:24px}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:40px var(--g)}
+  .v .plate{position:relative;aspect-ratio:16/9;margin:0;grid-column:auto;cursor:crosshair}
+  .v .plate img{scale:1.035}
+  .v .meta{display:flex;justify-content:space-between;gap:16px;margin-top:14px;align-items:baseline}
+  .v h2{font:400 28px/32px var(--didone);font-variation-settings:'opsz' 48;letter-spacing:-.01em}
+  .v h2 i{font-style:italic}
+  .v .note{color:var(--muted);font-size:14px;line-height:22px;margin-top:6px;max-width:34em}
+  .vfoot{grid-column:1/-1;display:flex;justify-content:space-between;color:var(--muted);border-top:1px solid var(--line);padding-top:20px}
+  @media (max-width:860px){.vgrid{grid-template-columns:1fr}.vhead h1,.vhead p{grid-column:1/5}.vhead{row-gap:16px}}
+</style>
+</head>
+<body>
+<header class="top grid">
+  <a class="logo" href="index.html" aria-label="kampanye.ai, kembali ke hero Pindai"><img src="assets/img/kampanyeAI-horizontal-color-on-dark.svg" alt="kampanye AI" width="139" height="22"></a>
+  <a class="brief cta" href="index.html"><span>Kembali ke hero</span></a>
+</header>
+<main class="vwrap" id="isi">
+  <div class="vhead grid">
+    <h1>Pindai, <i>varian</i></h1>
+    <p>Bandingkan adegan dan gaya garis pindai. Setiap gambar memindai ulang terus menerus; arahkan kursor ke gambar untuk membuka lensa sketsa.</p>
+  </div>
+  <div class="vgrid">
+    <section class="v">
+      <figure class="plate" data-v data-dots="1" data-still="assets/img/still-penunggang.jpg" data-depth="assets/img/depth-penunggang.webp" data-sketch="assets/img/poster-sketch-penunggang.jpg" data-focus="0.5 0.3">
+        <img src="assets/img/poster-sketch-penunggang.jpg" width="1920" height="1080" alt="Jaka Tingkir menunggang kuda hitam saat senja, versi sketsa.">
+      </figure>
+      <div class="meta"><h2>Penunggang, <i>titik merah</i></h2><span class="cred"><b>Pilihan utama</b></span></div>
+      <p class="note">Raja muda di atas kuda saat senja. Tiga lapis kedalaman yang jelas: kuda, raja, langit. Pindai dengan grid titik merah, seperti di hero.</p>
+    </section>
+    <section class="v">
+      <figure class="plate" data-v data-dots="1" data-still="assets/img/still-singgasana.jpg" data-depth="assets/img/depth-singgasana.webp" data-sketch="assets/img/poster-sketch-singgasana.jpg" data-focus="0.5 0.3">
+        <img src="assets/img/poster-sketch-singgasana.jpg" width="1920" height="1080" alt="Raja muda di depan singgasana berukir emas, versi sketsa.">
+      </figure>
+      <div class="meta"><h2>Singgasana, <i>titik merah</i></h2><span class="cred"><b>Cadangan</b></span></div>
+      <p class="note">Ruang tahta yang gelap dan kaya ukiran. Lebih banyak detail untuk sketsa, tetapi lebih ramai dan ada api kecil di anglo.</p>
+    </section>
+    <section class="v">
+      <figure class="plate" data-v data-dots="0" data-still="assets/img/still-penunggang.jpg" data-depth="assets/img/depth-penunggang.webp" data-sketch="assets/img/poster-sketch-penunggang.jpg" data-focus="0.5 0.3">
+        <img src="assets/img/poster-sketch-penunggang.jpg" width="1920" height="1080" alt="Jaka Tingkir menunggang kuda hitam saat senja, versi sketsa.">
+      </figure>
+      <div class="meta"><h2>Penunggang, <i>garis saja</i></h2><span class="cred"><b>Gaya alternatif</b></span></div>
+      <p class="note">Tanpa titik: hanya garis merah dan jaring kontur di depannya. Lebih tenang, lebih editorial, kurang terasa seperti alat pindai.</p>
+    </section>
+    <section class="v">
+      <figure class="plate" data-v data-dots="1" data-mode="1" data-still="assets/img/still-penunggang.jpg" data-depth="assets/img/depth-penunggang.webp" data-sketch="assets/img/poster-sketch-penunggang.jpg" data-focus="0.5 0.3">
+        <img src="assets/img/poster-depth-penunggang.jpg" width="1920" height="1080" alt="Peta kedalaman adegan penunggang sebagai garis kontur.">
+      </figure>
+      <div class="meta"><h2>Penunggang, <i>dari peta kedalaman</i></h2><span class="cred"><b>Gaya alternatif</b></span></div>
+      <p class="note">Mulai dari peta kedalaman yang gelap, bukan dari kertas sketsa. Tetap gelap dari awal sampai akhir, cocok bila judul harus menumpuk di atas gambar.</p>
+    </section>
+    <p class="vfoot cred"><span>Adegan dari Jaka Tingkir Saga, peta kedalaman dibuat lokal</span><span>Bukan halaman publik</span></p>
+  </div>
+</main>
+<script type="module">
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const start = async () => {
+    const gsap = window.gsap;
+    if (reduce || !gsap) return;
+    const { mountPindai, webglOK } = await import('./assets/pindai-gl.js');
+    if (!webglOK()) return;
+    const plates = [...document.querySelectorAll('[data-v]')];
+    const ctls = await Promise.all(plates.map((p) => mountPindai(p, { gsap, dots: +p.dataset.dots })));
+    ctls.forEach((c, i) => {
+      const U = c.U;
+      U.uMode.value = +(plates[i].dataset.mode || 0);
+      c.canvas.style.opacity = 1;
+      c.enableLens(true);
+      const loop = gsap.timeline({ repeat: -1, delay: 0.4 + i * 0.25 });
+      loop.to(U.uContour, { value: 1, duration: 0.8, ease: 'power2.inOut' })
+        .to(U.uProgress, { value: 1, duration: 2.7, ease: 'power1.inOut' }, 0.6)
+        .to(U.uPulse, { value: 1.12, startAt: { value: -0.12 }, duration: 3.6, ease: 'sine.inOut' }, 5.0)
+        .set(U.uPulse, { value: -1 }, 8.6)
+        .to(U.uProgress, { value: 0, duration: 1.6, ease: 'power2.inOut' }, 9.4)
+        .to(U.uContour, { value: 0, duration: 0.6 }, 11.0)
+        .to({}, { duration: 0.6 });
+    });
+    window.__pindai = ctls[0];
+  };
+  addEventListener('DOMContentLoaded', () => { (document.fonts ? document.fonts.ready : Promise.resolve()).then(start); });
+</script>
+</body>
+</html>

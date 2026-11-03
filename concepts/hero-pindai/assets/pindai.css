@@ -1,0 +1,145 @@
+/* PINDAI hero. Type lab system 4: Bodoni Moda at opsz 96 (roman + italic), Mona Sans (text), Mona Sans width 125 caps (credits).
+   Ground near-black so the Didone hairlines survive; red is the scan and the question mark, nothing else.
+   Radius 0 everywhere. The picture is a framed viewer: type never sits on it, so every layer (paper sketch,
+   depth, finished frame, lens) keeps the type legible. */
+@font-face{font-family:'Bodoni Moda';src:url('fonts/bodoni-moda-400_900-normal.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Bodoni Moda';src:url('fonts/bodoni-moda-400_900-italic.woff2') format('woff2');font-weight:400 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Mona Sans';src:url('fonts/mona-sans-200_900-normal.woff2') format('woff2');font-weight:200 900;font-stretch:75% 125%;font-style:normal;font-display:swap}
+
+:root{
+  --ground:#0B0B0A; --ink:#ECEBE6; --muted:#9A9993; --line:rgba(236,235,230,.16); --red:#FF3B30; --paper:#CCC8C0;
+  --m:32px; --g:24px; --cols:12;
+  --didone:'Bodoni Moda',Didot,'Times New Roman',serif; --sans:'Mona Sans',system-ui,sans-serif;
+  --d-size:clamp(64px,min(9.4vw,15.5svh),176px);
+  --ease:cubic-bezier(.19,1,.22,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{font-synthesis:none;-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;background:var(--ground)}
+body{min-height:100svh;overflow-x:clip;background:var(--ground);color:var(--ink);font:400 16px/24px var(--sans);font-stretch:100%}
+img,video,canvas{display:block;max-width:100%}
+img{height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;border-radius:0}
+h1,h2,p,ul,figure{margin:0;padding:0}
+ul{list-style:none}
+p{text-wrap:pretty}
+::selection{background:var(--red);color:var(--ground)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.skip{position:absolute;left:var(--m);top:-60px;z-index:50;padding:8px 12px;background:var(--ink);color:var(--ground);font:500 14px/1 var(--sans);text-decoration:none}
+.skip:focus{top:12px}
+.nw{white-space:nowrap}
+
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--g)}
+.cred{font:500 10.5px/16px var(--sans);font-stretch:125%;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.cred b{font-weight:600;color:var(--ink)}
+
+/* header */
+.top{height:76px;align-items:center;padding:0 var(--m);position:relative;z-index:5}
+.logo{grid-column:1/4;justify-self:start;display:block;padding-block:8px}
+.logo img{height:22px;width:auto}
+.top nav{grid-column:5/11;justify-self:center}
+.top nav ul{display:flex;gap:30px;font:500 13px/16px var(--sans);font-stretch:112%;letter-spacing:.01em}
+.top .brief{grid-column:11/13;justify-self:end;font:500 13px/16px var(--sans);font-stretch:112%;letter-spacing:.01em}
+.menu{display:none}
+
+/* nav: the underline draws in from the left */
+.nl{position:relative;text-decoration:none;padding-block:6px;display:inline-block}
+.nl::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .45s var(--ease)}
+@media (hover:hover){.nl:hover::after{transform:scaleX(1);transform-origin:left}}
+.nl:focus-visible::after,.nl[aria-current]::after{transform:scaleX(1);transform-origin:left}
+
+/* CTA, text only: the rule leaves right and returns from the left (a small scan); the label nudges */
+.cta{position:relative;display:inline-flex;align-items:baseline;text-decoration:none;padding-block:6px;white-space:nowrap}
+.cta>span{display:inline-block;transition:transform .5s var(--ease)}
+.cta::after{content:"";position:absolute;left:0;right:0;bottom:0;height:var(--cta-rule,1px);background:var(--cta-line,currentColor);transform-origin:left}
+@media (hover:hover){.cta:hover::after{animation:cta-rule .7s var(--ease)}.cta:hover>span{transform:translateX(.25em)}}
+.cta:focus-visible::after{animation:cta-rule .7s var(--ease)}
+.cta:active>span{transform:translateX(.1em)}
+.cta.red{--cta-line:var(--red);--cta-rule:2px}
+@keyframes cta-rule{0%{transform:scaleX(1);transform-origin:right}45%{transform:scaleX(0);transform-origin:right}46%{transform:scaleX(0);transform-origin:left}100%{transform:scaleX(1);transform-origin:left}}
+
+/* stage */
+.hero{position:relative;height:calc(100svh - 76px);min-height:600px;padding:0 var(--m) 26px;grid-template-rows:auto auto minmax(0,1fr) auto}
+h1{display:contents;font-weight:400}
+.w{font-family:var(--didone);font-weight:400;font-size:var(--d-size);line-height:.9;font-variation-settings:'opsz' 96;white-space:nowrap;position:relative}
+.w1{grid-column:1/9;grid-row:1/3;align-self:end;letter-spacing:-.03em;margin-left:-.05em;padding-bottom:.27em}
+.w2{grid-column:5/13;grid-row:4;justify-self:end;font-style:italic;letter-spacing:-.035em;margin-right:-.02em;padding-top:.13em}
+.w2 .q{color:var(--red);margin-left:.02em}
+.w .in{display:inline-block}
+.w .bar{position:absolute;top:.06em;bottom:-.02em;left:0;width:2px;background:var(--red);opacity:0;pointer-events:none}
+.side-r{grid-column:9/13;grid-row:2;align-self:end;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:18px;padding-bottom:20px}
+.cap{text-align:right}
+
+/* HUD: names the layer being shown; a red square marks it; each name is a button that scans the picture to it */
+.hud{display:flex;align-items:center;gap:22px;position:relative}
+.hud .k{color:var(--muted);opacity:.7}
+.hud ul{display:flex;gap:18px;position:relative}
+.hud button{position:relative;display:inline-flex;align-items:center;gap:8px;padding:6px 0;color:var(--muted);transition:color .4s var(--ease)}
+.hud button i{display:block;width:6px;height:6px;background:currentColor;opacity:.35;transition:background-color .3s,opacity .3s,transform .5s var(--ease)}
+.hud button[data-on]{color:var(--ink)}
+.hud button[data-on] i{background:var(--red);opacity:1;transform:scale(1.15)}
+@media (hover:hover){.hud button:hover{color:var(--ink)}.hud button:hover i{opacity:.9}}
+
+/* the plate: poster img (LCP + fallback) under the canvas */
+.plate{--fx:50%;--fy:4%;grid-column:1/13;grid-row:3;position:relative;overflow:hidden;background:#151513;min-height:0;margin-right:calc(-1 * var(--m));cursor:crosshair;touch-action:pan-y}
+.plate img,.plate canvas{position:absolute;inset:0;width:100%;height:100%}
+.plate img{object-fit:cover;object-position:var(--fx,50%) var(--fy,30%);scale:1.035} /* = shader ZOOM, so the canvas lands on an identical poster */
+.plate .pd-canvas{opacity:0}
+html.gl-on .plate .pd-canvas{opacity:1}
+.plate .hint{position:absolute;left:16px;bottom:14px;z-index:2;padding:6px 10px 6px 8px;background:var(--ground);color:var(--ink);display:flex;align-items:center;gap:10px;pointer-events:none}
+.plate .hint i{width:6px;height:6px;background:var(--red)}
+.hint .t-touch{display:none}
+@media (hover:none),(pointer:coarse){.hint .t-pointer{display:none}.hint .t-touch{display:inline}}
+
+.side-l{grid-column:1/5;grid-row:4;align-self:end;display:flex;flex-direction:column;gap:18px;padding-bottom:12px}
+.lede{font:400 15px/24px var(--sans);color:var(--muted);max-width:25em}
+.lede strong{color:var(--ink);font-weight:500}
+.acts{display:flex;gap:32px;font:500 15px/24px var(--sans);font-stretch:112%}
+
+/* next section, peeking */
+.next{padding:96px var(--m) 120px;border-top:1px solid var(--line);row-gap:32px}
+.next .k{grid-column:1/4;align-self:start;padding-top:1.4em}
+.next h2{grid-column:4/10;font:400 clamp(40px,4.4vw,72px)/1 var(--didone);font-variation-settings:'opsz' 72;letter-spacing:-.025em}
+.next h2 i{font-style:italic}
+.next p{grid-column:10/13;color:var(--muted);font-size:15px;line-height:24px;align-self:end}
+.reel{grid-column:1/13;display:grid;grid-template-columns:5fr 4fr 3fr;gap:var(--g);align-items:end}
+.reel figure img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.reel figcaption{margin-top:12px}
+
+/* intro guard: only when the GL intro will run (set by an inline script); CSS reveals after 5 s if JS stalls */
+html.intro [data-i]{opacity:0;animation:intro-safe 0s 5s forwards}
+@keyframes intro-safe{to{opacity:1}}
+
+@media (max-width:1100px) and (min-width:861px){
+  .top nav ul{gap:20px}
+  .side-r{grid-column:8/13}
+}
+
+/* phone: re-composed. Question, HUD, full-bleed picture, the italic answer, lede, actions */
+@media (max-width:860px){
+  :root{--m:20px;--g:12px;--cols:4;--d-size:18.4vw}
+  .grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .top{height:60px}
+  .logo{grid-column:1/3}.logo img{height:19px}
+  .top nav,.top .brief{display:none}
+  .menu{display:block;grid-column:3/5;justify-self:end;font:500 14px/24px var(--sans);font-stretch:112%;min-height:44px;min-width:44px;text-align:right}
+  html.menu-open .top nav{display:block;position:fixed;inset:60px 0 0;justify-self:stretch;align-self:stretch;background:var(--ground);padding:24px var(--m);z-index:20}
+  html.menu-open .top nav ul{flex-direction:column;gap:4px;font:400 48px/60px var(--didone)}
+  .hero{height:auto;min-height:calc(100svh - 60px);grid-template-rows:auto auto auto auto auto;padding-bottom:20px}
+  .w1{grid-column:1/5;grid-row:1;padding-bottom:.1em;margin-top:4px}
+  .side-r{grid-column:1/5;grid-row:2;justify-self:stretch;flex-direction:row;justify-content:space-between;align-items:center;padding-bottom:10px;gap:8px}
+  .cap{display:none}
+  .hud{gap:0;width:100%}.hud .k{display:none}
+  .hud ul{width:100%;justify-content:space-between;gap:6px}
+  .hud button{padding:10px 0;min-height:40px}
+  .plate{--fx:74%;--fy:30%;grid-column:1/5;grid-row:3;margin:0 calc(-1 * var(--m));height:min(54svh,460px)}
+  .plate .hint{left:12px;bottom:12px}
+  .w2{grid-column:1/5;grid-row:4;justify-self:end;margin-right:-.03em;padding-top:.1em}
+  .side-l{grid-column:1/5;grid-row:5;padding:14px 0 0;gap:16px}
+  .acts{justify-content:space-between}
+  .next{padding:64px var(--m) 80px}
+  .next .k,.next h2,.next p{grid-column:1/5}
+  .reel{grid-template-columns:1fr;grid-column:1/5}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
