@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Film poster tile</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .frame { width: 1080px; height: 1350px; background: #0b0a09; }
+  .p { left: 0; top: -150px; width: 1080px; height: 1920px; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.85) 0, rgba(0,0,0,.4) 30%, rgba(0,0,0,0) 55%), linear-gradient(180deg, rgba(0,0,0,.6), rgba(0,0,0,0) 30%); }
+  .logo { left: 64px; top: 60px; height: 32px; }
+  #big { left: 46px; top: 120px; }
+  .kick { left: 66px; bottom: 236px; font-size: 24px; font-weight: 500; color: rgba(255,255,255,.8); }
+  .title { left: 62px; bottom: 128px; font-size: 92px; line-height: 1; color: #F2F2F2; }
+  .foot { left: 66px; bottom: 70px; font-size: 20px; color: rgba(255,255,255,.62); }
+  .tag { right: 64px; bottom: 70px; font-size: 15px; color: rgba(255,255,255,.55); }
+</style></head>
+<body>
+<div class="frame">
+  <img class="plate p" src="../assets/img/jaka-75.jpg">
+  <div class="shade"></div>
+  <img class="abs logo" src="../assets/logo/kampanyeAI-horizontal-white.svg">
+  <div class="abs d red" id="big" data-fit="980">tayang.</div>
+  <div class="abs t kick">Serial drama AI kami</div>
+  <div class="abs serif title" id="ttl">Jaka Tingkir Saga</div>
+  <div class="abs t foot">Episode baru setiap pekan</div>
+  <div class="abs t tag">placeholder · <span data-fontname></span> + <span data-serifname></span></div>
+  <div class="grain"></div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  window.afterFit = () => {
+    const t = document.getElementById('ttl');
+    if (S.slug !== 'instrument-serif') t.style.fontWeight = S.slug === 'bodoni-moda' ? 500 : 500;
+    if (S.slug === 'bodoni-moda') t.style.fontSize = '84px';
+  };
+</script>
+</body></html>

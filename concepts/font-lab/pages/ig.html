@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>IG 4:5</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .frame { width: 1080px; height: 1350px; background: #0b0a09; }
+  .p { top: 140px; left: 0; width: 1080px; height: 1920px; }
+  .topfade { position: absolute; left: 0; right: 0; top: 0; height: 320px; background: linear-gradient(180deg, #0b0a09 0 120px, rgba(11,10,9,.75) 170px, rgba(11,10,9,0) 320px); }
+  .w { position: absolute; }
+  #satu { left: 60px; top: 62px; font-size: 66px; }
+  #tak { right: 64px; top: 62px; font-size: 66px; }
+  #terhitung { left: 40px; top: 150px; }
+  #versi { left: 46px; top: 990px; }
+  .logo { left: 60px; bottom: 56px; height: 34px; }
+  .tag { right: 60px; bottom: 60px; font-size: 15px; color: rgba(255,255,255,.62); }
+</style></head>
+<body>
+<div class="frame">
+  <img class="plate p" src="../assets/img/jaka-25.jpg">
+  <div class="topfade"></div>
+  <div class="w d red" id="terhitung" data-fit="1000">terhitung</div>
+  <img class="plate p" src="../assets/img/jaka-25-fg.png">
+  <div class="grade"></div>
+  <div class="w m" id="satu">satu ide.</div>
+  <div class="w m" id="tak">tak</div>
+  <div class="w d" id="versi" data-fit="700">versi.</div>
+  <img class="abs logo" src="../assets/logo/kampanyeAI-horizontal-white.svg">
+  <div class="abs t tag">placeholder copy · <span data-fontname></span></div>
+  <div class="grain"></div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  // baseline of the red word sits just into the hair line (head top ~ y 300): measure and align
+  window.afterFit = () => {
+    const el = document.getElementById('terhitung');
+    const fs = parseFloat(el.style.fontSize);
+    el.style.top = (330 - fs * 0.80) + 'px';
+  };
+</script>
+</body></html>

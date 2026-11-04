@@ -1,0 +1,3 @@
+Licence: SIL OFL 1.1
+Source: https://github.com/github/mona-sans/releases/tag/v2.0.27 (official files)
+Reserved Font Name: "Mona". All files here are the official release files, unmodified (static OTF/TTF, variable TTF, webfont woff2). Do not subset or rename-modify them without dropping the name Mona.

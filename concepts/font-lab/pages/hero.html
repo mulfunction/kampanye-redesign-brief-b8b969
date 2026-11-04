@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Hero</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1440px; height: 900px; }
+  .frame { width: 1440px; height: 900px; background: #050605; }
+  .p { left: -80px; top: 0; width: 1600px; height: 900px; }
+  .shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.78) 0, rgba(0,0,0,.35) 38%, rgba(0,0,0,0) 60%), linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,0) 18%); }
+  nav { position: absolute; left: 48px; right: 48px; top: 30px; height: 40px; display: flex; align-items: center; gap: 36px; font-size: 15px; font-weight: 500; }
+  nav img { height: 26px; margin-right: auto; }
+  nav a { color: #fff; text-decoration: none; opacity: .88; }
+  nav .navcta { opacity: 1; padding: 11px 18px; border: 1px solid rgba(255,255,255,.55); border-radius: 999px; }
+  #h1 { left: 44px; top: 480px; }
+  #h1 .l { display: block; white-space: nowrap; }
+  .sub { position: absolute; right: 48px; bottom: 150px; width: 300px; font-size: 17px; line-height: 1.5; color: rgba(255,255,255,.86); }
+  .ctas { position: absolute; left: 48px; bottom: 52px; display: flex; gap: 14px; }
+  .btn { height: 62px; padding: 0 30px; display: inline-flex; align-items: center; font-size: 17px; font-weight: 600; border-radius: 999px; letter-spacing: -0.005em; }
+  .b1 { background: var(--red); color: var(--ink); }
+  .b2 { border: 1.5px solid rgba(255,255,255,.7); color: #fff; }
+  .tile { position: absolute; right: 48px; top: 112px; width: 208px; padding: 16px; background: rgba(8,8,8,.62); backdrop-filter: blur(14px); border-radius: 8px; }
+  .tile .img { width: 176px; height: 234px; background: url(../assets/img/jaka-25.jpg) 50% 30%/cover; border-radius: 4px; }
+  .tile .ttl { margin-top: 12px; font-size: 27px; line-height: 1.02; }
+  .tile .cap { margin-top: 6px; font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.35; }
+  .tag { position: absolute; right: 48px; bottom: 62px; font-size: 13px; color: rgba(255,255,255,.55); }
+</style></head>
+<body>
+<div class="frame">
+  <img class="plate p" src="../assets/img/manji-man.jpg">
+  <div class="shade"></div>
+  <div class="grade" style="opacity:.6"></div>
+  <nav class="t"><img src="../assets/logo/kampanyeAI-horizontal-white.svg" alt="kampanye AI"><a>Karya</a><a>Layanan</a><a>Untuk brand</a><a>Tentang</a><a class="navcta">Kirim brief-mu</a></nav>
+  <h1 class="abs d" id="h1"><span class="l" id="l1" data-fit="930">kami bikin iklanmu</span><span class="l" id="l2">jadi <span class="red">film.</span></span></h1>
+  <p class="sub t">Studio kreatif AI dari Indonesia. Iklan, kampanye dan serial drama kami sendiri, digarap tim manusia dengan kecepatan AI.</p>
+  <div class="ctas t"><span class="btn b1">Kirim brief-mu</span><span class="btn b2">Lihat karya</span></div>
+  <div class="tile"><div class="img"></div><div class="ttl serif"><i>Jaka Tingkir Saga</i></div><div class="cap t">Serial drama AI kami. Tayang sekarang.</div></div>
+  <div class="tag t">placeholder · <span data-fontname></span> + <span data-serifname></span></div>
+  <div class="grain"></div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  window.afterFit = () => {
+    const l1 = document.getElementById('l1'), l2 = document.getElementById('l2'), h = document.getElementById('h1');
+    const fs = parseFloat(l1.style.fontSize);
+    l2.style.fontSize = fs + 'px'; l1.style.display = 'block';
+    h.style.lineHeight = '0.9';
+    const hh = h.getBoundingClientRect().height;
+    h.style.top = (900 - 140 - hh) + 'px';
+    if (S.slug === 'bodoni-moda' || S.slug === 'newsreader') document.querySelector('.tile .ttl i').style.fontStyle = 'italic';
+  };
+</script>
+</body></html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Specimen</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1920px; height: 1200px; }
+  .frame { width: 1920px; height: 1200px; background: var(--ink); color: #F2F2F2; }
+  .top { position: absolute; left: 0; right: 0; top: 0; height: 600px; }
+  .name { left: 96px; top: 64px; font-size: 20px; font-weight: 600; }
+  .meta { right: 96px; top: 66px; font-size: 16px; color: rgba(242,242,242,.6); text-align: right; line-height: 1.5; }
+  .lockrow { position: absolute; left: 96px; top: 150px; display: flex; align-items: center; gap: 56px; }
+  .lockrow img { height: 104px; }
+  .bigline { position: absolute; left: 90px; top: 300px; white-space: nowrap; }
+  .nav { position: absolute; left: 96px; top: 500px; width: 900px; height: 64px; display: flex; align-items: center; gap: 30px; padding: 0 22px; background: rgba(255,255,255,.06); border-radius: 12px; font-size: 15px; font-weight: 500; }
+  .nav img { height: 24px; margin-right: auto; }
+  .nav .c { padding: 9px 16px; border-radius: 999px; background: var(--red); color: var(--ink); font-weight: 600; }
+  .nav2 { position: absolute; left: 1040px; top: 500px; width: 784px; height: 64px; display: flex; align-items: center; gap: 22px; padding: 0 22px; background: var(--paper); color: var(--ink); border-radius: 12px; font-size: 13px; font-weight: 500; }
+  .nav2 img { height: 18px; margin-right: auto; }
+  .bot { position: absolute; left: 0; right: 0; top: 600px; bottom: 0; background: var(--paper); color: var(--ink); }
+  .alpha { position: absolute; left: 90px; top: 48px; font-size: 92px; white-space: nowrap; letter-spacing: -0.035em; line-height: 1; }
+  .upper { position: absolute; left: 96px; top: 168px; font-size: 44px; white-space: nowrap; font-weight: 500; letter-spacing: -0.01em; }
+  .nums { position: absolute; left: 92px; top: 240px; font-size: 92px; white-space: nowrap; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: lining-nums; }
+  .weights { position: absolute; left: 96px; top: 372px; display: flex; gap: 34px; font-size: 40px; letter-spacing: -0.02em; white-space: nowrap; }
+  .weights small { display: block; font-size: 12px; color: #777; letter-spacing: 0; font-weight: 500; margin-top: 4px; font-family: var(--ft); }
+  .para { position: absolute; top: 452px; font-size: 17px; line-height: 1.55; width: 560px; color: #262626; }
+  .para.s { font-size: 13.5px; line-height: 1.5; width: 470px; color: #444; }
+  .redchip { position: absolute; right: 96px; top: 452px; width: 420px; height: 100px; background: var(--red); border-radius: 10px; padding: 18px 22px; color: var(--ink); }
+  .redchip .d { font-size: 54px; }
+</style></head>
+<body>
+<div class="frame t">
+  <div class="top">
+    <div class="abs name"><span data-fontname></span></div>
+    <div class="abs meta t"><span data-lic></span><br><span id="wts"></span></div>
+    <div class="lockrow"><img src="../assets/logo/kampanyeAI-horizontal-color-on-dark.svg"><span class="d" data-fit="1060" data-max="150">kirim brief-mu</span></div>
+    <div class="bigline d" data-fit="1740">kami bikin iklanmu jadi <span class="red">film.</span></div>
+    <div class="nav t"><img src="../assets/logo/kampanyeAI-horizontal-white.svg"><span>Karya</span><span>Layanan</span><span>Untuk brand</span><span>Tentang</span><span class="c">Kirim brief-mu</span></div>
+    <div class="nav2 t"><img src="../assets/logo/kampanyeAI-horizontal-color-on-light.svg"><span>Karya</span><span>Layanan</span><span>Tentang</span><span>Kontak</span><span style="font-weight:600">Lihat karya</span></div>
+  </div>
+  <div class="bot">
+    <div class="alpha d">abcdefghijklmnopqrstuvwxyz</div>
+    <div class="upper t">ABCDEFGHIJKLMNOPQRSTUVWXYZ &amp; ?! ,.;: “” ’ ( ) / @ #</div>
+    <div class="nums d">0123456789 Rp 12.500 · 25% · 9:16</div>
+    <div class="weights" id="weights"></div>
+    <p class="para t" style="left:96px">Kami studio kreatif AI dari Indonesia. Iklan, kampanye layanan publik dan serial drama kami sendiri, dari ide sampai tayang. Setiap proyek diarahkan manusia, dikerjakan dengan kecepatan mesin.</p>
+    <p class="para t s" style="left:720px">Teks kecil untuk keterangan, kredit dan formulir: Nama brand, tujuan kampanye, format tayang dan tenggat. Kirim brief-mu lewat WhatsApp, tim kami membalas di hari kerja yang sama.</p>
+    <div class="redchip"><div class="d">jadi film.</div></div>
+  </div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  const wsel = { 'host-grotesk': [300,400,500,600,700,800], 'funnel': [300,400,500,600,700,800], 'bricolage-grotesque': [300,400,500,600,700,800], 'schibsted-grotesk': [400,500,600,700,800,900] };
+  const ws = wsel[F.slug] || [300,400,500,600,700,800,900];
+  const names = {300:'Light',400:'Regular',500:'Medium',600:'SemiBold',700:'Bold',800:'ExtraBold',900:'Black'};
+  document.getElementById('weights').innerHTML = ws.map(w => `<div style="font-family:var(--fd);font-weight:${w};font-stretch:var(--fds)">kampanye<small>${names[w]}</small></div>`).join('');
+  document.getElementById('wts').textContent = F.weights;
+</script>
+</body></html>

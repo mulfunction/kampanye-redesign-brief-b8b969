@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Reel 9:16</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1080px; height: 1920px; }
+  .frame { width: 1080px; height: 1920px; background: #000; }
+  .shot { position: absolute; inset: 0; overflow: hidden; background: #0b0a09; }
+  .shot img { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+  .topfade { position: absolute; left: 0; right: 0; top: 0; height: 560px; z-index: 0; }
+  .w { position: absolute; white-space: nowrap; transform-origin: 0 100%; visibility: hidden; }
+  #w1 { left: 48px; top: 1130px; }
+  #w2 { left: 54px; top: 1400px; }
+  #w3 { left: 40px; top: 150px; }
+  canvas { position: absolute; inset: 0; width: 1080px; height: 1920px; image-rendering: pixelated; }
+  #card { position: absolute; inset: 0; background: var(--red); visibility: hidden; }
+  #card img { position: absolute; left: 50%; top: 50%; height: 84px; transform: translate(-50%, -50%); }
+  .tag { position: absolute; right: 44px; bottom: 44px; font-size: 22px; font-weight: 500; color: rgba(255,255,255,.7); }
+</style></head>
+<body>
+<div class="frame">
+  <div class="shot" id="A"><img id="pa" src="../assets/img/jaka-5.jpg"><div class="grade"></div></div>
+  <div class="shot" id="B" style="visibility:hidden"><img id="pb" src="../assets/img/jaka-25.jpg"><div class="topfade" style="background:linear-gradient(180deg,#0b0a09 0 260px,rgba(11,10,9,.8) 330px,rgba(11,10,9,0) 560px)"></div><div class="w d red" id="w3" data-fit="1000">film.</div><img id="fb" src="../assets/img/jaka-25-fg.png"><div class="grade"></div></div>
+  <div class="w d" id="w1" data-fit="980">iklanmu</div>
+  <div class="w d" id="w2" data-fit="520">jadi</div>
+  <canvas id="px" width="1080" height="1920"></canvas>
+  <div id="card"><img src="../assets/logo/kampanyeAI-horizontal-reverse-on-red.svg"></div>
+  <div class="tag t" id="tag"><span data-fontname></span></div>
+  <div class="grain"></div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  const $ = id => document.getElementById(id);
+  const cv = $('px'), cx = cv.getContext('2d'), small = document.createElement('canvas'), sx = small.getContext('2d');
+  const W = 1080, H = 1920;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = x => 1 - Math.pow(1 - clamp(x, 0, 1), 3);
+  function rng(seed) { let s = seed * 9301 + 49297; return () => ((s = (s * 9301 + 49297) % 233280) / 233280); }
+  const T = { w1: 0.30, w2: 1.05, x1: [1.70, 2.30], w3: 2.45, x2: [4.15, 4.50], end: 5.0 };
+  // plate scale per shot
+  const sA = t => 1.10 - 0.08 * ease(t / 2.3);
+  const sB = t => 1.06 - 0.05 * ease((t - 1.95) / 2.6);
+  const DY = { A: 0, B: 300 };           // shot B plate pushed down so the red word can sit behind the head
+  function rect(s, dy) { return { x: 540 - 540 * s, y: 960 - 960 * s + dy, w: W * s, h: H * s }; }
+  function place(img, s, dy) { const r = rect(s, dy); Object.assign(img.style, { left: r.x + 'px', top: r.y + 'px', width: r.w + 'px', height: r.h + 'px' }); }
+  function hit(el, t, t0) {
+    if (t < t0) { el.style.visibility = 'hidden'; return; }
+    const dt = t - t0;
+    const k = Math.exp(-dt * 26);
+    el.style.visibility = 'visible';
+    el.style.transform = `translateY(${(k * 40).toFixed(1)}px) scale(${(1 + 0.32 * k).toFixed(4)})`;
+    el.style.filter = dt < 0.034 ? 'blur(5px)' : 'none';
+    el.style.opacity = dt < 0.034 ? 0.75 : 1;
+  }
+  function drawWord(ctx, el, scale) {
+    const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+    ctx.save(); ctx.scale(scale, scale);
+    ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    ctx.fontStretch = parseFloat(cs.fontStretch) > 105 ? 'semi-expanded' : 'normal';
+    ctx.letterSpacing = cs.letterSpacing; ctx.fillStyle = cs.color; ctx.textBaseline = 'alphabetic';
+    const m = ctx.measureText(el.textContent);
+    // align to the element box: baseline = box top + ascent of the line box
+    const fs = parseFloat(cs.fontSize), lh = parseFloat(cs.lineHeight) || fs * .82;
+    const asc = m.fontBoundingBoxAscent, desc = m.fontBoundingBoxDescent;
+    const base = r.top + (lh - (asc + desc)) / 2 + asc;
+    ctx.fillText(el.textContent, r.left, base);
+    ctx.restore();
+  }
+  function pixelate(b, plate, s, extras, dy = 0) {
+    // draw plate (+ optional word + fg) at 1/b resolution then upscale hard-edged
+    const w = Math.max(2, Math.round(W / b)), h = Math.max(2, Math.round(H / b));
+    small.width = w; small.height = h; sx.imageSmoothingEnabled = true;
+    const k = 1 / b;
+    sx.fillStyle = '#0b0a09'; sx.fillRect(0, 0, w, h);
+    const R = rect(s, dy); sx.drawImage(plate, R.x * k, R.y * k, R.w * k, R.h * k);
+    if (dy) { const g = sx.createLinearGradient(0, 0, 0, 560 * k); g.addColorStop(0, '#0b0a09'); g.addColorStop(0.45, 'rgba(11,10,9,.8)'); g.addColorStop(1, 'rgba(11,10,9,0)'); sx.fillStyle = g; sx.fillRect(0, 0, w, 560 * k); }
+    if (extras) extras(sx, k);
+    cx.imageSmoothingEnabled = false; cx.clearRect(0, 0, W, H);
+    cx.drawImage(small, 0, 0, w, h, 0, 0, W, H);
+  }
+  function glitch(t, density, colors) {
+    const r = rng(Math.round(t * 30) + 7);
+    const n = Math.round(density * 70);
+    for (let i = 0; i < n; i++) {
+      const bw = 40 + Math.floor(r() * 6) * 40, bh = 40 + Math.floor(r() * 3) * 40;
+      cx.fillStyle = colors[Math.floor(r() * colors.length)];
+      cx.fillRect(Math.floor(r() * 27) * 40, Math.floor(r() * 48) * 40, bw, bh);
+    }
+  }
+  window.render = function (t) {
+    const pa = $('pa'), pb = $('pb'), fb = $('fb');
+    const inA = t < 2.0, inB = t >= 2.0 && t < T.x2[1];
+    $('A').style.visibility = inA ? 'visible' : 'hidden';
+    $('B').style.visibility = inB ? 'visible' : 'hidden';
+    place(pa, sA(t), DY.A); place(pb, sB(t), DY.B); place(fb, sB(t), DY.B);
+    hit($('w1'), t, T.w1); hit($('w2'), t, T.w2);
+    if (!inA) { $('w1').style.visibility = 'hidden'; $('w2').style.visibility = 'hidden'; }
+    hit($('w3'), t, T.w3); if (!inB) $('w3').style.visibility = 'hidden';
+    $('card').style.visibility = t >= T.x2[1] ? 'visible' : 'hidden';
+    $('tag').style.color = t >= T.x2[1] ? 'rgba(26,26,26,.75)' : 'rgba(255,255,255,.7)';
+    // logo on the end card steps in
+    const li = $('card').querySelector('img'); li.style.opacity = t < T.x2[1] + 0.07 ? 0 : t < T.x2[1] + 0.14 ? 0.5 : 1;
+    cx.clearRect(0, 0, W, H); cv.style.visibility = 'hidden';
+    // transition 1: A -> B, blocks grow then shrink, red/white datamosh blocks at the peak
+    if (t >= T.x1[0] && t < T.x1[1]) {
+      cv.style.visibility = 'visible';
+      const p = (t - T.x1[0]) / (T.x1[1] - T.x1[0]);
+      const peak = 1 - Math.abs(p - 0.5) * 2;           // 0..1..0
+      const b = Math.round(6 + peak * 90);
+      if (p < 0.5) pixelate(b, pa, sA(t), (c, k) => { if (t >= T.w1) drawWord(c, $('w1'), k); if (t >= T.w2) drawWord(c, $('w2'), k); });
+      else pixelate(b, pb, sB(t), null, DY.B);
+      glitch(t, peak * 0.8, ['#FF3B30', '#FF3B30', '#F2F2F2', '#000']);
+    }
+    // transition 2: B -> red card
+    if (t >= T.x2[0] && t < T.x2[1]) {
+      cv.style.visibility = 'visible';
+      const p = (t - T.x2[0]) / (T.x2[1] - T.x2[0]);
+      pixelate(Math.round(6 + p * 110), pb, sB(t), (c, k) => { drawWord(c, $('w3'), k); const R = rect(sB(t), DY.B); c.drawImage(fb, R.x * k, R.y * k, R.w * k, R.h * k); }, DY.B);
+      glitch(t, 0.3 + p * 2.6, ['#FF3B30', '#FF3B30', '#FF3B30', '#1A1A1A']);
+    }
+    // one white flash frame on the red word hit
+    document.querySelector('.frame').style.filter = (t >= T.w3 && t < T.w3 + 0.034) ? 'brightness(1.6)' : 'none';
+  };
+  window.afterFit = () => {
+    // red word: sit its baseline just into the turban top of the close-up
+    const w3 = $('w3'); const fs = parseFloat(w3.style.fontSize); w3.style.top = (470 - fs * 0.8) + 'px';
+    render(0);
+  };
+</script>
+</body></html>

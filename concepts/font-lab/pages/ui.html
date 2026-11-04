@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Process UI</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1440px; height: 900px; background: #fff; color: #111; }
+  .frame { width: 1440px; height: 900px; background: #FAFAFA; font-size: 14px; line-height: 1.45; }
+  .top { position: absolute; left: 0; right: 0; top: 0; height: 64px; display: flex; align-items: center; padding: 0 28px; gap: 18px; background: #fff; border-bottom: 1px solid #EDEDED; }
+  .top img { height: 22px; }
+  .crumb { color: #8A8A8A; font-size: 13.5px; margin-left: 18px; }
+  .crumb b { color: #111; font-weight: 500; }
+  .top .r { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+  .av { width: 28px; height: 28px; border-radius: 50%; border: 2px solid #fff; margin-left: -10px; background-size: cover; background-position: 50% 30%; }
+  .pill { padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 500; border: 1px solid #E3E3E3; background: #fff; }
+  .pill.dark { background: #111; color: #fff; border-color: #111; }
+  .card { position: absolute; background: #fff; border-radius: 18px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 12px 32px rgba(0,0,0,.06); padding: 20px; }
+  .lab { font-size: 12px; color: #8A8A8A; font-weight: 500; margin-bottom: 8px; }
+  .brief { left: 24px; top: 88px; width: 320px; height: 788px; }
+  .brief p { font-size: 15px; line-height: 1.5; color: #222; }
+  .field { margin-top: 22px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 7px 12px; border-radius: 999px; background: #F2F2F2; font-size: 13px; font-weight: 500; color: #333; }
+  .chip.on { background: #111; color: #fff; }
+  .ref { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .ref div { aspect-ratio: 1; border-radius: 10px; background-size: cover; background-position: 50% 30%; }
+  .go { position: absolute; left: 20px; right: 20px; bottom: 20px; height: 48px; border-radius: 999px; background: #111; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 14.5px; }
+  .main { position: absolute; left: 368px; top: 88px; width: 704px; }
+  .main h2 { font-family: var(--fd); font-weight: 700; font-stretch: var(--fds); font-size: 30px; letter-spacing: -0.025em; line-height: 1.1; }
+  .main .sub { color: #8A8A8A; margin-top: 6px; font-size: 14px; }
+  .grid { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .v { background: #fff; border-radius: 16px; padding: 8px; box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 8px 24px rgba(0,0,0,.05); }
+  .v .img { height: 236px; border-radius: 10px; background-size: cover; background-position: 50% 30%; position: relative; }
+  .v .meta { display: flex; justify-content: space-between; align-items: center; padding: 10px 6px 4px; font-size: 13px; }
+  .v .meta b { font-weight: 600; }
+  .st { font-size: 11.5px; font-weight: 500; padding: 4px 8px; border-radius: 999px; background: #EFFAF1; color: #1F7A35; }
+  .st.p { background: #FFF1F0; color: #C42A20; }
+  .bar { position: absolute; left: 10px; right: 10px; bottom: 10px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.35); }
+  .bar i { display: block; height: 4px; width: 62%; border-radius: 4px; background: #fff; }
+  .kit { left: 1096px; top: 88px; width: 320px; height: 788px; }
+  .kit .logo { height: 22px; margin: 2px 0 18px; }
+  .sw { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .sw div { height: 64px; border-radius: 12px; padding: 10px; font-size: 12px; font-weight: 500; display: flex; align-items: flex-end; }
+  .aa { margin-top: 18px; padding: 16px; border-radius: 14px; background: #F5F5F5; }
+  .aa .big { font-family: var(--fd); font-weight: var(--fdw); font-stretch: var(--fds); font-size: 76px; line-height: .9; letter-spacing: -0.04em; }
+  .aa .nm { margin-top: 10px; font-weight: 600; font-size: 14px; }
+  .aa .smp { margin-top: 4px; color: #555; font-size: 13.5px; }
+  .rows { margin-top: 16px; font-size: 13.5px; }
+  .rows div { display: flex; justify-content: space-between; padding: 10px 0; border-top: 1px solid #EFEFEF; }
+  .rows span { color: #8A8A8A; }
+  .cursor { position: absolute; left: 262px; top: 822px; }
+  .cursor .tagc { position: absolute; left: 22px; top: 22px; background: var(--red); color: var(--ink); font-size: 12px; font-weight: 600; padding: 4px 9px; border-radius: 999px; white-space: nowrap; }
+  .tag { position: absolute; left: 368px; bottom: 22px; font-size: 12px; color: #9A9A9A; }
+</style></head>
+<body>
+<div class="frame t">
+  <div class="top"><img src="../assets/logo/kampanyeAI-horizontal-color-on-light.svg"><div class="crumb">Proyek &nbsp;/&nbsp; Brand minuman &nbsp;/&nbsp; <b>Kampanye lebaran</b></div>
+    <div class="r"><div style="display:flex;padding-left:10px"><div class="av" style="background-image:url(../assets/img/jaka-25.jpg)"></div><div class="av" style="background-image:url(../assets/img/manji-man.jpg)"></div><div class="av" style="background:#FF3B30"></div></div><span class="pill">Bagikan</span><span class="pill dark">Kirim ke klien</span></div></div>
+  <div class="card brief">
+    <div class="lab">Brief</div>
+    <p>Kampanye lebaran untuk brand minuman. Nuansa hangat, keluarga berkumpul, malam takbiran di kota kecil.</p>
+    <div class="field"><div class="lab">Format</div><div class="chips"><span class="chip on">Vertikal</span><span class="chip on">Persegi</span><span class="chip">Lebar</span></div></div>
+    <div class="field"><div class="lab">Gaya</div><div class="chips"><span class="chip on">Sinematik</span><span class="chip">Hangat</span><span class="chip">Dokumenter</span><span class="chip">Animasi</span></div></div>
+    <div class="field"><div class="lab">Referensi</div><div class="ref"><div style="background-image:url(../assets/img/komersil.jpg)"></div><div style="background-image:url(../assets/img/jaka-45.jpg)"></div><div style="background-image:url(../assets/img/manji-man.jpg)"></div></div></div>
+    <div class="field"><div class="lab">Catatan tim</div><p style="font-size:14px;color:#555">Produk tampil di adegan akhir. Logo hanya di frame penutup.</p></div>
+    <div class="go">Buat versi</div>
+  </div>
+  <div class="main">
+    <h2>Versi yang sedang dibuat</h2>
+    <div class="sub">Satu brief, banyak arah. Pilih yang paling kuat, sisanya kami simpan.</div>
+    <div class="grid">
+      <div class="v"><div class="img" style="background-image:url(../assets/img/jaka-25.jpg)"></div><div class="meta"><b>Versi a</b><span class="st">Selesai</span></div></div>
+      <div class="v"><div class="img" style="background-image:url(../assets/img/manji-man.jpg);background-position:50% 40%"></div><div class="meta"><b>Versi b</b><span class="st">Selesai</span></div></div>
+      <div class="v"><div class="img" style="background-image:url(../assets/img/jaka-75.jpg)"><div class="bar"><i></i></div></div><div class="meta"><b>Versi c</b><span class="st p">Diproses</span></div></div>
+      <div class="v"><div class="img" style="background-image:url(../assets/img/komersil.jpg)"></div><div class="meta"><b>Versi d</b><span class="st">Selesai</span></div></div>
+      <div class="v"><div class="img" style="background-image:url(../assets/img/jaka-45.jpg);background-position:50% 55%"></div><div class="meta"><b>Versi e</b><span class="st">Selesai</span></div></div>
+      <div class="v"><div class="img" style="background-image:url(../assets/img/iklan-brand.jpg)"><div class="bar"><i style="width:28%"></i></div></div><div class="meta"><b>Versi f</b><span class="st p">Diproses</span></div></div>
+    </div>
+  </div>
+  <div class="card kit">
+    <div class="lab">Kit brand</div>
+    <img class="logo" src="../assets/logo/kampanyeAI-horizontal-color-on-light.svg">
+    <div class="sw"><div style="background:#FF3B30;color:#1A1A1A">Merah</div><div style="background:#1A1A1A;color:#fff">Tinta</div><div style="background:#F2F2F2;color:#1A1A1A;box-shadow:inset 0 0 0 1px #E6E6E6">Kertas</div><div style="background:#fff;color:#1A1A1A;box-shadow:inset 0 0 0 1px #E6E6E6"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF8A00;margin-right:6px"></span>Jingga, aksen kecil</div></div>
+    <div class="aa"><div class="big">Aa</div><div class="nm" data-fontname></div><div class="smp">Kami bikin iklanmu jadi film.</div></div>
+    <div class="rows"><div>Judul<span>tebal, huruf kecil</span></div><div>Teks<span>reguler</span></div><div>Judul film<span class="serif" style="font-size:16px;color:#111"><i>Jaka Tingkir Saga</i></span></div><div>Bahasa<span>Indonesia</span></div></div>
+  </div>
+  <div class="cursor"><svg width="26" height="28" viewBox="0 0 26 28"><path d="M2 2 L23 13 L13 15 L8 25 Z" fill="#FF3B30" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg><span class="tagc">Tim kreatif</span></div>
+  <div class="tag">placeholder · <span data-fontname></span></div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+</body></html>

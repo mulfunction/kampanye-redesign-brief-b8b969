@@ -1,0 +1,382 @@
+{
+ "inter-display": {
+  "licence": "OFL-1.1",
+  "files": [
+   "variable/InterVariable-Italic.ttf",
+   "variable/InterVariable.ttf",
+   "/LICENSE.txt",
+   "desktop/InterDisplay-Bold.ttf",
+   "desktop/InterDisplay-Medium.ttf",
+   "desktop/InterDisplay-SemiBold.ttf",
+   "desktop/InterDisplay-Black.ttf",
+   "desktop/InterDisplay-ExtraBold.ttf",
+   "desktop/InterDisplay-Regular.ttf",
+   "web/InterDisplay-ExtraBold.woff2",
+   "web/InterDisplay-Bold.woff2",
+   "web/InterDisplay-Regular.woff2",
+   "web/InterVariable.woff2",
+   "web/InterDisplay-Medium.woff2",
+   "web/InterDisplay-Black.woff2",
+   "web/InterDisplay-SemiBold.woff2"
+  ]
+ },
+ "geist": {
+  "licence": "OFL-1.1",
+  "files": [
+   "web/GeistPixel-Square.woff2",
+   "web/GeistPixel-Grid.woff2",
+   "web/GeistPixel-Line.woff2",
+   "web/GeistPixelVF.woff2",
+   "web/GeistPixel-Circle.woff2",
+   "web/GeistPixel-Triangle.woff2",
+   "desktop/Geist-Regular.ttf",
+   "desktop/Geist-Black.ttf",
+   "desktop/Geist-Bold.ttf",
+   "desktop/Geist-Medium.ttf",
+   "desktop/Geist-SemiBold.ttf",
+   "desktop/Geist-ExtraBold.ttf",
+   "desktop/Geist-Black.otf",
+   "desktop/Geist-Bold.otf",
+   "desktop/Geist-Medium.otf",
+   "desktop/Geist-Regular.otf",
+   "desktop/Geist-SemiBold.otf",
+   "desktop/Geist-ExtraBold.otf",
+   "variable/Geist[wght].ttf",
+   "web/Geist-LightItalic.woff2",
+   "web/Geist-ExtraLight.woff2",
+   "web/Geist-BlackItalic.woff2",
+   "web/Geist-Bold.woff2",
+   "web/Geist-SemiBoldItalic.woff2",
+   "web/Geist-Black.woff2",
+   "web/Geist-BoldItalic.woff2",
+   "web/Geist-Italic[wght].woff2",
+   "web/Geist-Italic.woff2",
+   "web/Geist[wght].woff2",
+   "web/Geist-ExtraBold.woff2",
+   "web/Geist-Medium.woff2",
+   "web/Geist-ThinItalic.woff2",
+   "web/Geist-Thin.woff2",
+   "web/Geist-ExtraBoldItalic.woff2",
+   "web/Geist-SemiBold.woff2",
+   "web/Geist-ExtraLightItalic.woff2",
+   "web/Geist-Regular.woff2",
+   "web/Geist-MediumItalic.woff2",
+   "web/Geist-Light.woff2",
+   "/OFL.txt",
+   "web/GeistMono-Thin.woff2",
+   "web/GeistMono-Regular.woff2",
+   "web/GeistMono-ExtraBoldItalic.woff2",
+   "web/GeistMono-Medium.woff2",
+   "web/GeistMono-SemiBoldItalic.woff2",
+   "web/GeistMono-Light.woff2",
+   "web/GeistMono[wght].woff2",
+   "web/GeistMono-Italic[wght].woff2",
+   "web/GeistMono-Black.woff2",
+   "web/GeistMono-ThinItalic.woff2",
+   "web/GeistMono-ExtraLightItalic.woff2",
+   "web/GeistMono-BoldItalic.woff2",
+   "web/GeistMono-ExtraBold.woff2",
+   "web/GeistMono-Italic.woff2",
+   "web/GeistMono-ExtraLight.woff2",
+   "web/GeistMono-LightItalic.woff2",
+   "web/GeistMono-SemiBold.woff2",
+   "web/GeistMono-MediumItalic.woff2",
+   "web/GeistMono-Bold.woff2",
+   "web/GeistMono-BlackItalic.woff2",
+   "web/GeistSerif-Heart.woff2",
+   "web/GeistSerifVF.woff2",
+   "web/GeistSerif-Regular.woff2",
+   "web/GeistSerif-Square.woff2",
+   "web/GeistSerif-Triangle.woff2"
+  ]
+ },
+ "mona-sans": {
+  "licence": "OFL-1.1",
+  "files": [
+   "variable/MonaSansMonoVF[wght].ttf",
+   "variable/MonaSansMonoVF[wdth,wght].ttf",
+   "variable/MonaSansVF[wdth,wght,opsz,ital].ttf",
+   "variable/MonaSansVF-Expanded[opsz,wght,ital].ttf",
+   "variable/MonaSansVF-Condensed[opsz,wght,ital].ttf",
+   "variable/MonaSansVF[wdth,opsz,wght].ttf",
+   "variable/MonaSansMonoVF-Condensed[wght].ttf",
+   "variable/MonaSansVF-Italic[opsz,wght].ttf",
+   "variable/MonaSansVF[opsz,wght].ttf",
+   "variable/MonaSansVF-Italic[wdth,opsz,wght].ttf",
+   "variable/MonaSansMonoVF-Expanded[wght].ttf",
+   "/OFL.txt",
+   "desktop/MonaSans-Bold.otf",
+   "desktop/MonaSans-ExtraBold.otf",
+   "desktop/MonaSans-Black.otf",
+   "desktop/MonaSansExpanded-Black.otf",
+   "desktop/MonaSansExpanded-ExtraBold.otf",
+   "desktop/MonaSans-Regular.otf",
+   "desktop/MonaSans-Medium.otf",
+   "desktop/MonaSans-SemiBold.otf",
+   "desktop/MonaSansExpanded-Bold.otf",
+   "desktop/MonaSans-Bold.ttf",
+   "desktop/MonaSansExpanded-Black.ttf",
+   "desktop/MonaSans-SemiBold.ttf",
+   "desktop/MonaSans-Medium.ttf",
+   "desktop/MonaSans-Regular.ttf",
+   "desktop/MonaSans-ExtraBold.ttf",
+   "desktop/MonaSans-Black.ttf",
+   "desktop/MonaSansExpanded-Bold.ttf",
+   "desktop/MonaSansExpanded-ExtraBold.ttf",
+   "/OFL.txt"
+  ]
+ },
+ "switzer": {
+  "licence": "ITF-FFL-2.0",
+  "files": [
+   "variable/Switzer-VariableItalic.ttf",
+   "variable/Switzer-Variable.ttf",
+   "desktop/Switzer-Black.otf",
+   "desktop/Switzer-Extrabold.otf",
+   "desktop/Switzer-Bold.otf",
+   "desktop/Switzer-Semibold.otf",
+   "desktop/Switzer-Medium.otf",
+   "desktop/Switzer-Regular.otf",
+   "web/Switzer-VariableItalic.woff2",
+   "web/Switzer-Variable.woff2",
+   "/FFL.txt"
+  ]
+ },
+ "host-grotesk": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "HostGrotesk[wght].ttf": {
+    "axes": {
+     "wght": [
+      300.0,
+      300.0,
+      800.0
+     ]
+    },
+    "static": [
+     "HostGrotesk-Regular.ttf",
+     "HostGrotesk-Medium.ttf",
+     "HostGrotesk-SemiBold.ttf",
+     "HostGrotesk-Bold.ttf",
+     "HostGrotesk-ExtraBold.ttf"
+    ]
+   }
+  }
+ },
+ "schibsted-grotesk": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "SchibstedGrotesk[wght].ttf": {
+    "axes": {
+     "wght": [
+      400.0,
+      400.0,
+      900.0
+     ]
+    },
+    "static": [
+     "SchibstedGrotesk-Regular.ttf",
+     "SchibstedGrotesk-Medium.ttf",
+     "SchibstedGrotesk-SemiBold.ttf",
+     "SchibstedGrotesk-Bold.ttf",
+     "SchibstedGrotesk-ExtraBold.ttf",
+     "SchibstedGrotesk-Black.ttf"
+    ]
+   }
+  }
+ },
+ "hanken-grotesk": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "HankenGrotesk[wght].ttf": {
+    "axes": {
+     "wght": [
+      100.0,
+      400.0,
+      900.0
+     ]
+    },
+    "static": [
+     "HankenGrotesk-Regular.ttf",
+     "HankenGrotesk-Medium.ttf",
+     "HankenGrotesk-SemiBold.ttf",
+     "HankenGrotesk-Bold.ttf",
+     "HankenGrotesk-ExtraBold.ttf",
+     "HankenGrotesk-Black.ttf"
+    ]
+   }
+  }
+ },
+ "archivo": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "Archivo[wdth,wght].ttf": {
+    "axes": {
+     "wght": [
+      100.0,
+      600.0,
+      900.0
+     ],
+     "wdth": [
+      62.0,
+      100.0,
+      125.0
+     ]
+    },
+    "static": [
+     "Archivo-Regular.ttf",
+     "Archivo-Medium.ttf",
+     "Archivo-SemiBold.ttf",
+     "Archivo-Bold.ttf",
+     "Archivo-ExtraBold.ttf",
+     "Archivo-Black.ttf"
+    ]
+   }
+  }
+ },
+ "funnel": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "FunnelDisplay[wght].ttf": {
+    "axes": {
+     "wght": [
+      300.0,
+      300.0,
+      800.0
+     ]
+    },
+    "static": [
+     "FunnelDisplay-Regular.ttf",
+     "FunnelDisplay-Medium.ttf",
+     "FunnelDisplay-SemiBold.ttf",
+     "FunnelDisplay-Bold.ttf",
+     "FunnelDisplay-ExtraBold.ttf"
+    ]
+   },
+   "FunnelSans[wght].ttf": {
+    "axes": {
+     "wght": [
+      300.0,
+      300.0,
+      800.0
+     ]
+    },
+    "static": [
+     "FunnelSans-Regular.ttf",
+     "FunnelSans-Medium.ttf",
+     "FunnelSans-SemiBold.ttf",
+     "FunnelSans-Bold.ttf",
+     "FunnelSans-ExtraBold.ttf"
+    ]
+   }
+  }
+ },
+ "bricolage-grotesque": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "BricolageGrotesque[opsz,wdth,wght].ttf": {
+    "axes": {
+     "opsz": [
+      12.0,
+      96.0,
+      96.0
+     ],
+     "wght": [
+      200.0,
+      800.0,
+      800.0
+     ],
+     "wdth": [
+      75.0,
+      100.0,
+      100.0
+     ]
+    },
+    "static": [
+     "BricolageGrotesque-Regular.ttf",
+     "BricolageGrotesque-Medium.ttf",
+     "BricolageGrotesque-SemiBold.ttf",
+     "BricolageGrotesque-Bold.ttf",
+     "BricolageGrotesque-ExtraBold.ttf"
+    ]
+   }
+  }
+ },
+ "bodoni-moda": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "BodoniModa[opsz,wght].ttf": {
+    "axes": {
+     "wght": [
+      400.0,
+      400.0,
+      900.0
+     ],
+     "opsz": [
+      6.0,
+      11.0,
+      96.0
+     ]
+    },
+    "static": [
+     "BodoniModa-Regular.ttf",
+     "BodoniModa-Medium.ttf",
+     "BodoniModa-SemiBold.ttf",
+     "BodoniModa-Bold.ttf",
+     "BodoniModa-ExtraBold.ttf",
+     "BodoniModa-Black.ttf"
+    ]
+   }
+  }
+ },
+ "newsreader": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "Newsreader[opsz,wght].ttf": {
+    "axes": {
+     "wght": [
+      200.0,
+      400.0,
+      800.0
+     ],
+     "opsz": [
+      6.0,
+      18.0,
+      72.0
+     ]
+    },
+    "static": [
+     "Newsreader-Regular.ttf",
+     "Newsreader-Medium.ttf",
+     "Newsreader-SemiBold.ttf",
+     "Newsreader-Bold.ttf",
+     "Newsreader-ExtraBold.ttf"
+    ]
+   }
+  }
+ },
+ "instrument-serif": {
+  "licence": "OFL-1.1",
+  "rfn": "Reserved Font Name\" refers to any names specified as such after the",
+  "files": {
+   "InstrumentSerif-Italic.ttf": {
+    "static": [
+     "InstrumentSerif-Italic.ttf"
+    ]
+   },
+   "InstrumentSerif-Regular.ttf": {
+    "static": [
+     "InstrumentSerif-Regular.ttf"
+    ]
+   }
+  }
+ }
+}

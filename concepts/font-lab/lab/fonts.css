@@ -1,0 +1,19 @@
+/* font-lab: every candidate self-hosted from ../fonts/<family>/web (variable woff2 where the family ships one) */
+@font-face { font-family: 'FL Inter'; src: url('../fonts/inter-display/web/InterVariable.woff2') format('woff2'); font-weight: 100 900; font-display: block; }
+@font-face { font-family: 'FL Geist'; src: url('../fonts/geist/web/Geist[wght].woff2') format('woff2'); font-weight: 100 900; font-display: block; }
+@font-face { font-family: 'FL Host'; src: url('../fonts/host-grotesk/web/HostGrotesk[wght].woff2') format('woff2'); font-weight: 300 800; font-display: block; }
+@font-face { font-family: 'FL Schibsted'; src: url('../fonts/schibsted-grotesk/web/SchibstedGrotesk[wght].woff2') format('woff2'); font-weight: 400 900; font-display: block; }
+@font-face { font-family: 'FL Hanken'; src: url('../fonts/hanken-grotesk/web/HankenGrotesk[wght].woff2') format('woff2'); font-weight: 100 900; font-display: block; }
+@font-face { font-family: 'FL Archivo'; src: url('../fonts/archivo/web/Archivo[wdth,wght].woff2') format('woff2'); font-weight: 100 900; font-stretch: 62% 125%; font-display: block; }
+@font-face { font-family: 'FL Mona'; src: url('../fonts/mona-sans/web/MonaSansVF[wdth,opsz,wght].woff2') format('woff2'); font-weight: 200 900; font-stretch: 75% 125%; font-display: block; }
+@font-face { font-family: 'FL Funnel Display'; src: url('../fonts/funnel/web/FunnelDisplay[wght].woff2') format('woff2'); font-weight: 300 800; font-display: block; }
+@font-face { font-family: 'FL Funnel Sans'; src: url('../fonts/funnel/web/FunnelSans[wght].woff2') format('woff2'); font-weight: 300 800; font-display: block; }
+@font-face { font-family: 'FL Bricolage'; src: url('../fonts/bricolage-grotesque/web/BricolageGrotesque[opsz,wdth,wght].woff2') format('woff2'); font-weight: 200 800; font-stretch: 75% 100%; font-display: block; }
+@font-face { font-family: 'FL Switzer'; src: url('../fonts/switzer/web/Switzer-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: block; }
+/* serifs for small film titles */
+@font-face { font-family: 'FL Instrument Serif'; src: url('../fonts/instrument-serif/web/InstrumentSerif-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: 'FL Instrument Serif'; src: url('../fonts/instrument-serif/web/InstrumentSerif-Italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: block; }
+@font-face { font-family: 'FL Bodoni'; src: url('../fonts/bodoni-moda/web/BodoniModa[opsz,wght].woff2') format('woff2'); font-weight: 400 900; font-style: normal; font-display: block; }
+@font-face { font-family: 'FL Bodoni'; src: url('../fonts/bodoni-moda/web/BodoniModa-Italic[opsz,wght].woff2') format('woff2'); font-weight: 400 900; font-style: italic; font-display: block; }
+@font-face { font-family: 'FL Newsreader'; src: url('../fonts/newsreader/web/Newsreader[opsz,wght].woff2') format('woff2'); font-weight: 200 800; font-style: normal; font-display: block; }
+@font-face { font-family: 'FL Newsreader'; src: url('../fonts/newsreader/web/Newsreader-Italic[opsz,wght].woff2') format('woff2'); font-weight: 200 800; font-style: italic; font-display: block; }

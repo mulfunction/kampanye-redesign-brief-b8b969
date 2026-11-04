@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Red card</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1080px; height: 1350px; }
+  .frame { width: 1080px; height: 1350px; background: var(--red); color: var(--ink); }
+  #lead { left: 64px; top: 410px; font-size: 64px; }
+  #word { left: 50px; top: 500px; }
+  .logo { left: 64px; top: 64px; height: 36px; }
+  .idx { right: 64px; top: 70px; font-size: 18px; font-weight: 500; }
+  .foot { left: 64px; bottom: 64px; font-size: 20px; font-weight: 500; max-width: 30ch; line-height: 1.35; }
+  .tag { right: 64px; bottom: 66px; font-size: 15px; font-weight: 500; opacity: .8; }
+</style></head>
+<body>
+<div class="frame">
+  <img class="abs logo" src="../assets/logo/kampanyeAI-horizontal-reverse-on-red.svg">
+  <div class="abs t idx">iklan · kampanye · film</div>
+  <div class="abs m" id="lead">kami bikin iklanmu jadi</div>
+  <div class="abs d" id="word" data-fit="980">film.</div>
+  <div class="abs t foot">Studio kreatif AI dari Indonesia. Ide manusia, kecepatan mesin.</div>
+  <div class="abs t tag">placeholder · <span data-fontname></span></div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  window.afterFit = () => {
+    const w = document.getElementById('word'), l = document.getElementById('lead');
+    const cs = getComputedStyle(w), fs = parseFloat(cs.fontSize);
+    const c = document.createElement('canvas').getContext('2d');
+    c.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`; c.fontStretch = parseFloat(cs.fontStretch) > 105 ? 'semi-expanded' : 'normal';
+    const m = c.measureText(w.textContent);
+    const asc = m.actualBoundingBoxAscent, inkH = asc + m.actualBoundingBoxDescent;
+    // line box: baseline offset inside the element = half-leading + font ascent
+    const fa = m.fontBoundingBoxAscent, fd = m.fontBoundingBoxDescent, lh = parseFloat(cs.lineHeight);
+    const baseIn = (lh - (fa + fd)) / 2 + fa;
+    const inkTop = 700 - inkH / 2;                     // ink box centred on the card's optical centre
+    w.style.top = (inkTop + asc - baseIn) + 'px';
+    const ls = getComputedStyle(l), lfs = parseFloat(ls.fontSize);
+    l.style.top = (inkTop - 44 - lfs * 0.95) + 'px';    // lead line sits a clear gap above the ascenders
+    window.__extra = { fs: Math.round(fs), inkTop: Math.round(inkTop), inkH: Math.round(inkH) };
+  };
+</script>
+</body></html>

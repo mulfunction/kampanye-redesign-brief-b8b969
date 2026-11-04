@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>Deck slide</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1920px; height: 1080px; }
+  .frame { width: 1920px; height: 1080px; background: var(--ink); color: #F2F2F2; }
+  .logo { left: 120px; top: 84px; height: 34px; }
+  .kick { right: 120px; top: 90px; font-size: 18px; color: rgba(242,242,242,.6); font-weight: 500; }
+  #h { left: 112px; top: 210px; }
+  #h > span { display: block; white-space: nowrap; }
+  .body { position: absolute; left: 120px; top: 560px; width: 860px; font-size: 25px; line-height: 1.52; color: rgba(242,242,242,.86); }
+  .nums { position: absolute; left: 120px; bottom: 96px; display: flex; gap: 52px; border-top: 1px solid rgba(242,242,242,.18); padding-top: 28px; }
+  .nums .n { white-space: nowrap; font-family: var(--fd); font-weight: var(--fdw); font-stretch: var(--fds); font-size: 68px; letter-spacing: -0.035em; line-height: 1; font-variant-numeric: lining-nums; }
+  .nums .l { margin-top: 10px; font-size: 17px; color: rgba(242,242,242,.6); }
+  .row { position: absolute; left: 120px; bottom: 50px; font-size: 16px; color: rgba(242,242,242,.45); font-variant-numeric: tabular-nums; }
+  .img { position: absolute; right: 120px; top: 170px; width: 560px; height: 760px; background: url(../assets/img/jaka-75.jpg) 50% 25%/cover; border-radius: 6px; }
+  .cap { position: absolute; right: 120px; top: 948px; width: 560px; display: flex; justify-content: space-between; align-items: baseline; }
+  .cap .serif { font-size: 30px; }
+  .cap .t { font-size: 16px; color: rgba(242,242,242,.6); }
+  .pg { right: 120px; bottom: 50px; font-size: 16px; color: rgba(242,242,242,.45); }
+</style></head>
+<body>
+<div class="frame t">
+  <img class="abs logo" src="../assets/logo/kampanyeAI-horizontal-color-on-dark.svg">
+  <div class="abs kick">Profil studio · placeholder</div>
+  <h1 class="abs d" id="h"><span id="h1">satu ide. tak</span><span id="h2" data-fit="1060">terhitung <span class="red">versi.</span></span></h1>
+  <p class="body">Kami studio kreatif AI dari Indonesia. Kami menggarap iklan, kampanye layanan publik dan serial drama kami sendiri, dari ide sampai tayang. Setiap proyek diarahkan manusia: sutradara, penulis dan desainer yang memutuskan, sementara mesin mempercepat produksinya.</p>
+  <div class="nums"><div><div class="n">57</div><div class="l">episode serial drama</div></div><div><div class="n">Rp 12,5 jt</div><div class="l">contoh anggaran</div></div><div><div class="n">04.11.2026</div><div class="l">tanggal rilis</div></div></div>
+  <div class="row">0123456789 &nbsp; 9:16 &nbsp; 4:5 &nbsp; 16:9 &nbsp; 1080×1920 &nbsp; 25% &nbsp; Rp 7.500.000 &nbsp; (angka contoh)</div>
+  <div class="img"></div>
+  <div class="cap"><span class="serif"><i>Jaka Tingkir Saga</i></span><span class="t">Serial drama AI kami</span></div>
+  <div class="abs pg t"><span data-fontname></span> · 07</div>
+</div>
+<script src="../lab/fonts.js"></script><script src="../lab/lab.js"></script>
+<script>
+  window.afterFit = () => {
+    const a = document.getElementById('h1'), b = document.getElementById('h2'), h = document.getElementById('h');
+    const fs = Math.min(parseFloat(b.style.fontSize), 150); a.style.fontSize = fs + "px"; b.style.fontSize = fs + "px"; b.style.display = "block";
+    h.style.lineHeight = '0.92';
+    const r = h.getBoundingClientRect();
+    document.querySelector('.body').style.top = (r.bottom + 44) + 'px';
+  };
+</script>
+</body></html>

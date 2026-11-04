@@ -1,0 +1,1867 @@
+{
+ "ig|inter-display|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|funnel|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "red|inter-display|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 522,
+   "inkTop": 504,
+   "inkH": 392
+  }
+ },
+ "hero|inter-display|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|inter-display|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|inter-display|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|inter-display|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Inter",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|geist|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|host-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|hanken-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|archivo|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|mona-sans|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|bricolage-grotesque|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ig|switzer|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "red|geist|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 498,
+   "inkTop": 517,
+   "inkH": 366
+  }
+ },
+ "red|host-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 592,
+   "inkTop": 487,
+   "inkH": 425
+  }
+ },
+ "red|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 475,
+   "inkTop": 507,
+   "inkH": 386
+  }
+ },
+ "red|hanken-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 563,
+   "inkTop": 493,
+   "inkH": 414
+  }
+ },
+ "red|archivo|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 446,
+   "inkTop": 536,
+   "inkH": 328
+  }
+ },
+ "red|mona-sans|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 497,
+   "inkTop": 506,
+   "inkH": 389
+  }
+ },
+ "red|funnel|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 500,
+   "inkTop": 516,
+   "inkH": 367
+  }
+ },
+ "red|bricolage-grotesque|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 537,
+   "inkTop": 503,
+   "inkH": 394
+  }
+ },
+ "red|switzer|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": {
+   "fs": 531,
+   "inkTop": 501,
+   "inkH": 399
+  }
+ },
+ "hero|geist|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|host-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|hanken-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|archivo|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|mona-sans|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|funnel|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|bricolage-grotesque|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|switzer|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|geist|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|host-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|hanken-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|archivo|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|mona-sans|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|funnel|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|bricolage-grotesque|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "ui|switzer|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|geist|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|host-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|hanken-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|archivo|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|mona-sans|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|funnel|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|bricolage-grotesque|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "deck|switzer|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|geist|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Geist",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|host-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Host",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|hanken-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Hanken",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|archivo|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Archivo",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|mona-sans|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Mona",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|funnel|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|bricolage-grotesque|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bricolage",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "spec|switzer|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Switzer",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "idcheck|inter-display|instrument-serif": {
+  "fonts": [],
+  "overflowX": false,
+  "extra": null
+ },
+ "poster|schibsted-grotesk|instrument-serif": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Instrument Serif",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "poster|schibsted-grotesk|bodoni-moda": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bodoni",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|schibsted-grotesk|bodoni-moda": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bodoni",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "poster|schibsted-grotesk|newsreader": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Newsreader",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "unloaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|schibsted-grotesk|newsreader": {
+  "fonts": [
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Schibsted",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Newsreader",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ }
+}

@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><title>ID check: Genjutsu reel type vs free candidates</title>
+<link rel="stylesheet" href="../lab/fonts.css"><link rel="stylesheet" href="../lab/lab.css">
+<style>
+  body { width: 1600px; height: 1000px; background: #121212; font-family: Arial, sans-serif; }
+  .ref { display: flex; gap: 16px; padding: 20px 24px 10px; align-items: center; }
+  .ref img { height: 84px; border-radius: 4px; }
+  .ref b { color: #F2F2F2; font: 600 16px Arial; margin-right: 8px; width: 150px; }
+  .row { display: flex; align-items: baseline; gap: 34px; padding: 6px 24px; border-top: 1px solid #262626; }
+  .row .nm { width: 150px; color: #aaa; font: 500 15px Arial; }
+  .row .w { color: #E3201B; font-size: 88px; line-height: 1; letter-spacing: -0.035em; }
+  .row .r { color: #eee; font-size: 88px; line-height: 1; letter-spacing: -0.03em; }
+</style></head>
+<body>
+<div class="ref"><b>Reel frames</b><img src="../assets/id/changes.jpg"><img src="../assets/id/exact.jpg"><img src="../assets/id/want.jpg"><img src="../assets/id/workflow.jpg"></div>
+<div id="rows"></div>
+<script src="../lab/fonts.js"></script>
+<script>
+  const C = [['Arial (Helvetica stand-in, system)', 'Arial', 700, 400], ['Inter Display', "'FL Inter'", 800, 500], ['Switzer', "'FL Switzer'", 800, 500], ['Geist', "'FL Geist'", 800, 500],
+             ['Hanken Grotesk', "'FL Hanken'", 800, 500], ['Schibsted Grotesk', "'FL Schibsted'", 800, 500], ['Host Grotesk', "'FL Host'", 800, 500], ['Mona Sans', "'FL Mona'", 800, 500]];
+  document.getElementById('rows').innerHTML = C.map(([n, f, w, rw]) => `<div class="row"><div class="nm">${n}</div><div class="w" style="font-family:${f};font-weight:${w}">changes exact want</div><div class="r" style="font-family:${f};font-weight:${rw}">workflow</div></div>`).join('');
+  window.__fontReport = []; document.fonts.ready.then(() => setTimeout(() => window.__ready = true, 300));
+</script>
+</body></html>

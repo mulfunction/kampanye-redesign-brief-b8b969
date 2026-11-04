@@ -1,0 +1,7 @@
+Licence: SIL Open Font License 1.1 (LICENSE.txt)
+Source: Google Fonts repository (github.com/google/fonts)
+https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/Newsreader-Italic[opsz,wght].ttf
+https://raw.githubusercontent.com/google/fonts/main/ofl/newsreader/Newsreader[opsz,wght].ttf
+web/*.woff2: lossless WOFF2 compression of the variable TTF, full character set, no subsetting.
+desktop/*.ttf: static instances generated from the variable TTF with fontTools varLib.instancer (OFL permits this).
+No Reserved Font Name in the OFL header.
