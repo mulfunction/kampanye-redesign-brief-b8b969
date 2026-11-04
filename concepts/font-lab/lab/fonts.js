@@ -25,5 +25,6 @@ window.FONTS = [
 window.SERIFS = [
   { slug: 'instrument-serif', name: 'Instrument Serif', fam: "'FL Instrument Serif'", w: 400, style: 'normal', tr: -0.01, lic: 'OFL 1.1', weights: 'Regular + Italic only (static)', src: 'https://fonts.google.com/specimen/Instrument+Serif' },
   { slug: 'bodoni-moda', name: 'Bodoni Moda', fam: "'FL Bodoni'", w: 500, style: 'normal', tr: -0.01, lic: 'OFL 1.1', weights: 'Regular to Black + Italics, variable (wght + opsz 6 to 96)', src: 'https://fonts.google.com/specimen/Bodoni+Moda' },
+  { slug: 'none-funnel', name: 'no serif (Funnel Display)', fam: "'FL Funnel Display'", w: 700, style: 'normal', tr: -0.02, lic: 'OFL 1.1', weights: 'n/a', src: '' },
   { slug: 'newsreader', name: 'Newsreader', fam: "'FL Newsreader'", w: 500, style: 'normal', tr: -0.01, lic: 'OFL 1.1', weights: 'ExtraLight to ExtraBold + Italics, variable (wght + opsz 6 to 72)', src: 'https://fonts.google.com/specimen/Newsreader' },
 ];

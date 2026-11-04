@@ -1863,5 +1863,115 @@
   ],
   "overflowX": false,
   "extra": null
+ },
+ "hero|funnel|bodoni-moda": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Bodoni",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|funnel|newsreader": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Newsreader",
+    "ok": true,
+    "loaded": [
+     "loaded",
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "poster|funnel|none-funnel": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
+ },
+ "hero|funnel|none-funnel": {
+  "fonts": [
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Sans",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   },
+   {
+    "family": "FL Funnel Display",
+    "ok": true,
+    "loaded": [
+     "loaded"
+    ]
+   }
+  ],
+  "overflowX": false,
+  "extra": null
  }
 }
