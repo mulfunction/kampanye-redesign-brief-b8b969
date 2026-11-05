@@ -15,11 +15,13 @@
   --dur: 560ms;
   --nav-h: 72px;                               /* BRAND.md 4.2: web nav 72 px */
   --pill-top: 12px; --pill-h: 52px;
-  --m: max(64px, calc((100vw - 1312px) / 2));  /* BRAND.md 4.1: 64 px margin, container 1312 */
+  --m: max(64px, calc((100vw - 1312px) / 2));  /* BRAND.md 4.1: content margin 64 px, container 1312 */
+  --nav-m: 40px;                               /* nav spans the full viewport, 40 px from the edges (reference), never capped */
   /* set by nav.js from measured widths */
   --ix: 0px; --dxL: 0px; --dxR: 0px; --dxM: 0px; --dy: 2px;
 }
-@media (max-width: 899px) { :root { --m: 20px; --nav-h: 64px; --pill-top: 10px; --pill-h: 48px; } }
+@media (max-width: 1279px) { :root { --nav-m: 32px; } }
+@media (max-width: 899px) { :root { --m: 20px; --nav-m: 20px; --nav-h: 64px; --pill-top: 10px; --pill-h: 48px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; background: var(--kai-film); color: var(--kai-paper); overflow-x: clip; }
@@ -44,7 +46,7 @@ a { color: inherit; text-decoration: none; }
 .nav[data-pill="paper"] .nav-bg { background: var(--kai-paper); }
 
 .nav-row {
-  position: relative; height: var(--nav-h); padding-inline: var(--m);
+  position: relative; height: var(--nav-h); padding-inline: var(--nav-m);
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo, .nav-cta, .nav-menu { transition: transform var(--dur) var(--ease); will-change: transform; }
