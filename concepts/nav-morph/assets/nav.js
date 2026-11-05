@@ -29,8 +29,14 @@
     const mid = phone ? 0 : links.offsetWidth;
     const W = phone ? PAD_L + lw + GAP_PHONE + right + PAD_R
                     : PAD_L + lw + GAP + mid + GAP + right + PAD_R;
-    const ix = Math.max(8, (vw - W) / 2);
+    // phone: the bar tightens into a full-width floating pill (12 px from the edges), logo left, Menu right;
+    // a centred mini pill would crowd the logo against Menu
+    const ix = phone ? 12 : Math.max(8, (vw - W) / 2);
     root.style.setProperty('--ix', ix + 'px');
+    if (!phone) {   // centre the links between the logo and the CTA inside the pill (logo and CTA differ in width)
+      const spanL = ix + PAD_L + lw, spanR = vw - ix - PAD_R - right;
+      root.style.setProperty('--dxM', ((spanL + spanR) / 2 - vw / 2) + 'px');
+    }
     root.style.setProperty('--dxL', (ix + PAD_L - m) + 'px');      // logo: margin -> inside the pill's left edge
     root.style.setProperty('--dxR', (m - ix - PAD_R) + 'px');      // CTA/menu: right margin -> inside the right edge
     const st = getComputedStyle(root);
@@ -66,7 +72,7 @@
   function openMenu() {
     lastFocus = document.activeElement;
     panel.hidden = false;
-    panel.querySelectorAll('.panel-links li, .panel-foot').forEach((el, i) => el.style.setProperty('--i', i));
+    panel.querySelectorAll('.panel-links li, .panel-feature, .panel-foot').forEach((el, i) => el.style.setProperty('--i', i));
     root.style.overflow = 'hidden';
     menu.setAttribute('aria-expanded', 'true');
     requestAnimationFrame(() => requestAnimationFrame(() => nav.setAttribute('data-open', '')));
