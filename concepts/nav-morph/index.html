@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>kampanye AI · prototipe navigasi</title>
+<link rel="preload" href="assets/fonts/FunnelSans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/FunnelDisplay.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="assets/img/kampanyeAI-icon-white.svg">
+<link rel="stylesheet" href="assets/nav.css">
+</head>
+<body>
+
+<!-- ===================== NAV (the prototype) ===================== -->
+<header class="nav" data-state="rest" data-pill="ink">
+  <div class="nav-bgwrap" aria-hidden="true"><div class="nav-bg"></div></div>
+  <div class="nav-row">
+    <a class="nav-logo" href="#top" aria-label="kampanye AI, ke beranda">
+      <img class="logo-light" src="assets/img/kampanyeAI-horizontal-white.svg" alt="" width="165" height="26">
+      <img class="logo-dark" src="assets/img/kampanyeAI-horizontal-color-on-light.svg" alt="" width="165" height="26">
+    </a>
+    <nav class="nav-links" aria-label="Utama">
+      <ul>
+        <li><a href="#karya">Karya</a></li>
+        <li><a href="#layanan">Layanan</a></li>
+        <li><a href="#agensi">Untuk agensi</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/62881036891660?text=Halo%20Kampanye%20AI!%20Saya%20mau%20tanya%20soal%20layanan." target="_blank" rel="noopener">Kirim brief-mu</a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel"><span class="m-open">Menu</span><span class="m-close">Tutup</span></button>
+  </div>
+  <div class="nav-panel" id="nav-panel" hidden>
+    <ul class="panel-links">
+      <li><a href="#karya">karya</a></li>
+      <li><a href="#layanan">layanan</a></li>
+      <li><a href="#agensi">untuk agensi</a></li>
+      <li><a href="#tentang">tentang</a></li>
+      <li><a href="#kontak">kontak</a></li>
+    </ul>
+    <div class="panel-foot">
+      <a class="panel-cta" href="https://wa.me/62881036891660?text=Halo%20Kampanye%20AI!%20Saya%20mau%20tanya%20soal%20layanan." target="_blank" rel="noopener">Kirim brief-mu</a>
+      <dl class="panel-contacts">
+        <div><dt>Email</dt><dd><a href="mailto:halo@kampanye.ai">halo@kampanye.ai</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="https://instagram.com/kampanye.ai">@kampanye.ai</a></dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== PAGE (placeholder content, only to scroll the nav over different grounds) ===================== -->
+<main id="top">
+  <section class="hero">
+    <img class="hero-img" src="assets/img/jaka-wide-dark.jpg" alt="">
+    <div class="hero-copy">
+      <h1>kami bikin iklanmu jadi <span class="red">film.</span></h1>
+      <p>Studio kreatif AI dari Indonesia. Kualitas setara TVC, tanpa jadwal syuting berbulan-bulan.</p>
+    </div>
+    <p class="proto-note">Prototipe navigasi. Gulir pelan: bar penuh menyusut jadi pil. Isi halaman hanya contoh.</p>
+  </section>
+
+  <section class="wall" id="karya">
+    <h2>karya terpilih</h2>
+    <div class="tiles">
+      <figure class="t t-wide"><img src="assets/img/jaka-istana.jpg" alt=""><figcaption><b>Jaka Tingkir Saga</b><span>Serial drama AI kami</span></figcaption></figure>
+      <figure class="t"><img src="assets/img/brand-fashion-studio.jpg" alt=""><figcaption><b>Kampanye koleksi</b><span>Brand fashion</span></figcaption></figure>
+      <figure class="t"><img src="assets/img/produk-kemasan.jpg" alt=""><figcaption><b>Film produk</b><span>Brand makanan</span></figcaption></figure>
+      <figure class="t"><img src="assets/img/karakter-3d.jpg" alt=""><figcaption><b>Karakter tiga dimensi</b><span>Brand hiburan</span></figcaption></figure>
+    </div>
+  </section>
+
+  <section class="redcard" id="layanan">
+    <p class="kicker">Layanan</p>
+    <p class="shock">tanpa jadwal syuting <span>berbulan-bulan.</span></p>
+  </section>
+
+  <section class="paper" id="agensi">
+    <p class="kicker">Untuk agensi</p>
+    <h2>kamu pegang klien. kami garap filmnya.</h2>
+    <p class="lede">Bagian terang ini ada untuk melihat pil navigasi di atas latar kertas.</p>
+  </section>
+
+  <section class="closer" id="kontak">
+    <img src="assets/img/jaka-desa-terang.jpg" alt="">
+    <p class="shock">kirim <span class="red">brief-mu.</span></p>
+  </section>
+</main>
+
+<script src="assets/nav.js"></script>
+</body>
+</html>
