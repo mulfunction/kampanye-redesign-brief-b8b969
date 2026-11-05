@@ -33,6 +33,7 @@
     // a centred mini pill would crowd the logo against Menu
     const ix = phone ? 12 : Math.max(8, (vw - W) / 2);
     root.style.setProperty('--ix', ix + 'px');
+    root.style.setProperty('--gap', GAP + 'px');
     if (!phone) {   // centre the links between the logo and the CTA inside the pill (logo and CTA differ in width)
       const spanL = ix + PAD_L + lw, spanR = vw - ix - PAD_R - right;
       root.style.setProperty('--dxM', ((spanL + spanR) / 2 - vw / 2) + 'px');
