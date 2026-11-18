@@ -280,11 +280,25 @@
     const top = base.querySelector('.sm-copy').getBoundingClientRect().top - sr.top;
     stage.querySelectorAll('.sm-giant').forEach((g) => { g.style.top = 'auto'; g.style.bottom = (sr.height - top + (phone() ? 8 : 14)) + 'px'; });
   }
-  addEventListener('resize', placeGiant);
+  // phone: the deck takes exactly the room between the nav and the name row, so on short screens (browser bars
+  // showing) the cards never cover the names or the arrows
+  function fitDeck() {
+    stage.querySelectorAll('.sm-layer').forEach((L) => {
+      const d = L.querySelector('.sm-deck'); d.style.removeProperty('--H');
+      if (!phone()) return;
+      const sr = stage.getBoundingClientRect();
+      const idx = L.querySelector('.sm-index').getBoundingClientRect().top - sr.top;
+      const top = d.getBoundingClientRect().top - sr.top;
+      const room = idx - top - 22;                                   // the fanned cards lean down a little: keep a gap
+      d.style.setProperty('--H', Math.max(150, Math.min(room, sr.height * .47, 440)) + 'px');
+    });
+  }
+  addEventListener('resize', () => { fitDeck(); placeGiant(); });
+  if (window.visualViewport) visualViewport.addEventListener('resize', fitDeck);
   document.fonts && document.fonts.ready.then(placeGiant);
 
   // ---- start
-  paint(); wipe(); edge(); auto(); placeGiant();
+  paint(); wipe(); edge(); auto(); fitDeck(); placeGiant();
   if (q.get('ground') === 'night') { lazyLoad(); }
   if (q.has('clip')) { const i = KINGS.findIndex((K) => K.k === q.get('clip')); if (i > 0) { a = i; paint(); } addEventListener('load', () => setTimeout(openClip, 1200)); }
 })();

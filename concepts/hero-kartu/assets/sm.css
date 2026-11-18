@@ -6,7 +6,7 @@
 body { background: var(--kai-film); }
 
 .sm { position: relative; height: calc(100svh + 90svh); }
-.sm-stage { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 620px; overflow: hidden; }
+.sm-stage { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 540px; overflow: hidden; }
 .sm-layer { position: absolute; inset: 0; z-index: 0; isolation: isolate; overflow: hidden; --fg: var(--kai-white); --fg2: rgba(242, 242, 242, .58); --line: rgba(255, 255, 255, .42);
   background: var(--kai-film); color: var(--fg); }
 .sm-layer[data-ground="day"] { --fg: var(--kai-ink); --fg2: rgba(26, 26, 26, .6); --line: rgba(26, 26, 26, .4); background: var(--kai-paper); }
