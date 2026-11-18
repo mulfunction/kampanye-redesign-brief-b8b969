@@ -1,10 +1,10 @@
 // Direction C "Siang Malam" + deck. See sm.css for the design notes.
-// ?ground=day shows the day state, ?clip=jaka opens a clip (both for stills).
+// ?ground=night shows the scrolled (night) state, ?clip=jaka opens a clip (both for stills).
 (() => {
   const sec = document.querySelector('.sm');
   if (!sec) return;
   const stage = sec.querySelector('.sm-stage');
-  const night = stage.querySelector('[data-ground="night"]');
+  const base = stage.querySelector('.sm-layer');                 // in the HTML: the day (first screen)
   const RM = matchMedia('(prefers-reduced-motion: reduce)');
   const q = new URLSearchParams(location.search);
   const phone = () => innerWidth < 900;
@@ -20,17 +20,18 @@
   const back = document.createElement('div'); back.className = 'sm-back'; back.setAttribute('aria-hidden', 'true');
   KINGS.forEach((K) => { const im = new Image(); im.alt = ''; im.decoding = 'async'; im.dataset.src = `assets/clips/${K.k}-poster.avif`; back.appendChild(im); });
   const giant = document.createElement('p'); giant.className = 'sm-giant'; giant.setAttribute('aria-hidden', 'true'); giant.innerHTML = '<span></span>';
-  night.prepend(giant); night.prepend(back);
+  base.prepend(giant); base.prepend(back);
 
-  const day = night.cloneNode(true);
-  day.dataset.ground = 'day'; day.setAttribute('aria-hidden', 'true');
-  day.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
-  const h1 = day.querySelector('h1'); const ph = document.createElement('p'); ph.className = 'h1'; ph.innerHTML = h1.innerHTML; h1.replaceWith(ph);
-  day.querySelectorAll('.card img').forEach((im) => { im.dataset.src = (im.getAttribute('src') || im.dataset.src).replace('/night-', '/day-'); if (im.srcset) { im.dataset.srcset = im.getAttribute('srcset').replaceAll('/night-', '/day-'); im.removeAttribute('srcset'); } im.removeAttribute('src'); im.removeAttribute('fetchpriority'); });
+  const rise = base.cloneNode(true);                              // the night, brought up by the scroll
+  rise.dataset.ground = base.dataset.ground === 'day' ? 'night' : 'day'; rise.classList.add('sm-rise'); rise.setAttribute('aria-hidden', 'true');
+  const FROM = '/' + base.dataset.ground + '-', TO = '/' + rise.dataset.ground + '-';
+  rise.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+  const h1 = rise.querySelector('h1'); const ph = document.createElement('p'); ph.className = 'h1'; ph.innerHTML = h1.innerHTML; h1.replaceWith(ph);
+  rise.querySelectorAll('.card img').forEach((im) => { im.dataset.src = (im.getAttribute('src') || im.dataset.src).replace(FROM, TO); if (im.srcset) { im.dataset.srcset = im.getAttribute('srcset').replaceAll(FROM, TO); im.removeAttribute('srcset'); } im.removeAttribute('src'); im.removeAttribute('fetchpriority'); });
   // night back cards wait for the load event too, so only the front card competes for the first paint
   
-  stage.appendChild(day);
-  const layers = [night, day];
+  stage.appendChild(rise);
+  const layers = [base, rise];
 
   const lazyLoad = () => stage.querySelectorAll('img[data-src]').forEach((im) => { if (im.dataset.srcset) { im.srcset = im.dataset.srcset; im.removeAttribute('data-srcset'); } im.src = im.dataset.src; im.removeAttribute('data-src'); });
   if (document.readyState === 'complete') setTimeout(lazyLoad, 200); else addEventListener('load', () => setTimeout(lazyLoad, 200));
@@ -132,13 +133,13 @@
     timer = setInterval(() => { if (document.hidden || !clip.hidden || progress() > .15) return; go(a + 1, 1); }, 5200);
   }
 
-  // ---- day rises behind a stepped edge as the page scrolls
+  // ---- the second ground rises as the page scrolls
   function progress() {
-    if (q.get('ground') === 'day') return 1;
+    if (q.get('ground') === 'night') return 1;
     const r = sec.getBoundingClientRect(), travel = sec.offsetHeight - stage.offsetHeight;
     return travel > 0 ? Math.max(0, Math.min(1, -r.top / travel)) : 0;
   }
-  // the day rises with one clean, straight edge (the stepped/pixel edge was rejected by the owner)
+  // one clean, straight edge (the stepped/pixel edge was rejected by the owner)
   let lastClip = '';
   function wipe() {
     const p = progress();
@@ -146,8 +147,8 @@
     if (RM.matches) e = e > .5 ? 1 : 0;
     const top = ((1 - e) * 100).toFixed(2);
     const c = `inset(${top}% 0 0 0)`;
-    if (c !== lastClip) { day.style.clipPath = c; lastClip = c; }
-    night.style.visibility = e >= 1 ? 'hidden' : '';
+    if (c !== lastClip) { rise.style.clipPath = c; lastClip = c; }
+    base.style.visibility = e >= 1 ? 'hidden' : '';
   }
   let raf = 0;
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; wipe(); }); }, { passive: true });
@@ -164,7 +165,7 @@
   video.addEventListener('playing', () => { still.style.opacity = '0'; });
   let opener = null;
 
-  const frontIn = () => (progress() > .5 ? day : night).querySelector(`.card[data-slot="0"] .card-in`);
+  const frontIn = () => (progress() > .5 ? rise : base).querySelector(`.card[data-slot="0"] .card-in`);
   function flip(fromRect) {
     const to = frame.getBoundingClientRect();
     return `translate(${fromRect.left - to.left}px, ${fromRect.top - to.top}px) scale(${fromRect.width / to.width}, ${fromRect.height / to.height})`;
@@ -199,7 +200,7 @@
       layers.forEach((L) => (L.querySelector('.card[data-slot="0"]').style.visibility = ''));
       video.removeAttribute('src'); video.load();
       frame.getAnimations().forEach((x) => x.cancel());
-      if (opener && opener.closest('[data-ground="night"]')) opener.focus({ preventScroll: true });
+      if (opener && !opener.closest('.sm-rise')) opener.focus({ preventScroll: true });
       auto();
     });
   }
@@ -210,7 +211,7 @@
   // the giant name sits in the band right above the headline, whatever the screen height
   function placeGiant() {
     const sr = stage.getBoundingClientRect();
-    const top = night.querySelector('.sm-copy').getBoundingClientRect().top - sr.top;
+    const top = base.querySelector('.sm-copy').getBoundingClientRect().top - sr.top;
     stage.querySelectorAll('.sm-giant').forEach((g) => { g.style.top = 'auto'; g.style.bottom = (sr.height - top + (phone() ? 8 : 14)) + 'px'; });
   }
   addEventListener('resize', placeGiant);
@@ -218,6 +219,6 @@
 
   // ---- start
   paint(); wipe(); auto(); placeGiant();
-  if (q.get('ground') === 'day') { lazyLoad(); }
+  if (q.get('ground') === 'night') { lazyLoad(); }
   if (q.has('clip')) { const i = KINGS.findIndex((K) => K.k === q.get('clip')); if (i > 0) { a = i; paint(); } addEventListener('load', () => setTimeout(openClip, 1200)); }
 })();
