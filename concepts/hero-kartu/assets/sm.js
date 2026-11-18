@@ -1,0 +1,231 @@
+// Direction C "Siang Malam" + deck. See sm.css for the design notes.
+// ?ground=day shows the day state, ?clip=jaka opens a clip (both for stills).
+(() => {
+  const sec = document.querySelector('.sm');
+  if (!sec) return;
+  const stage = sec.querySelector('.sm-stage');
+  const night = stage.querySelector('[data-ground="night"]');
+  const RM = matchMedia('(prefers-reduced-motion: reduce)');
+  const q = new URLSearchParams(location.search);
+  const phone = () => innerWidth < 900;
+  const KINGS = [
+    { k: 'jaka', name: 'jaka tingkir', series: 'Jaka Tingkir Saga' },
+    { k: 'arya', name: 'arya penangsang', series: 'Jaka Tingkir Saga' },
+    { k: 'siliwangi', name: 'prabu siliwangi', series: 'Sang Sinatria Sunda' },
+    { k: 'pranaseta', name: 'prabu pranaseta', series: 'Sang Sinatria Sunda' },
+  ];
+  const N = KINGS.length;
+
+  // ---- build: backdrop + giant name into the night layer, then clone it as the day layer
+  const back = document.createElement('div'); back.className = 'sm-back'; back.setAttribute('aria-hidden', 'true');
+  KINGS.forEach((K) => { const im = new Image(); im.alt = ''; im.decoding = 'async'; im.dataset.src = `assets/clips/${K.k}-poster.avif`; back.appendChild(im); });
+  const giant = document.createElement('p'); giant.className = 'sm-giant'; giant.setAttribute('aria-hidden', 'true'); giant.innerHTML = '<span></span>';
+  night.prepend(giant); night.prepend(back);
+
+  const day = night.cloneNode(true);
+  day.dataset.ground = 'day'; day.setAttribute('aria-hidden', 'true');
+  day.querySelectorAll('a, button').forEach((el) => el.setAttribute('tabindex', '-1'));
+  const h1 = day.querySelector('h1'); const ph = document.createElement('p'); ph.className = 'h1'; ph.innerHTML = h1.innerHTML; h1.replaceWith(ph);
+  day.querySelectorAll('.card img').forEach((im) => { im.dataset.src = (im.getAttribute('src') || im.dataset.src).replace('/night-', '/day-'); if (im.srcset) { im.dataset.srcset = im.getAttribute('srcset').replaceAll('/night-', '/day-'); im.removeAttribute('srcset'); } im.removeAttribute('src'); im.removeAttribute('fetchpriority'); });
+  // night back cards wait for the load event too, so only the front card competes for the first paint
+  
+  stage.appendChild(day);
+  const layers = [night, day];
+
+  const lazyLoad = () => stage.querySelectorAll('img[data-src]').forEach((im) => { if (im.dataset.srcset) { im.srcset = im.dataset.srcset; im.removeAttribute('data-srcset'); } im.src = im.dataset.src; im.removeAttribute('data-src'); });
+  if (document.readyState === 'complete') setTimeout(lazyLoad, 200); else addEventListener('load', () => setTimeout(lazyLoad, 200));
+
+  // ---- deck state
+  let a = 0, busy = false, touched = false;
+  const cardsOf = (L) => [...L.querySelectorAll('.card')];
+  const slotOf = (i) => (i - a + N) % N;
+
+  function paint() {
+    layers.forEach((L) => {
+      cardsOf(L).forEach((c, i) => { c.dataset.slot = slotOf(i); c.setAttribute('aria-hidden', slotOf(i) === 0 ? 'false' : 'true'); });
+      L.querySelectorAll('.sm-names button').forEach((b, i) => b.setAttribute('aria-current', i === a ? 'true' : 'false'));
+      L.querySelectorAll('.sm-back img').forEach((im, i) => im.classList.toggle('on', i === a));
+    });
+    setGiant(KINGS[a].name);
+  }
+  let gt;
+  function setGiant(text) {
+    const spans = stage.querySelectorAll('.sm-giant span');
+    if (RM.matches || !spans[0].textContent) { spans.forEach((s) => (s.textContent = text)); return; }
+    spans.forEach((s) => s.classList.add('out'));
+    clearTimeout(gt); gt = setTimeout(() => spans.forEach((s) => { s.textContent = text; s.classList.remove('out'); }), 240);
+  }
+
+  const ARC = phone() ? 'translate(-46%, 4%) rotate(-11deg) scale(.96)' : 'translate(-62%, 5%) rotate(-12deg) scale(.97)';
+  function go(n, dir) {
+    n = (n + N) % N;
+    if (n === a || busy) return;
+    if (RM.matches) { a = n; paint(); return; }
+    busy = true;
+    const oldFront = a;
+    const fwd = dir ? dir > 0 : slotOf(n) <= N / 2;
+    layers.forEach((L) => {
+      const cs = cardsOf(L);
+      if (fwd) {
+        // the front card is thrown to the left and tucked to the back
+        const c = cs[oldFront];
+        c.style.transition = 'none';
+        a = n; c.dataset.slot = slotOf(oldFront);
+        const to = getComputedStyle(c).transform, toF = getComputedStyle(c).filter;
+        c.animate([
+          { transform: 'none', filter: 'none', zIndex: 9 },
+          { transform: ARC, filter: 'brightness(.9)', zIndex: 9, offset: .45 },
+          { transform: to, filter: toF, zIndex: 0 },
+        ], { duration: 720, easing: 'cubic-bezier(.3, .7, .2, 1)' }).finished.then(() => { c.style.transition = ''; });
+        a = oldFront;   // restored below for the other layer; final value set after the loop
+      } else {
+        // the chosen card is pulled from the stack around the left and laid on top
+        const c = cs[n];
+        const from = getComputedStyle(c).transform, fromF = getComputedStyle(c).filter;
+        c.style.transition = 'none';
+        a = n; c.dataset.slot = 0;
+        c.animate([
+          { transform: from, filter: fromF, zIndex: 0 },
+          { transform: ARC, filter: 'brightness(.9)', zIndex: 9, offset: .5 },
+          { transform: 'none', filter: 'none', zIndex: 9 },
+        ], { duration: 720, easing: 'cubic-bezier(.3, .7, .2, 1)' }).finished.then(() => { c.style.transition = ''; });
+        a = oldFront;
+      }
+    });
+    a = n; paint();
+    setTimeout(() => { busy = false; }, 380);
+  }
+
+  // ---- controls (both layers: the day layer is on top below the edge)
+  stage.addEventListener('click', (e) => {
+    const t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.go !== undefined) { user(); go(+t.dataset.go); }
+    else if (t.dataset.step) { user(); go(a + +t.dataset.step, +t.dataset.step); }
+    else if (t.hasAttribute('data-play')) { user(); openClip(); }
+    else if (t.classList.contains('card')) {
+      if (swiped) return;
+      user();
+      const i = +t.dataset.i;
+      if (i === a) openClip(); else go(i);
+    }
+  });
+  addEventListener('keydown', (e) => {
+    if (!clip.hidden) { if (e.key === 'Escape') closeClip(); return; }
+    if (progress() > .5) return;
+    if (e.key === 'ArrowRight') { user(); go(a + 1, 1); } else if (e.key === 'ArrowLeft') { user(); go(a - 1, -1); }
+  });
+  // swipe on the deck
+  let sx = 0, sy = 0, swiped = false;
+  stage.addEventListener('pointerdown', (e) => { if (!e.target.closest('.sm-deck')) return; sx = e.clientX; sy = e.clientY; swiped = false; }, { passive: true });
+  stage.addEventListener('pointerup', (e) => {
+    if (!e.target.closest('.sm-deck') || !sx) return;
+    const dx = e.clientX - sx, dy = e.clientY - sy; sx = 0;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.4) { swiped = true; user(); go(a + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1); setTimeout(() => (swiped = false), 60); }
+  }, { passive: true });
+
+  // ---- the deck deals itself while nobody touches it
+  let timer;
+  function user() { touched = true; clearInterval(timer); }
+  function auto() {
+    clearInterval(timer);
+    if (RM.matches || touched || q.has('ground') || q.has('clip')) return;
+    timer = setInterval(() => { if (document.hidden || !clip.hidden || progress() > .15) return; go(a + 1, 1); }, 5200);
+  }
+
+  // ---- day rises behind a stepped edge as the page scrolls
+  function progress() {
+    if (q.get('ground') === 'day') return 1;
+    const r = sec.getBoundingClientRect(), travel = sec.offsetHeight - stage.offsetHeight;
+    return travel > 0 ? Math.max(0, Math.min(1, -r.top / travel)) : 0;
+  }
+  let lastPoly = '';
+  function wipe() {
+    const p = progress();
+    const e = Math.max(0, Math.min(1, (p - .06) / .8));
+    const W = stage.clientWidth, H = stage.clientHeight, B = 40;
+    const cols = phone() ? 6 : 16;
+    const pts = [`0 ${H}px`];
+    for (let c = 0; c < cols; c++) {
+      let f = RM.matches ? (e > .5 ? 1 : 0) : Math.max(0, Math.min(1, e * 1.4 - (c / (cols - 1)) * .4));
+      let y = Math.round((H * (1 - f)) / B) * B;
+      if (f >= 1) y = 0; if (f <= 0) y = H;
+      const x0 = Math.round((W * c) / cols), x1 = Math.round((W * (c + 1)) / cols);
+      pts.push(`${x0}px ${y}px`, `${x1}px ${y}px`);
+    }
+    pts.push(`${W}px ${H}px`);
+    const poly = `polygon(${pts.join(', ')})`;
+    if (poly !== lastPoly) { day.style.clipPath = poly; lastPoly = poly; }
+    night.style.visibility = e >= 1 ? 'hidden' : '';
+  }
+  let raf = 0;
+  addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; wipe(); }); }, { passive: true });
+  addEventListener('resize', () => { lastPoly = ''; wipe(); });
+
+  // ---- the clip: the front card grows into the player
+  const clip = document.querySelector('.clip');
+  const frame = clip.querySelector('.clip-frame'), video = frame.querySelector('video');
+  const bg = clip.querySelector('.clip-bg'), meta = clip.querySelector('.clip-meta'), closeBtn = clip.querySelector('.clip-close');
+  const still = new Image(); still.alt = ''; still.className = 'clip-still';
+  Object.assign(still.style, { position: 'absolute', inset: '0', width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 320ms' });
+  frame.appendChild(still);
+  video.loop = true;
+  video.addEventListener('playing', () => { still.style.opacity = '0'; });
+  let opener = null;
+
+  const frontIn = () => (progress() > .5 ? day : night).querySelector(`.card[data-slot="0"] .card-in`);
+  function flip(fromRect) {
+    const to = frame.getBoundingClientRect();
+    return `translate(${fromRect.left - to.left}px, ${fromRect.top - to.top}px) scale(${fromRect.width / to.width}, ${fromRect.height / to.height})`;
+  }
+  function openClip() {
+    if (!clip.hidden) return;
+    const K = KINGS[a];
+    const ci = frontIn(), r = ci.getBoundingClientRect();
+    opener = ci.parentElement;
+    clearInterval(timer);
+    still.src = ci.querySelector('img').currentSrc || ci.querySelector('img').src; still.style.opacity = '1';
+    video.src = `assets/clips/${K.k}.mp4`; video.poster = '';
+    meta.querySelector('.clip-name').textContent = K.name; meta.querySelector('.clip-series').textContent = K.series;
+    clip.hidden = false; document.documentElement.style.overflow = 'hidden';
+    video.muted = false; video.play().catch(() => { video.muted = true; video.play().catch(() => {}); });
+    layers.forEach((L) => (L.querySelector('.card[data-slot="0"]').style.visibility = 'hidden'));
+    const d = RM.matches ? 0 : 560;
+    frame.animate([{ transform: flip(r), borderRadius: '14px' }, { transform: 'none', borderRadius: phone() ? '0px' : '14px' }], { duration: d, easing: 'cubic-bezier(.16, 1, .3, 1)', fill: 'both' });
+    bg.animate([{ opacity: 0 }, { opacity: 1 }], { duration: d * .7, fill: 'both' });
+    [meta, closeBtn].forEach((el) => el.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: d * .6, delay: d * .5, fill: 'both', easing: 'cubic-bezier(.16, 1, .3, 1)' }));
+    setTimeout(() => closeBtn.focus({ preventScroll: true }), d);
+  }
+  function closeClip() {
+    if (clip.hidden) return;
+    const ci = frontIn(), r = ci.getBoundingClientRect();
+    const d = RM.matches ? 0 : 460;
+    still.style.opacity = '1'; video.pause();
+    [meta, closeBtn].forEach((el) => el.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 120, fill: 'both' }));
+    bg.animate([{ opacity: 1 }, { opacity: 0 }], { duration: d, fill: 'both' });
+    frame.animate([{ transform: 'none' }, { transform: flip(r), borderRadius: '14px' }], { duration: d, easing: 'cubic-bezier(.16, 1, .3, 1)', fill: 'both' }).finished.then(() => {
+      clip.hidden = true; document.documentElement.style.overflow = '';
+      layers.forEach((L) => (L.querySelector('.card[data-slot="0"]').style.visibility = ''));
+      video.removeAttribute('src'); video.load();
+      frame.getAnimations().forEach((x) => x.cancel());
+      if (opener && opener.closest('[data-ground="night"]')) opener.focus({ preventScroll: true });
+      auto();
+    });
+  }
+  closeBtn.addEventListener('click', closeClip);
+  clip.addEventListener('click', (e) => { if (e.target === bg) closeClip(); });
+  clip.addEventListener('keydown', (e) => { if (e.key === 'Tab') { e.preventDefault(); closeBtn.focus(); } });
+
+  // the giant name sits in the band right above the headline, whatever the screen height
+  function placeGiant() {
+    const sr = stage.getBoundingClientRect();
+    const top = night.querySelector('.sm-copy').getBoundingClientRect().top - sr.top;
+    stage.querySelectorAll('.sm-giant').forEach((g) => { g.style.top = 'auto'; g.style.bottom = (sr.height - top + (phone() ? 8 : 14)) + 'px'; });
+  }
+  addEventListener('resize', placeGiant);
+  document.fonts && document.fonts.ready.then(placeGiant);
+
+  // ---- start
+  paint(); wipe(); auto(); placeGiant();
+  if (q.get('ground') === 'day') { lazyLoad(); }
+  if (q.has('clip')) { const i = KINGS.findIndex((K) => K.k === q.get('clip')); if (i > 0) { a = i; paint(); } addEventListener('load', () => setTimeout(openClip, 1200)); }
+})();

@@ -1,0 +1,173 @@
+/* Direction C "Siang Malam" + the owner's card idea.
+   A deck of the four kings: the top card breathes, the visitor changes it (arrows, names, swipe, tapping a card
+   behind), and tapping the top card grows it into that king's clip. Night is the show; scrolling raises the day
+   behind a stepped (pixel-stair) edge, where the same deck turns to the day art. */
+
+body { background: var(--kai-film); }
+
+.sm { position: relative; height: calc(100svh + 90svh); }
+.sm-stage { position: sticky; top: 0; height: 100vh; height: 100svh; min-height: 620px; overflow: hidden; }
+.sm-layer { position: absolute; inset: 0; z-index: 0; isolation: isolate; overflow: hidden; --fg: var(--kai-white); --fg2: rgba(242, 242, 242, .58); --line: rgba(255, 255, 255, .42);
+  background: var(--kai-film); color: var(--fg); }
+.sm-layer[data-ground="day"] { z-index: 1; --fg: var(--kai-ink); --fg2: rgba(26, 26, 26, .6); --line: rgba(26, 26, 26, .4); background: var(--kai-paper);
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+
+/* backdrop: the active king's footage, far behind, and his name set huge (word behind the subject) */
+.sm-back { position: absolute; inset: 0; pointer-events: none; }
+.sm-back img { position: absolute; inset: -6%; width: 112%; height: 112%; object-fit: cover; filter: blur(34px) saturate(.9); opacity: 0; transition: opacity 700ms var(--ease); }
+.sm-back img.on { opacity: .34; }
+.sm-layer[data-ground="day"] .sm-back img.on { opacity: .1; filter: blur(34px) grayscale(1); }
+.sm-giant { position: absolute; left: calc(var(--m) - .05em); right: 0; top: calc(var(--nav-h) + 288px); margin: 0; white-space: nowrap;
+  font: 800 clamp(96px, 10.4vw, 176px)/.8 var(--f-display); letter-spacing: -.05em; color: var(--fg); opacity: .08; pointer-events: none; }
+.sm-giant span { display: inline-block; transition: opacity 360ms var(--ease), transform 600ms var(--ease); }
+.sm-giant span.out { opacity: 0; transform: translateY(.12em); }
+
+/* the deck: right half on desktop */
+.sm-deck { --H: min(74svh, 780px); --W: calc(var(--H) * .55); position: absolute; z-index: 2; width: var(--W); height: var(--H);
+  left: calc(50% + (50% - var(--m) - var(--W) * 1.3) / 2); top: calc(var(--nav-h) + (100svh - var(--nav-h) - var(--H)) / 2 + 8px); }
+.card { position: absolute; inset: 0; padding: 0; border: 0; background: none; cursor: pointer; border-radius: 14px;
+  transform-origin: 50% 100%; transition: transform 640ms var(--ease), filter 640ms var(--ease); will-change: transform; }
+.card-in { position: absolute; inset: 0; display: block; overflow: hidden; border-radius: 14px; background: #111;
+  box-shadow: 0 40px 80px -24px rgba(0, 0, 0, .75), 0 0 0 1px rgba(255, 255, 255, .06); }
+.sm-layer[data-ground="day"] .card-in { box-shadow: 0 36px 70px -28px rgba(26, 26, 26, .45), 0 0 0 1px rgba(26, 26, 26, .06); }
+.card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card[data-slot="0"] { z-index: 4; transform: none; }
+.card[data-slot="1"] { z-index: 3; transform: translate(11%, -2%) rotate(5deg) scale(.95); filter: brightness(.62); }
+.card[data-slot="2"] { z-index: 2; transform: translate(21%, -4%) rotate(10deg) scale(.9); filter: brightness(.45); }
+.card[data-slot="3"] { z-index: 1; transform: translate(30%, -6%) rotate(15deg) scale(.85); filter: brightness(.32); }
+.sm-layer[data-ground="day"] .card[data-slot="1"] { filter: brightness(.9) saturate(.8); }
+.sm-layer[data-ground="day"] .card[data-slot="2"] { filter: brightness(.82) saturate(.65); }
+.sm-layer[data-ground="day"] .card[data-slot="3"] { filter: brightness(.75) saturate(.5); }
+
+/* idle: the top card breathes, and a light passes over it now and then */
+.card[data-slot="0"] .card-in { animation: sm-breathe 6.4s ease-in-out infinite; }
+.card-in::after { content: ''; position: absolute; inset: -40% -60%; background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, .16) 50%, transparent 58%);
+  transform: translateX(-70%); pointer-events: none; }
+.card[data-slot="0"] .card-in::after { animation: sm-sheen 7.5s cubic-bezier(.45, 0, .2, 1) 1.8s infinite; }
+@keyframes sm-breathe { 0%, 100% { transform: translateY(0) rotate(-.5deg); } 50% { transform: translateY(-9px) rotate(.5deg); } }
+@keyframes sm-sheen { 0% { transform: translateX(-70%); } 22%, 100% { transform: translateX(70%); } }
+.card:focus-visible { outline: 2px solid var(--fg); outline-offset: 6px; }
+
+/* the index: top left, the four names; the active one is set in full colour with its series */
+.sm-index { position: absolute; z-index: 3; left: var(--m); top: calc(var(--nav-h) + 48px); }
+.sm-names { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.sm-names button { display: flex; align-items: baseline; gap: 14px; padding: 4px 0; border: 0; background: none; cursor: pointer; color: var(--fg2); text-align: left;
+  transition: color 240ms var(--ease); }
+.sm-names b { font: 700 clamp(22px, 2vw, 30px)/1.05 var(--f-display); letter-spacing: -.02em; }
+.sm-names span { font: 500 13px/1 var(--f-text); opacity: 0; transform: translateX(-6px); transition: opacity 240ms var(--ease), transform 240ms var(--ease); }
+.sm-names button[aria-current="true"] { color: var(--fg); }
+.sm-names button[aria-current="true"] b::before { content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 12px; background: var(--kai-red); vertical-align: .12em; }
+.sm-names button[aria-current="true"] span { opacity: .62; transform: none; }
+@media (hover: hover) and (pointer: fine) { .sm-names button:hover { color: var(--fg); } }
+.sm-names button:focus-visible, .sm-arrow:focus-visible, .sm-play:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+.sm-ctrl { display: flex; align-items: center; gap: 8px; margin-top: 22px; }
+.sm-arrow { width: 44px; height: 44px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 999px; background: none; color: var(--fg); cursor: pointer;
+  box-shadow: inset 0 0 0 1px var(--line); transition: transform 160ms cubic-bezier(.23, 1, .32, 1), box-shadow 160ms; }
+.sm-arrow svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+.sm-play { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px 0 14px; margin-left: 6px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--fg); color: var(--kai-film); font: 600 15px/1 var(--f-text); transition: transform 160ms cubic-bezier(.23, 1, .32, 1); }
+.sm-layer[data-ground="day"] .sm-play { color: var(--kai-paper); }
+.sm-play svg { width: 16px; height: 16px; fill: currentColor; }
+.sm-play .lbl-short { display: none; }
+.sm-arrow:active, .sm-play:active, .btn:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) { .sm-arrow:hover { box-shadow: inset 0 0 0 1px var(--fg); } }
+
+/* copy: bottom left, columns 1 to 6 */
+.sm-copy { position: absolute; z-index: 3; left: var(--m); bottom: 64px; width: calc((100vw - 2 * var(--m)) * 6 / 12); }
+.sm-copy h1, .sm-copy .h1 { margin: 0; font: 800 clamp(54px, 6.6vw, 112px)/.88 var(--f-display); letter-spacing: -.04em; color: var(--fg); text-wrap: balance; }
+.sm-lede { margin: 20px 0 0; max-width: 28em; font: 400 18px/1.45 var(--f-text); color: var(--fg); opacity: .84; }
+.sm-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; height: 52px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--f-text); text-decoration: none;
+  transition: transform 160ms cubic-bezier(.23, 1, .32, 1), background-color 160ms, color 160ms, box-shadow 160ms; }
+.btn-red { background: var(--kai-red); color: var(--kai-white); }
+.btn-ghost { color: var(--fg); box-shadow: inset 0 0 0 1px var(--line); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-red:hover { background: var(--fg); color: var(--kai-red); }
+  .btn-ghost:hover { box-shadow: inset 0 0 0 1px var(--fg); }
+}
+.btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 3px; }
+
+/* arrival (CSS only, runs before any script): words settle, the deck is dealt */
+.sm-copy .w { display: inline-block; animation: sm-word 420ms cubic-bezier(.16, 1, .3, 1) both; }
+.sm-copy .w:nth-child(1) { animation-delay: 60ms; } .sm-copy .w:nth-child(2) { animation-delay: 170ms; }
+.sm-copy .w:nth-child(3) { animation-delay: 280ms; } .sm-copy .w:nth-child(4) { animation-delay: 390ms; }
+.sm-copy .w:nth-child(5) { animation-delay: 500ms; }
+.sm-lede, .sm-ctas, .sm-index { animation: sm-rise 600ms cubic-bezier(.16, 1, .3, 1) 520ms both; }
+.sm-deck { animation: sm-deal 900ms cubic-bezier(.16, 1, .3, 1) 120ms both; }
+@keyframes sm-word { from { opacity: .75; transform: translateY(16px) scale(1.12); } to { opacity: 1; transform: none; } }
+@keyframes sm-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes sm-deal { from { opacity: 0; transform: translateY(60px) rotate(-6deg) scale(.94); } to { opacity: 1; transform: none; } }
+
+/* sections after the hero */
+.day { background: var(--kai-paper); color: var(--kai-ink); padding: 120px 0 128px; }
+.day .kicker { margin: 0 var(--m) 20px; font: 500 15px/1 var(--f-text); }
+.day h2 { margin: 0 var(--m) 40px; max-width: 14em; font: 800 clamp(40px, 6vw, 96px)/.92 var(--f-display); letter-spacing: -.035em; }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.steps figure { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; }
+.steps img { width: 100%; height: 100%; object-fit: cover; }
+.steps figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 24px; background: var(--kai-paper); display: grid; gap: 4px; }
+.steps b { font: 700 24px/1.1 var(--f-display); letter-spacing: -.02em; }
+.steps span { font-size: 15px; color: #444; }
+/* stepped edge where the page turns back to night */
+.wall { position: relative; padding-top: 140px; }
+.wall::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 40px; background: var(--kai-paper);
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 87.5% 0, 87.5% 100%, 75% 100%, 75% 50%, 62.5% 50%, 62.5% 0, 50% 0, 50% 100%, 37.5% 100%, 37.5% 50%, 25% 50%, 25% 100%, 12.5% 100%, 12.5% 50%, 0 50%); }
+
+/* the clip player */
+.clip { position: fixed; inset: 0; z-index: 200; }
+.clip[hidden] { display: none; }
+.clip-bg { position: absolute; inset: 0; background: rgba(11, 11, 11, .94); opacity: 0; }
+.clip-frame { position: absolute; left: 50%; top: 50%; height: min(92svh, calc(92vw * 16 / 9)); aspect-ratio: 9 / 16; transform-origin: 0 0;
+  translate: -50% -50%; border-radius: 14px; overflow: hidden; background: #000; }
+.clip-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.clip-meta { position: absolute; left: var(--m); bottom: 48px; display: grid; gap: 4px; color: var(--kai-white); opacity: 0; }
+.clip-meta b { font: 800 clamp(32px, 4vw, 64px)/.9 var(--f-display); letter-spacing: -.035em; }
+.clip-meta span { font: 500 15px/1.2 var(--f-text); color: var(--kai-muted); }
+.clip-close { position: absolute; right: var(--nav-m); top: 16px; height: 44px; padding: 0 20px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--kai-white); color: var(--kai-ink); font: 600 15px/1 var(--f-text); opacity: 0; }
+.clip-close:focus-visible { outline: 2px solid var(--kai-white); outline-offset: 3px; }
+
+/* phone: deck on top, copy at the foot; the index becomes one line with the arrows */
+@media (max-width: 899px) {
+  .sm { height: calc(100svh + 70svh); }
+  .sm-deck { --H: min(47svh, 440px); left: calc(50% - var(--W) * .62); top: calc(var(--nav-h) + 18px); }
+  .card[data-slot="1"] { transform: translate(14%, -1%) rotate(5deg) scale(.95); }
+  .card[data-slot="2"] { transform: translate(26%, -2%) rotate(10deg) scale(.9); }
+  .card[data-slot="3"] { transform: translate(37%, -3%) rotate(15deg) scale(.85); }
+  .sm-giant { display: none; }
+  .sm-index { left: var(--m); right: var(--m); top: auto; bottom: calc(max(24px, env(safe-area-inset-bottom)) + 236px); display: flex; align-items: center; justify-content: space-between; }
+  .sm-names { display: block; }
+  .sm-names li { display: none; }
+  .sm-names li:has([aria-current="true"]) { display: block; }
+  .sm-names b { font-size: clamp(16px, 4.6vw, 21px); white-space: nowrap; }
+  .sm-arrow { width: 40px; height: 40px; }
+  .sm-play { height: 40px; margin-left: 2px; }
+  .sm-names button[aria-current="true"] b::before { width: 8px; height: 8px; margin-right: 8px; }
+  .sm-names { min-width: 0; flex: 1 1 auto; overflow: hidden; }
+  .sm-play { white-space: nowrap; }
+  .sm-play .lbl-long { display: none; }
+  .sm-play .lbl-short { display: inline; }
+  .sm-names span { display: block; margin-top: 4px; }
+  .sm-names button { display: block; }
+  .sm-ctrl { margin-top: 0; gap: 6px; }
+  .sm-play { padding: 0 14px 0 12px; font-size: 14px; }
+  .sm-copy { left: var(--m); right: var(--m); width: auto; bottom: max(24px, env(safe-area-inset-bottom)); }
+  .sm-copy h1, .sm-copy .h1 { font-size: clamp(40px, 11.4vw, 58px); }
+  .sm-lede { margin-top: 12px; font-size: 15px; }
+  .sm-ctas { margin-top: 16px; gap: 10px; }
+  .btn { height: 48px; padding: 0 20px; font-size: 15px; }
+  .steps { grid-template-columns: 1fr; }
+  .clip-frame { height: 100svh; width: 100vw; aspect-ratio: auto; border-radius: 0; }
+  .clip-meta { bottom: max(28px, env(safe-area-inset-bottom)); }
+}
+
+@media (max-width: 399px) {
+  .sm-play { width: 40px; padding: 0; justify-content: center; }
+  .sm-play .lbl-short { display: none; }
+  .sm-play svg { margin-left: 2px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .card-in, .card-in::after, .sm-copy .w, .sm-lede, .sm-ctas, .sm-index, .sm-deck, .sm-giant span, .sm-back img { animation: none !important; transition: none !important; }
+}

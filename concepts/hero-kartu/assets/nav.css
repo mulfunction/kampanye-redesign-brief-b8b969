@@ -146,6 +146,7 @@ a { color: inherit; text-decoration: none; }
 .panel-feature span { font: 500 14px/1.3 var(--f-text); color: var(--kai-muted); }
 .panel-feature b { font: 700 22px/1.1 var(--f-display); letter-spacing: -.02em; color: var(--kai-white); }
 .nav[data-open] .panel-feature { opacity: 1; transform: none; transition: opacity 360ms var(--ease), transform 520ms var(--ease); transition-delay: calc(120ms + var(--i, 0) * 40ms); }
+.nav-panel[hidden] { display: none; }   /* the author display:flex above beat the hidden attribute: the closed panel sat invisible over the page and swallowed clicks */
 .panel-links { margin: 0; padding: 0; list-style: none; }
 .panel-links a {
   display: block; padding: 4px 0; font: 800 clamp(34px, min(12vw, 6.2vh), 60px)/1.02 var(--f-display); letter-spacing: -.03em; color: var(--kai-paper);

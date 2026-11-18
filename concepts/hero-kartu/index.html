@@ -4,12 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>kampanye AI · prototipe hero: kartu jadi layar</title>
+<title>kampanye.ai | Studio kreatif AI: jasa video iklan dan film AI</title>
+<meta name="description" content="Studio kreatif AI dari Indonesia. Video iklan, film, dan karakter AI kelas TVC, tanpa syuting.">
 <link rel="preload" href="assets/fonts/FunnelDisplay.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/img/card-jaka-540.avif" media="(max-width: 899px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/night-jaka-720.avif" imagesrcset="assets/img/night-jaka-540.avif 540w, assets/img/night-jaka-720.avif 720w" imagesizes="(max-width: 899px) 200px, 420px" fetchpriority="high">
 <link rel="icon" href="assets/img/kampanyeAI-icon-white.svg">
 <link rel="stylesheet" href="assets/nav.css">
-<link rel="stylesheet" href="assets/kartu.css">
+<link rel="stylesheet" href="assets/sm.css">
 </head>
 <body>
 
@@ -53,39 +54,51 @@
 </header>
 
 <main id="top">
-  <!-- HERO: four kings as painted cards; scrolling resolves each, block by block, into footage -->
-  <section class="kb" aria-label="Pembuka">
-    <div class="kb-stage">
-      <div class="kb-panels">
-        <figure class="kb-panel" data-king="jaka">
-          <img class="kb-card" src="assets/img/card-jaka-540.avif" srcset="assets/img/card-jaka-540.avif 540w, assets/img/card-jaka-720.avif 720w" sizes="(max-width: 899px) 100vw, 25vw" alt="Jaka Tingkir" fetchpriority="high" width="540" height="982">
-          <canvas class="kb-px" aria-hidden="true"></canvas>
-          <figcaption class="kb-name"><b>jaka tingkir</b><span>Jaka Tingkir Saga</span></figcaption>
-        </figure>
-        <figure class="kb-panel" data-king="arya">
-          <img class="kb-card" src="assets/img/card-arya-720.avif" srcset="assets/img/card-arya-540.avif 540w, assets/img/card-arya-720.avif 720w" sizes="25vw" alt="Arya Penangsang" loading="lazy" width="540" height="982">
-          <canvas class="kb-px" aria-hidden="true"></canvas>
-          <figcaption class="kb-name"><b>arya penangsang</b><span>Jaka Tingkir Saga</span></figcaption>
-        </figure>
-        <figure class="kb-panel" data-king="siliwangi">
-          <img class="kb-card" src="assets/img/card-siliwangi-720.avif" srcset="assets/img/card-siliwangi-540.avif 540w, assets/img/card-siliwangi-720.avif 720w" sizes="25vw" alt="Prabu Siliwangi" loading="lazy" width="540" height="982">
-          <canvas class="kb-px" aria-hidden="true"></canvas>
-          <figcaption class="kb-name"><b>prabu siliwangi</b><span>Sang Sinatria Sunda</span></figcaption>
-        </figure>
-        <figure class="kb-panel" data-king="pranaseta">
-          <img class="kb-card" src="assets/img/card-pranaseta-720.avif" srcset="assets/img/card-pranaseta-540.avif 540w, assets/img/card-pranaseta-720.avif 720w" sizes="25vw" alt="Prabu Pranaseta" loading="lazy" width="540" height="982">
-          <canvas class="kb-px" aria-hidden="true"></canvas>
-          <figcaption class="kb-name"><b>prabu pranaseta</b><span>Sang Sinatria Sunda</span></figcaption>
-        </figure>
-      </div>
-      <div class="kb-copy">
-        <h1><span class="w">kami</span> <span class="w">bikin</span> <span class="w">iklanmu</span> <span class="w">jadi</span> <span class="w red">film.</span></h1>
-        <p class="kb-lede">Studio kreatif AI dari Indonesia, kualitas setara TVC tanpa syuting.</p>
-        <div class="kb-ctas">
-          <a class="btn btn-red" href="https://wa.me/62881036891660?text=Halo%20Kampanye%20AI!%20Saya%20mau%20kirim%20brief." target="_blank" rel="noopener">Kirim brief-mu</a>
-          <a class="btn btn-ghost" href="#karya">Lihat karya</a>
+  <!-- HERO, Direction C "Siang Malam": the deck of kings by night; scrolling raises the day behind a stepped edge.
+       The day layer is a clone made by sm.js (day card art, ink type). -->
+  <section class="sm" aria-label="Pembuka">
+    <div class="sm-stage">
+      <div class="sm-layer" data-ground="night">
+        <div class="sm-index">
+          <ul class="sm-names">
+            <li><button type="button" data-go="0"><b>jaka tingkir</b><span>Jaka Tingkir Saga</span></button></li>
+            <li><button type="button" data-go="1"><b>arya penangsang</b><span>Jaka Tingkir Saga</span></button></li>
+            <li><button type="button" data-go="2"><b>prabu siliwangi</b><span>Sang Sinatria Sunda</span></button></li>
+            <li><button type="button" data-go="3"><b>prabu pranaseta</b><span>Sang Sinatria Sunda</span></button></li>
+          </ul>
+          <div class="sm-ctrl">
+            <button class="sm-arrow" type="button" data-step="-1" aria-label="Kartu sebelumnya"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+            <button class="sm-arrow" type="button" data-step="1" aria-label="Kartu berikutnya"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+            <button class="sm-play" type="button" data-play aria-label="Tonton klip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg><span class="lbl-long">Tonton klip</span><span class="lbl-short">Tonton</span></button>
+          </div>
+        </div>
+
+        <div class="sm-deck">
+          <button class="card" type="button" data-i="0" data-k="jaka" aria-label="Jaka Tingkir, tonton klip"><span class="card-in"><img src="assets/img/night-jaka-720.avif" srcset="assets/img/night-jaka-540.avif 540w, assets/img/night-jaka-720.avif 720w" sizes="(max-width: 899px) 200px, 420px" alt="" width="720" height="1309" fetchpriority="high"></span></button>
+          <button class="card" type="button" data-i="1" data-k="arya" aria-label="Arya Penangsang, tonton klip"><span class="card-in"><img data-src="assets/img/night-arya-720.avif" alt="" width="720" height="1309"></span></button>
+          <button class="card" type="button" data-i="2" data-k="siliwangi" aria-label="Prabu Siliwangi, tonton klip"><span class="card-in"><img data-src="assets/img/night-siliwangi-720.avif" alt="" width="720" height="1309"></span></button>
+          <button class="card" type="button" data-i="3" data-k="pranaseta" aria-label="Prabu Pranaseta, tonton klip"><span class="card-in"><img data-src="assets/img/night-pranaseta-720.avif" alt="" width="720" height="1309"></span></button>
+        </div>
+
+        <div class="sm-copy">
+          <h1><span class="w">kami</span> <span class="w">bikin</span> <span class="w">idemu</span> <span class="w">jadi</span> <span class="w red">film.</span></h1>
+          <p class="sm-lede">Studio kreatif AI dari Indonesia. Video iklan, film, dan karakter AI kelas TVC, tanpa syuting.</p>
+          <div class="sm-ctas">
+            <a class="btn btn-red" href="https://wa.me/62881036891660?text=Halo%20Kampanye%20AI!%20Saya%20mau%20kirim%20brief." target="_blank" rel="noopener">Kirim brief-mu</a>
+            <a class="btn btn-ghost" href="#karya">Lihat karya</a>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="day" id="agensi">
+    <p class="kicker">Cara kerja</p>
+    <h2>dari ide ke film, <span class="red">tanpa syuting.</span></h2>
+    <div class="steps">
+      <figure><img src="assets/img/karakter-3d.jpg" alt="" loading="lazy"><figcaption><b>brief</b><span>Kamu kirim ide dan tujuan kampanye.</span></figcaption></figure>
+      <figure><img src="assets/img/jaka-istana.jpg" alt="" loading="lazy"><figcaption><b>dunia dan karakter</b><span>Kami rancang tokoh, latar, dan gaya.</span></figcaption></figure>
+      <figure><img src="assets/img/produk-kemasan.jpg" alt="" loading="lazy"><figcaption><b>film akhir</b><span>Kamu terima file siap tayang.</span></figcaption></figure>
     </div>
   </section>
 
@@ -99,18 +112,21 @@
     </div>
   </section>
 
-  <section class="redcard" id="layanan">
-    <p class="kicker">Layanan</p>
-    <p class="shock">tanpa <span>syuting.</span></p>
-  </section>
-
   <section class="closer" id="kontak">
     <img src="assets/img/jaka-desa-terang.jpg" alt="" loading="lazy">
     <p class="shock">kirim <span class="red">brief-mu.</span></p>
   </section>
 </main>
 
+<!-- the clip player: the active card grows into it -->
+<div class="clip" hidden role="dialog" aria-modal="true" aria-label="Klip karakter">
+  <div class="clip-bg"></div>
+  <div class="clip-frame"><video playsinline preload="none"></video></div>
+  <div class="clip-meta"><b class="clip-name"></b><span class="clip-series"></span></div>
+  <button class="clip-close" type="button">Tutup</button>
+</div>
+
 <script src="assets/nav.js"></script>
-<script src="assets/kartu.js"></script>
+<script src="assets/sm.js"></script>
 </body>
 </html>
