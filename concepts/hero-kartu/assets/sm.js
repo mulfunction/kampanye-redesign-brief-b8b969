@@ -145,7 +145,9 @@
   //   grow     each square grows out from its centre (and shrinks back on the way up)       [default]
   //   rise     each square fills from the bottom of its cell, like a column filling up
   //   twinkle  grow, plus squares inside the band keep blinking in and out while it is on screen
-  const MODE = ['grow', 'rise', 'twinkle'].includes(q.get('edge')) ? q.get('edge') : 'grow';
+  const MODE = ['grow', 'rise', 'twinkle'].includes(q.get('edge')) ? q.get('edge') : 'twinkle';   // owner picked twinkle
+  // the overall line the band follows, ?shape=: skyline (stepped columns, default), diagonal, wave
+  const SHAPE = ['skyline', 'diagonal', 'wave'].includes(q.get('shape')) ? q.get('shape') : 'skyline';
   const ROWS = 3, TAU = MODE === 'rise' ? 120 : 95;                   // ms time constant of each square's move
   const rnd = (a, b, k = 0) => { const x = Math.sin(a * 127.1 + b * 311.7 + k * 74.7 + 7.7) * 43758.5453; return x - Math.floor(x); };
   let B = 40, nC = 0, nR = 0, sq = [], lastT = 0, anim = 0, lastClip = '';
@@ -162,26 +164,33 @@
     const dt = lastT ? Math.min(64, now - lastT) : 16; lastT = now;
     let e = Math.max(0, Math.min(1, (progress() - .04) / .82));
     const BH = ROWS * B;
-    const F = H + BH - e * (H + 2 * BH);                                // the front: fully night below it
+    const EX = SHAPE === 'diagonal' ? H * .21 : SHAPE === 'wave' ? 2.2 * B : 5 * B;   // extra travel for the shape's relief
+    const F = H + BH + EX - e * (H + 2 * BH + 2 * EX);                  // the front: fully night below it
     const k = RM.matches ? 1 : 1 - Math.exp(-dt / TAU);
+    const off = (c) => SHAPE === 'skyline' ? Math.floor(rnd(c, 0, 5) * 5) * B * (rnd(c >> 1, 0, 9) > .5 ? 1 : .6) | 0
+      : SHAPE === 'diagonal' ? (c / Math.max(1, nC - 1) - .5) * H * .42
+      : Math.sin(c / Math.max(1, nC - 1) * Math.PI * 2.2) * B * 2.2;
+    const colF = Array.from({ length: nC }, (_, c) => F - off(c));     // the front, per column
+    const colSolid = new Array(nC).fill(Infinity);
     const tick = Math.floor(now / 170);
-    let moving = false, solidTop = H, parts = [];
+    let moving = false, parts = [];
     for (const q2 of sq) {
       const y = q2.r * B, x = q2.c * B;
-      let on = y + B >= F - q2.j * BH;                                   // the band: each square has its own threshold
-      if (MODE === 'twinkle' && !RM.matches && y + B > F - BH && y < F) { // inside the band, keep it alive
+      const Fc = colF[q2.c];
+      let on = y + B >= Fc - q2.j * BH;                                   // the band: each square has its own threshold
+      if (MODE === 'twinkle' && !RM.matches && y + B > Fc - BH && y < Fc) { // inside the band, keep it alive
         if (rnd(q2.c, q2.r, tick) > .72) on = !on;
       }
       const tgt = on ? 1 : 0;
       q2.s += (tgt - q2.s) * k;
       if (Math.abs(tgt - q2.s) < .01) q2.s = tgt; else moving = true;
       if (q2.s <= 0.001) continue;
-      if (y >= F + B && q2.s === 1) { solidTop = Math.min(solidTop, y); continue; }   // merged into the solid part
+      if (y >= Fc + B && q2.s === 1) { colSolid[q2.c] = Math.min(colSolid[q2.c], y); continue; }   // merged into the solid part
       const sz = B * q2.s;
       if (MODE === 'rise') parts.push(`M${x} ${y + B}h${B}v${-sz.toFixed(1)}h${-B}Z`);
       else { const o = (B - sz) / 2; parts.push(`M${(x + o).toFixed(1)} ${(y + o).toFixed(1)}h${sz.toFixed(1)}v${sz.toFixed(1)}h${-sz.toFixed(1)}Z`); }
     }
-    if (solidTop < H) parts.push(`M0 ${solidTop}H${W}V${H + B}H0Z`);
+    colSolid.forEach((y, c) => { if (y < Infinity) parts.push(`M${c * B} ${y}h${B}V${H + B}h${-B}Z`); });
     let c;
     if (!parts.length) c = 'none-hidden';
     else if (e >= 1 && !moving) c = 'none';
