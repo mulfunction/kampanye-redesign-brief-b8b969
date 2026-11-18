@@ -10,9 +10,9 @@
   const phone = () => innerWidth < 900;
   const KINGS = [
     { k: 'jaka', name: 'jaka tingkir', series: 'Jaka Tingkir Saga' },
-    { k: 'arya', name: 'arya penangsang', series: 'Jaka Tingkir Saga' },
     { k: 'siliwangi', name: 'prabu siliwangi', series: 'Sang Sinatria Sunda' },
     { k: 'pranaseta', name: 'prabu pranaseta', series: 'Sang Sinatria Sunda' },
+    { k: 'arya', name: 'arya penangsang', series: 'Jaka Tingkir Saga' },   // owner: Arya at the very back
   ];
   const N = KINGS.length;
 
