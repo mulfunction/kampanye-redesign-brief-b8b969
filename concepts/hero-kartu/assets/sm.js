@@ -139,20 +139,49 @@
     const r = sec.getBoundingClientRect(), travel = sec.offsetHeight - stage.offsetHeight;
     return travel > 0 ? Math.max(0, Math.min(1, -r.top / travel)) : 0;
   }
-  // one clean, straight edge (the stepped/pixel edge was rejected by the owner)
+  // the edge is a stepped skyline (owner's pick from the Fable board sketch): columns about 40 px wide,
+  // each sitting a few 20 px steps higher or lower, the whole skyline rising with the scroll. The pattern is fixed
+  // (seeded), so it reads as a designed edge, not noise.
+  const COLW = () => (phone() ? 39 : 40), UNIT = 20, LEVELS = 5;
+  const seed = (i) => { const x = Math.sin(i * 91.7 + 13.1) * 43758.5453; return x - Math.floor(x); };
+  const lvl = (i) => Math.floor(seed(i) * LEVELS);                   // 0..4 steps
+  function skyline(W, y0, top) {                                     // polygon points along a stepped edge at base y0
+    const n = Math.ceil(W / COLW()), pts = [];
+    for (let c = 0; c < n; c++) {
+      const x0 = c * COLW(), x1 = Math.min(W, x0 + COLW());
+      const y = top ? y0 + lvl(c) * UNIT : y0 - lvl(c) * UNIT;
+      pts.push(`${x0}px ${y}px`, `${x1}px ${y}px`);
+    }
+    return pts;
+  }
   let lastClip = '';
   function wipe() {
     const p = progress();
     let e = Math.max(0, Math.min(1, (p - .06) / .8));
     if (RM.matches) e = e > .5 ? 1 : 0;
-    const top = ((1 - e) * 100).toFixed(2);
-    const c = `inset(${top}% 0 0 0)`;
+    const W = stage.clientWidth, H = stage.clientHeight, J = (LEVELS - 1) * UNIT;
+    let c;
+    if (e <= 0) c = 'inset(100% 0 0 0)';
+    else if (e >= 1) c = 'none';
+    else {
+      const y0 = Math.round((H + J) * (1 - e));                        // the lowest step travels from below the screen to above it
+      c = `polygon(0px ${H}px, ${skyline(W, y0, true).join(', ')}, ${W}px ${H}px)`;
+    }
     if (c !== lastClip) { rise.style.clipPath = c; lastClip = c; }
     base.style.visibility = e >= 1 ? 'hidden' : '';
   }
+  // the same skyline where the page turns from the dark work wall to paper
+  const dayEdge = document.createElement('div'); dayEdge.className = 'day-edge'; dayEdge.setAttribute('aria-hidden', 'true');
+  const daySec = document.querySelector('.day'); if (daySec) daySec.prepend(dayEdge);
+  function edge() {
+    if (!daySec) return;
+    const W = daySec.clientWidth, J = (LEVELS - 1) * UNIT, H = J + 2;
+    dayEdge.style.height = H + 'px'; dayEdge.style.top = -H + 1 + 'px';
+    dayEdge.style.clipPath = `polygon(0px ${H}px, ${skyline(W, H - 1, false).map((p, k) => p).join(', ')}, ${W}px ${H}px)`;
+  }
   let raf = 0;
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; wipe(); }); }, { passive: true });
-  addEventListener('resize', () => { lastClip = ''; wipe(); });
+  addEventListener('resize', () => { lastClip = ''; wipe(); edge(); });
 
   // ---- the clip: the front card grows into the player
   const clip = document.querySelector('.clip');
@@ -218,7 +247,7 @@
   document.fonts && document.fonts.ready.then(placeGiant);
 
   // ---- start
-  paint(); wipe(); auto(); placeGiant();
+  paint(); wipe(); edge(); auto(); placeGiant();
   if (q.get('ground') === 'night') { lazyLoad(); }
   if (q.has('clip')) { const i = KINGS.findIndex((K) => K.k === q.get('clip')); if (i > 0) { a = i; paint(); } addEventListener('load', () => setTimeout(openClip, 1200)); }
 })();

@@ -100,7 +100,8 @@ body { background: var(--kai-film); }
 @keyframes sm-deal { from { opacity: 0; transform: translateY(60px) rotate(-6deg) scale(.94); } to { opacity: 1; transform: none; } }
 
 /* sections after the hero */
-.day { background: var(--kai-paper); color: var(--kai-ink); padding: 120px 0 128px; }
+.day { position: relative; background: var(--kai-paper); color: var(--kai-ink); padding: 120px 0 128px; }
+.day-edge { position: absolute; left: 0; right: 0; background: var(--kai-paper); pointer-events: none; }
 .day .kicker { margin: 0 var(--m) 20px; font: 500 15px/1 var(--f-text); }
 .day h2 { margin: 0 var(--m) 40px; max-width: 14em; font: 800 clamp(40px, 6vw, 96px)/.92 var(--f-display); letter-spacing: -.035em; }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
@@ -109,7 +110,7 @@ body { background: var(--kai-film); }
 .steps figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 24px; background: var(--kai-paper); display: grid; gap: 4px; }
 .steps b { font: 700 24px/1.1 var(--f-display); letter-spacing: -.02em; }
 .steps span { font-size: 15px; color: #444; }
-.wall { padding-top: 128px; padding-bottom: 6px; }
+.wall { padding-top: 128px; padding-bottom: 96px; }
 
 /* the clip player */
 .clip { position: fixed; inset: 0; z-index: 200; }
