@@ -101,7 +101,6 @@ body { background: var(--kai-film); }
 
 /* sections after the hero */
 .day { position: relative; background: var(--kai-paper); color: var(--kai-ink); padding: 120px 0 128px; }
-.day-edge { position: absolute; left: 0; right: 0; background: var(--kai-paper); pointer-events: none; }
 .day .kicker { margin: 0 var(--m) 20px; font: 500 15px/1 var(--f-text); }
 .day h2 { margin: 0 var(--m) 40px; max-width: 14em; font: 800 clamp(40px, 6vw, 96px)/.92 var(--f-display); letter-spacing: -.035em; }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }

@@ -139,67 +139,67 @@
     const r = sec.getBoundingClientRect(), travel = sec.offsetHeight - stage.offsetHeight;
     return travel > 0 ? Math.max(0, Math.min(1, -r.top / travel)) : 0;
   }
-  // The edge between grounds is a STATIC dithered pixel band (owner's reference video, refs/owner-skyline/):
-  // three rows of square blocks on a grid where the two grounds break into each other, loose islands included.
-  // The pattern never changes; in the hero it travels with the scroll, below the work wall it simply sits there.
-  const BLOCK = () => Math.max(26, Math.round(stage.clientWidth / 32)), ROWS = 3, P = [.22, .52, .82];
-  const rnd = (i, k) => { const x = Math.sin(i * 127.1 + k * 311.7 + 7.7) * 43758.5453; return x - Math.floor(x); };
-  // squares of the LOWER ground inside the band (row 0 = top row, mostly upper ground)
-  function bandSquares(W, B, salt) {
-    const n = Math.ceil(W / B), out = [];
-    for (let r = 0; r < ROWS; r++) for (let c = 0; c < n; c++) {
-      const bias = .18 * Math.sin(c * .7 + salt);                         // soft clusters, so it is not uniform noise
-      if (rnd(c + salt * 101, r) < P[r] + bias) out.push([c * B, r * B]);
+  // The day-to-night edge is a band of squares on a fixed screen grid, and every square ANIMATES on its own as the
+  // band passes over it (owner, 18 Nov). Scroll decides which squares belong to the night; each square then moves
+  // there in time, with easing, and keeps moving for a moment after the scroll stops. Three motions, ?edge=:
+  //   grow     each square grows out from its centre (and shrinks back on the way up)       [default]
+  //   rise     each square fills from the bottom of its cell, like a column filling up
+  //   twinkle  grow, plus squares inside the band keep blinking in and out while it is on screen
+  const MODE = ['grow', 'rise', 'twinkle'].includes(q.get('edge')) ? q.get('edge') : 'grow';
+  const ROWS = 3, TAU = MODE === 'rise' ? 120 : 95;                   // ms time constant of each square's move
+  const rnd = (a, b, k = 0) => { const x = Math.sin(a * 127.1 + b * 311.7 + k * 74.7 + 7.7) * 43758.5453; return x - Math.floor(x); };
+  let B = 40, nC = 0, nR = 0, sq = [], lastT = 0, anim = 0, lastClip = '';
+  function grid() {
+    const W = stage.clientWidth, H = stage.clientHeight;
+    B = phone() ? Math.round(W / 10) : Math.max(28, Math.round(W / 32));
+    nC = Math.ceil(W / B); nR = Math.ceil(H / B) + 1;
+    sq = Array.from({ length: nC * nR }, (_, k) => ({ c: k % nC, r: Math.floor(k / nC), s: 0, j: rnd(k % nC, Math.floor(k / nC)) }));
+  }
+  function edgeFrame(now) {
+    anim = 0;
+    const W = stage.clientWidth, H = stage.clientHeight;
+    if (!sq.length || nC !== Math.ceil(W / B)) grid();
+    const dt = lastT ? Math.min(64, now - lastT) : 16; lastT = now;
+    let e = Math.max(0, Math.min(1, (progress() - .04) / .82));
+    const BH = ROWS * B;
+    const F = H + BH - e * (H + 2 * BH);                                // the front: fully night below it
+    const k = RM.matches ? 1 : 1 - Math.exp(-dt / TAU);
+    const tick = Math.floor(now / 170);
+    let moving = false, solidTop = H, parts = [];
+    for (const q2 of sq) {
+      const y = q2.r * B, x = q2.c * B;
+      let on = y + B >= F - q2.j * BH;                                   // the band: each square has its own threshold
+      if (MODE === 'twinkle' && !RM.matches && y + B > F - BH && y < F) { // inside the band, keep it alive
+        if (rnd(q2.c, q2.r, tick) > .72) on = !on;
+      }
+      const tgt = on ? 1 : 0;
+      q2.s += (tgt - q2.s) * k;
+      if (Math.abs(tgt - q2.s) < .01) q2.s = tgt; else moving = true;
+      if (q2.s <= 0.001) continue;
+      if (y >= F + B && q2.s === 1) { solidTop = Math.min(solidTop, y); continue; }   // merged into the solid part
+      const sz = B * q2.s;
+      if (MODE === 'rise') parts.push(`M${x} ${y + B}h${B}v${-sz.toFixed(1)}h${-B}Z`);
+      else { const o = (B - sz) / 2; parts.push(`M${(x + o).toFixed(1)} ${(y + o).toFixed(1)}h${sz.toFixed(1)}v${sz.toFixed(1)}h${-sz.toFixed(1)}Z`); }
     }
-    return out;
-  }
-  function maskSVG(W, H, B, squares) {                                   // transparent top H, band, opaque below
-    const Bh = ROWS * B, total = H + Bh + H;
-    const sq = squares.map(([x, y]) => `<rect x="${x}" y="${H + y}" width="${B}" height="${B}"/>`).join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${total}" shape-rendering="crispEdges"><g fill="#000">${sq}<rect x="0" y="${H + Bh}" width="${W}" height="${H}"/></g></svg>`;
-    return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
-  }
-  let maskW = 0, maskH = 0, lastY = null;
-  function buildMask() {
-    const W = stage.clientWidth, H = stage.clientHeight, B = BLOCK();
-    const m = maskSVG(W, H, B, bandSquares(W, B, 3));
-    for (const p of ['maskImage', 'webkitMaskImage']) rise.style[p] = m;
-    for (const p of ['maskSize', 'webkitMaskSize']) rise.style[p] = `${W}px ${H * 2 + ROWS * B}px`;
-    for (const p of ['maskRepeat', 'webkitMaskRepeat']) rise.style[p] = 'no-repeat';
-    rise.style.clipPath = 'none';
-    maskW = W; maskH = H; lastY = null;
-  }
-  function wipe() {
-    const p = progress();
-    let e = Math.max(0, Math.min(1, (p - .06) / .8));
-    if (RM.matches) e = e > .5 ? 1 : 0;
-    if (stage.clientWidth !== maskW || stage.clientHeight !== maskH) buildMask();
-    const H = maskH, Bh = ROWS * BLOCK();
-    const Y = Math.round(H - e * (H + Bh));                                // top of the band, in stage pixels
-    if (Y !== lastY) {
-      for (const pr of ['maskPosition', 'webkitMaskPosition']) rise.style[pr] = `0px ${Y - H}px`;
-      rise.style.visibility = e <= 0 ? 'hidden' : 'visible';
-      lastY = Y;
+    if (solidTop < H) parts.push(`M0 ${solidTop}H${W}V${H + B}H0Z`);
+    let c;
+    if (!parts.length) c = 'none-hidden';
+    else if (e >= 1 && !moving) c = 'none';
+    else c = `path('${parts.join('')}')`;
+    if (c !== lastClip) {
+      if (c === 'none-hidden') { rise.style.visibility = 'hidden'; }
+      else { rise.style.visibility = 'visible'; rise.style.clipPath = c; }
+      lastClip = c;
     }
-    base.style.visibility = e >= 1 ? 'hidden' : '';
+    base.style.visibility = c === 'none' ? 'hidden' : '';
+    if (moving) anim = requestAnimationFrame(edgeFrame); else lastT = 0;
+    if (MODE === 'twinkle' && parts.length && c !== 'none' && !RM.matches) { if (!anim) anim = requestAnimationFrame(edgeFrame); }
   }
-
-  // the same band where the dark work wall meets paper (static)
-  const dayEdge = document.createElement('div'); dayEdge.className = 'day-edge'; dayEdge.setAttribute('aria-hidden', 'true');
-  const daySec = document.querySelector('.day'); if (daySec) daySec.prepend(dayEdge);
-  function edge() {
-    if (!daySec) return;
-    const W = daySec.clientWidth, B = BLOCK(), Bh = ROWS * B;
-    const sq = bandSquares(W, B, 9).map(([x, y]) => `<rect x="${x}" y="${y}" width="${B}" height="${B}"/>`).join('');
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${Bh}" shape-rendering="crispEdges"><g fill="#000">${sq}</g></svg>`;
-    const m = `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
-    const wall = daySec.previousElementSibling; if (wall) wall.style.paddingBottom = (Bh + 48) + 'px';   // the band sits on flat dark, not on the tiles
-    Object.assign(dayEdge.style, { height: Bh + 'px', top: -Bh + 'px', maskImage: m, webkitMaskImage: m,
-      maskSize: `${W}px ${Bh}px`, webkitMaskSize: `${W}px ${Bh}px`, maskRepeat: 'no-repeat', webkitMaskRepeat: 'no-repeat' });
-  }
+  function wipe() { if (!anim) anim = requestAnimationFrame(edgeFrame); }
+  function edge() {}
   let raf = 0;
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; wipe(); }); }, { passive: true });
-  addEventListener('resize', () => { wipe(); edge(); });
+  addEventListener('resize', () => { sq = []; lastClip = ''; wipe(); });
 
   // ---- the clip: the front card grows into the player
   const clip = document.querySelector('.clip');
