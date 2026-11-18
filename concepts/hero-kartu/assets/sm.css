@@ -10,7 +10,7 @@ body { background: var(--kai-film); }
 .sm-layer { position: absolute; inset: 0; z-index: 0; isolation: isolate; overflow: hidden; --fg: var(--kai-white); --fg2: rgba(242, 242, 242, .58); --line: rgba(255, 255, 255, .42);
   background: var(--kai-film); color: var(--fg); }
 .sm-layer[data-ground="day"] { --fg: var(--kai-ink); --fg2: rgba(26, 26, 26, .6); --line: rgba(26, 26, 26, .4); background: var(--kai-paper); }
-.sm-layer.sm-rise { z-index: 1; clip-path: inset(100% 0 0 0); }
+.sm-layer.sm-rise { z-index: 1; visibility: hidden; }
 
 /* backdrop: the active king's footage, far behind, and his name set huge (word behind the subject) */
 .sm-back { position: absolute; inset: 0; pointer-events: none; }
