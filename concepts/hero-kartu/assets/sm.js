@@ -57,7 +57,12 @@
     clearTimeout(gt); gt = setTimeout(() => spans.forEach((s) => { s.textContent = text; s.classList.remove('out'); }), 240);
   }
 
-  const ARC = phone() ? 'translate(-46%, 4%) rotate(-11deg) scale(.96)' : 'translate(-62%, 5%) rotate(-12deg) scale(.97)';
+  // The swap never clips: the outgoing card lifts and slides a little to the left, fading out before it can reach
+  // the screen edge or the headline; it changes layer only while invisible, then fades in at the back of the deck.
+  const arc = (far) => phone()
+    ? (far ? 'translate(-36%, 3%) rotate(-11deg) scale(.98)' : 'translate(-22%, 1%) rotate(-6deg) scale(1.02)')
+    : (far ? 'translate(-46%, 3%) rotate(-11deg) scale(.98)' : 'translate(-26%, 1%) rotate(-6deg) scale(1.02)');
+  const DUR = 760, EASE = 'cubic-bezier(.22, .8, .24, 1)';
   function go(n, dir) {
     n = (n + N) % N;
     if (n === a || busy) return;
@@ -65,36 +70,34 @@
     busy = true;
     const oldFront = a;
     const fwd = dir ? dir > 0 : slotOf(n) <= N / 2;
+    const moving = [];
     layers.forEach((L) => {
       const cs = cardsOf(L);
-      if (fwd) {
-        // the front card is thrown to the left and tucked to the back
-        const c = cs[oldFront];
-        c.style.transition = 'none';
-        a = n; c.dataset.slot = slotOf(oldFront);
-        const to = getComputedStyle(c).transform, toF = getComputedStyle(c).filter;
-        c.animate([
-          { transform: 'none', filter: 'none', zIndex: 9 },
-          { transform: ARC, filter: 'brightness(.9)', zIndex: 9, offset: .45 },
-          { transform: to, filter: toF, zIndex: 0 },
-        ], { duration: 720, easing: 'cubic-bezier(.3, .7, .2, 1)' }).finished.then(() => { c.style.transition = ''; });
-        a = oldFront;   // restored below for the other layer; final value set after the loop
-      } else {
-        // the chosen card is pulled from the stack around the left and laid on top
-        const c = cs[n];
-        const from = getComputedStyle(c).transform, fromF = getComputedStyle(c).filter;
-        c.style.transition = 'none';
-        a = n; c.dataset.slot = 0;
-        c.animate([
-          { transform: from, filter: fromF, zIndex: 0 },
-          { transform: ARC, filter: 'brightness(.9)', zIndex: 9, offset: .5 },
-          { transform: 'none', filter: 'none', zIndex: 9 },
-        ], { duration: 720, easing: 'cubic-bezier(.3, .7, .2, 1)' }).finished.then(() => { c.style.transition = ''; });
-        a = oldFront;
-      }
+      const c = fwd ? cs[oldFront] : cs[n];
+      const from = getComputedStyle(c).transform, fromF = getComputedStyle(c).filter;
+      moving.push({ c, from, fromF });
     });
-    a = n; paint();
-    setTimeout(() => { busy = false; }, 380);
+    a = n; paint();                                                   // the rest of the deck moves by CSS transition
+    moving.forEach(({ c, from, fromF }) => {
+      c.style.transition = 'none';
+      const to = getComputedStyle(c).transform, toF = getComputedStyle(c).filter;
+      const back = (t) => `${t === 'none' ? '' : t} translate(9%, -1%) scale(.94)`;
+      const frames = fwd ? [
+        { transform: from, filter: fromF, opacity: 1, zIndex: 9, offset: 0 },
+        { transform: arc(false), filter: 'none', opacity: 1, zIndex: 9, offset: .34 },
+        { transform: arc(true), filter: 'none', opacity: 0, zIndex: 9, offset: .5 },
+        { transform: back(to), filter: toF, opacity: 0, zIndex: 0, offset: .5001 },
+        { transform: to, filter: toF, opacity: 1, zIndex: 0, offset: 1 },
+      ] : [
+        { transform: from, filter: fromF, opacity: 1, zIndex: 0, offset: 0 },
+        { transform: back(from), filter: fromF, opacity: 0, zIndex: 0, offset: .4 },
+        { transform: arc(true), filter: 'none', opacity: 0, zIndex: 9, offset: .4001 },
+        { transform: arc(false), filter: 'none', opacity: 1, zIndex: 9, offset: .64 },
+        { transform: to, filter: toF, opacity: 1, zIndex: 9, offset: 1 },
+      ];
+      c.animate(frames, { duration: DUR, easing: EASE }).finished.then(() => { c.style.transition = ''; });
+    });
+    setTimeout(() => { busy = false; }, 420);
   }
 
   // ---- controls (both layers: the day layer is on top below the edge)
@@ -164,10 +167,12 @@
     const dt = lastT ? Math.min(64, now - lastT) : 16; lastT = now;
     let e = Math.max(0, Math.min(1, (progress() - .04) / .82));
     const BH = ROWS * B;
-    const EX = SHAPE === 'diagonal' ? H * .21 : SHAPE === 'wave' ? 2.2 * B : 5 * B;   // extra travel for the shape's relief
+    const EX = SHAPE === 'diagonal' ? H * .21 : SHAPE === 'wave' ? 2.2 * B : 10 * B;  // extra travel for the shape's relief
     const F = H + BH + EX - e * (H + 2 * BH + 2 * EX);                  // the front: fully night below it
     const k = RM.matches ? 1 : 1 - Math.exp(-dt / TAU);
-    const off = (c) => SHAPE === 'skyline' ? Math.floor(rnd(c, 0, 5) * 5) * B * (rnd(c >> 1, 0, 9) > .5 ? 1 : .6) | 0
+    // skyline: every column its own height (0 to 10 blocks, skewed low, with the odd tall tower), so the line reads
+    // like a city skyline, never a uniform row
+    const off = (c) => SHAPE === 'skyline' ? (Math.floor(Math.pow(rnd(c, 0, 5), 1.4) * 7) + (rnd(c, 0, 11) > .82 ? 3 : 0)) * B
       : SHAPE === 'diagonal' ? (c / Math.max(1, nC - 1) - .5) * H * .42
       : Math.sin(c / Math.max(1, nC - 1) * Math.PI * 2.2) * B * 2.2;
     const colF = Array.from({ length: nC }, (_, c) => F - off(c));     // the front, per column
@@ -177,12 +182,17 @@
     for (const q2 of sq) {
       const y = q2.r * B, x = q2.c * B;
       const Fc = colF[q2.c];
-      let on = y + B >= Fc - q2.j * BH;                                   // the band: each square has its own threshold
-      if (MODE === 'twinkle' && !RM.matches && y + B > Fc - BH && y < Fc) { // inside the band, keep it alive
+      const BHc = SHAPE === 'skyline' ? B * (1 + Math.floor(rnd(q2.c, 0, 13) * 4)) : BH;   // ragged depth per column
+      let on = y + B >= Fc - q2.j * BHc;                                   // the band: each square has its own threshold
+      if (MODE === 'twinkle' && !RM.matches && y + B > Fc - BHc && y < Fc) { // inside the band, keep it alive
         if (rnd(q2.c, q2.r, tick) > .72) on = !on;
       }
       const tgt = on ? 1 : 0;
-      q2.s += (tgt - q2.s) * k;
+      // only the band itself animates: squares well inside the night or well inside the day snap, so a fast scroll
+      // never shows a uniform grid of half-grown squares
+      if (y >= Fc + B) q2.s = 1;
+      else if (y + B < Fc - BHc - B) q2.s = 0;
+      else q2.s += (tgt - q2.s) * k;
       if (Math.abs(tgt - q2.s) < .01) q2.s = tgt; else moving = true;
       if (q2.s <= 0.001) continue;
       if (y >= Fc + B && q2.s === 1) { colSolid[q2.c] = Math.min(colSolid[q2.c], y); continue; }   // merged into the solid part
