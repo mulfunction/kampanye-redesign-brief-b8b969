@@ -139,49 +139,79 @@
     const r = sec.getBoundingClientRect(), travel = sec.offsetHeight - stage.offsetHeight;
     return travel > 0 ? Math.max(0, Math.min(1, -r.top / travel)) : 0;
   }
-  // the edge is a stepped skyline (owner's pick from the Fable board sketch): columns about 40 px wide,
-  // each sitting a few 20 px steps higher or lower, the whole skyline rising with the scroll. The pattern is fixed
-  // (seeded), so it reads as a designed edge, not noise.
+  // The edge is an ANIMATED stepped skyline. Every ~40 px column is its own little curtain: it has its own start
+  // (a left-to-right wave plus a seeded offset), and it chases its target with spring-like inertia on every frame,
+  // so the columns overtake each other while the night rises and settle one by one when the scroll stops.
   const COLW = () => (phone() ? 39 : 40), UNIT = 20, LEVELS = 5;
-  const seed = (i) => { const x = Math.sin(i * 91.7 + 13.1) * 43758.5453; return x - Math.floor(x); };
-  const lvl = (i) => Math.floor(seed(i) * LEVELS);                   // 0..4 steps
-  function skyline(W, y0, top) {                                     // polygon points along a stepped edge at base y0
-    const n = Math.ceil(W / COLW()), pts = [];
-    for (let c = 0; c < n; c++) {
-      const x0 = c * COLW(), x1 = Math.min(W, x0 + COLW());
-      const y = top ? y0 + lvl(c) * UNIT : y0 - lvl(c) * UNIT;
-      pts.push(`${x0}px ${y}px`, `${x1}px ${y}px`);
-    }
-    return pts;
+  const seed = (i, k = 0) => { const x = Math.sin(i * 91.7 + 13.1 + k * 57.3) * 43758.5453; return x - Math.floor(x); };
+  const lvl = (i) => Math.floor(seed(i) * LEVELS);
+  const smooth = (t) => t * t * (3 - 2 * t);
+  let cols = [], lastW = 0;
+  function makeCols(W) {
+    const n = Math.ceil(W / COLW());
+    cols = Array.from({ length: n }, (_, c) => ({ c, x0: c * COLW(), x1: Math.min(W, (c + 1) * COLW()), y: null, v: 0,
+      lag: .55 * (c / Math.max(1, n - 1)) + .45 * seed(c, 1) }));            // when this column starts, 0..1
+    lastW = W;
   }
-  let lastClip = '';
+  function targets(e, H) {                                                 // e = scroll progress of the wipe, 0..1
+    const SPAN = .42;                                                       // how long one column takes, in progress
+    return cols.map((col) => {
+      const t = smooth(Math.max(0, Math.min(1, (e - col.lag * (1 - SPAN)) / SPAN)));
+      return H * (1 - t) + (t > 0 && t < 1 ? lvl(col.c) * UNIT * Math.sin(Math.PI * t) : 0);  // a step of relief mid-flight
+    });
+  }
+  let lastClip = '', anim = 0;
   function wipe() {
     const p = progress();
-    let e = Math.max(0, Math.min(1, (p - .06) / .8));
-    if (RM.matches) e = e > .5 ? 1 : 0;
-    const W = stage.clientWidth, H = stage.clientHeight, J = (LEVELS - 1) * UNIT;
+    let e = Math.max(0, Math.min(1, (p - .04) / .82));
+    const W = stage.clientWidth, H = stage.clientHeight;
+    if (W !== lastW) makeCols(W);
+    const tg = targets(RM.matches ? (e > .5 ? 1 : 0) : e, H);
+    let moving = false;
+    cols.forEach((col, k) => {
+      if (col.y === null || RM.matches) { col.y = tg[k]; col.v = 0; return; }
+      const a = (tg[k] - col.y) * .16 - col.v * .32;                        // spring toward the target, damped
+      col.v += a; col.y += col.v;
+      if (Math.abs(tg[k] - col.y) < .4 && Math.abs(col.v) < .4) { col.y = tg[k]; col.v = 0; } else moving = true;
+    });
+    const top = Math.min(...cols.map((c) => c.y)), bottom = Math.max(...cols.map((c) => c.y));
     let c;
-    if (e <= 0) c = 'inset(100% 0 0 0)';
-    else if (e >= 1) c = 'none';
-    else {
-      const y0 = Math.round((H + J) * (1 - e));                        // the lowest step travels from below the screen to above it
-      c = `polygon(0px ${H}px, ${skyline(W, y0, true).join(', ')}, ${W}px ${H}px)`;
-    }
+    if (top >= H - .5) c = 'inset(100% 0 0 0)';
+    else if (bottom <= .5) c = 'none';
+    else c = `polygon(0px ${H}px, ${cols.map((col) => `${col.x0}px ${col.y.toFixed(1)}px, ${col.x1}px ${col.y.toFixed(1)}px`).join(', ')}, ${W}px ${H}px)`;
     if (c !== lastClip) { rise.style.clipPath = c; lastClip = c; }
-    base.style.visibility = e >= 1 ? 'hidden' : '';
+    base.style.visibility = bottom <= .5 ? 'hidden' : '';
+    if (moving && !anim) anim = requestAnimationFrame(() => { anim = 0; wipe(); });
   }
-  // the same skyline where the page turns from the dark work wall to paper
+
+  // the same skyline where the dark work wall meets paper: it builds up column by column when it comes into view
   const dayEdge = document.createElement('div'); dayEdge.className = 'day-edge'; dayEdge.setAttribute('aria-hidden', 'true');
   const daySec = document.querySelector('.day'); if (daySec) daySec.prepend(dayEdge);
-  function edge() {
+  let edgeT0 = null;
+  function edge(now) {
     if (!daySec) return;
-    const W = daySec.clientWidth, J = (LEVELS - 1) * UNIT, H = J + 2;
+    const W = daySec.clientWidth, J = (LEVELS - 1) * UNIT, H = J + 2, n = Math.ceil(W / COLW());
     dayEdge.style.height = H + 'px'; dayEdge.style.top = -H + 1 + 'px';
-    dayEdge.style.clipPath = `polygon(0px ${H}px, ${skyline(W, H - 1, false).map((p, k) => p).join(', ')}, ${W}px ${H}px)`;
+    const el = edgeT0 === null ? 0 : RM.matches ? 9999 : now - edgeT0;
+    let done = true;
+    const pts = [];
+    for (let c = 0; c < n; c++) {
+      const x0 = c * COLW(), x1 = Math.min(W, x0 + COLW());
+      const d = 70 + 420 * (.6 * c / Math.max(1, n - 1) + .4 * seed(c, 2));   // staggered start, ms
+      const t = Math.max(0, Math.min(1, (el - d) / 620));
+      if (t < 1) done = false;
+      const eased = 1 - Math.pow(1 - t, 3) * Math.cos(t * Math.PI * .5);       // ease-out with a hint of overshoot
+      const y = (H - 1) - lvl(c) * UNIT * eased;
+      pts.push(`${x0}px ${y.toFixed(1)}px`, `${x1}px ${y.toFixed(1)}px`);
+    }
+    dayEdge.style.clipPath = `polygon(0px ${H}px, ${pts.join(', ')}, ${W}px ${H}px)`;
+    if (edgeT0 !== null && !done) requestAnimationFrame(edge);
   }
+  if (daySec) new IntersectionObserver((ents, ob) => { if (ents[0].isIntersecting) { edgeT0 = performance.now(); requestAnimationFrame(edge); ob.disconnect(); } },
+    { rootMargin: '0px 0px -12% 0px' }).observe(daySec);
   let raf = 0;
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; wipe(); }); }, { passive: true });
-  addEventListener('resize', () => { lastClip = ''; wipe(); edge(); });
+  addEventListener('resize', () => { lastClip = ''; lastW = 0; wipe(); edge(performance.now()); });
 
   // ---- the clip: the front card grows into the player
   const clip = document.querySelector('.clip');
@@ -247,7 +277,7 @@
   document.fonts && document.fonts.ready.then(placeGiant);
 
   // ---- start
-  paint(); wipe(); edge(); auto(); placeGiant();
+  paint(); wipe(); edge(0); auto(); placeGiant();
   if (q.get('ground') === 'night') { lazyLoad(); }
   if (q.has('clip')) { const i = KINGS.findIndex((K) => K.k === q.get('clip')); if (i > 0) { a = i; paint(); } addEventListener('load', () => setTimeout(openClip, 1200)); }
 })();
