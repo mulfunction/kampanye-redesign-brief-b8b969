@@ -138,28 +138,20 @@
     const r = sec.getBoundingClientRect(), travel = sec.offsetHeight - stage.offsetHeight;
     return travel > 0 ? Math.max(0, Math.min(1, -r.top / travel)) : 0;
   }
-  let lastPoly = '';
+  // the day rises with one clean, straight edge (the stepped/pixel edge was rejected by the owner)
+  let lastClip = '';
   function wipe() {
     const p = progress();
-    const e = Math.max(0, Math.min(1, (p - .06) / .8));
-    const W = stage.clientWidth, H = stage.clientHeight, B = 40;
-    const cols = phone() ? 6 : 16;
-    const pts = [`0 ${H}px`];
-    for (let c = 0; c < cols; c++) {
-      let f = RM.matches ? (e > .5 ? 1 : 0) : Math.max(0, Math.min(1, e * 1.4 - (c / (cols - 1)) * .4));
-      let y = Math.round((H * (1 - f)) / B) * B;
-      if (f >= 1) y = 0; if (f <= 0) y = H;
-      const x0 = Math.round((W * c) / cols), x1 = Math.round((W * (c + 1)) / cols);
-      pts.push(`${x0}px ${y}px`, `${x1}px ${y}px`);
-    }
-    pts.push(`${W}px ${H}px`);
-    const poly = `polygon(${pts.join(', ')})`;
-    if (poly !== lastPoly) { day.style.clipPath = poly; lastPoly = poly; }
+    let e = Math.max(0, Math.min(1, (p - .06) / .8));
+    if (RM.matches) e = e > .5 ? 1 : 0;
+    const top = ((1 - e) * 100).toFixed(2);
+    const c = `inset(${top}% 0 0 0)`;
+    if (c !== lastClip) { day.style.clipPath = c; lastClip = c; }
     night.style.visibility = e >= 1 ? 'hidden' : '';
   }
   let raf = 0;
   addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; wipe(); }); }, { passive: true });
-  addEventListener('resize', () => { lastPoly = ''; wipe(); });
+  addEventListener('resize', () => { lastClip = ''; wipe(); });
 
   // ---- the clip: the front card grows into the player
   const clip = document.querySelector('.clip');

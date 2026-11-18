@@ -1,7 +1,7 @@
 /* Direction C "Siang Malam" + the owner's card idea.
    A deck of the four kings: the top card breathes, the visitor changes it (arrows, names, swipe, tapping a card
    behind), and tapping the top card grows it into that king's clip. Night is the show; scrolling raises the day
-   behind a stepped (pixel-stair) edge, where the same deck turns to the day art. */
+   behind one clean edge, where the same deck turns to the day art. */
 
 body { background: var(--kai-film); }
 
@@ -10,7 +10,7 @@ body { background: var(--kai-film); }
 .sm-layer { position: absolute; inset: 0; z-index: 0; isolation: isolate; overflow: hidden; --fg: var(--kai-white); --fg2: rgba(242, 242, 242, .58); --line: rgba(255, 255, 255, .42);
   background: var(--kai-film); color: var(--fg); }
 .sm-layer[data-ground="day"] { z-index: 1; --fg: var(--kai-ink); --fg2: rgba(26, 26, 26, .6); --line: rgba(26, 26, 26, .4); background: var(--kai-paper);
-  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); }
+  clip-path: inset(100% 0 0 0); }
 
 /* backdrop: the active king's footage, far behind, and his name set huge (word behind the subject) */
 .sm-back { position: absolute; inset: 0; pointer-events: none; }
@@ -109,10 +109,7 @@ body { background: var(--kai-film); }
 .steps figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 24px; background: var(--kai-paper); display: grid; gap: 4px; }
 .steps b { font: 700 24px/1.1 var(--f-display); letter-spacing: -.02em; }
 .steps span { font-size: 15px; color: #444; }
-/* stepped edge where the page turns back to night */
-.wall { position: relative; padding-top: 140px; }
-.wall::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 40px; background: var(--kai-paper);
-  clip-path: polygon(0 0, 100% 0, 100% 0%, 87.5% 0, 87.5% 100%, 75% 100%, 75% 50%, 62.5% 50%, 62.5% 0, 50% 0, 50% 100%, 37.5% 100%, 37.5% 50%, 25% 50%, 25% 100%, 12.5% 100%, 12.5% 50%, 0 50%); }
+.wall { padding-top: 140px; }
 
 /* the clip player */
 .clip { position: fixed; inset: 0; z-index: 200; }
